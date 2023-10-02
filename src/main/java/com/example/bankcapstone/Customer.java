@@ -69,6 +69,8 @@ public class Customer {
         }
     }
 
+    // add something for transferring to loan account.
+
 
     public double getAccessibleBalance() {
         double totalAccessibleBalance = 0;
@@ -81,8 +83,23 @@ public class Customer {
     }
 
 
-    public void depositOrWithdraw(Account account, double amount) {
-
+    public String depositOrWithdraw(Account account, double amount, String option) {
+        switch (option) {
+            case "deposit" -> {
+                account.setBalance(account.getBalance() + amount);
+                return "Deposit Successful";
+            }
+            case "withdraw" -> {
+                if (account.getBalance() - amount > 0) {
+                    account.setBalance(account.getBalance() - amount);
+                    return "Withdrawal Successful";
+                }
+            }
+            default -> {
+                return "Cannot withdraw more than account balance";
+            }
+        }
+        return "";
     }
 
 }
