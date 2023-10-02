@@ -23,4 +23,22 @@ public class Bank {
         }
     }
 
+    private double totalDeposits;
+    private double totalLending;
+    public void calculateTotalDeposits(){
+        double total = 0;
+        for (int i = 0; i < accountList.size();i++){
+            total += accountList.get(i).getBalance();
+        }
+        totalDeposits = total;
+    }
+
+    public void calculateTotalLending(){
+        double total = 0;
+        for (int i=0; i < loanList.size(); i++){
+            total += loanList.get(i).getBalance();
+        }
+        totalLending = total;
+    }
+
 }
