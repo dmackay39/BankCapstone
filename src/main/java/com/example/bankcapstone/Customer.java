@@ -1,5 +1,7 @@
 package com.example.bankcapstone;
 
+import java.util.List;
+
 public class Customer {
 
     private String firstName, lastName, email, password;
@@ -43,16 +45,16 @@ public class Customer {
         return accountList;
     }
 
-    public void setAccountList(List<Account> accountList) {
-        this.accountList = accountList;
+    public void addAccount(Account account) {
+        accountList.add(account);
     }
 
     public List<Loan> getLoanList() {
         return loanList;
     }
 
-    public void setLoanList(List<Loan> loanList) {
-        this.loanList = loanList;
+    public void addLoan(Loan loan) {
+        loanList.add(loan);
     }
 
     public void payOrTransfer(Account accountFrom, Account accountTo, double amount) {
