@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.canvas.*?>
 <?import java.lang.*?>
@@ -16,10 +18,20 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
    <children>
-      <RadioButton id="customerLogIn" mnemonicParsing="false" text="Customer log-in" />
-      <RadioButton id="customerRegistration" mnemonicParsing="false" text="New Customer Registration" />
-      <RadioButton id="employeeLogIn" mnemonicParsing="false" text="Employee log-in" />
-       <Button id="landingPageButton" onAction="#onHelloButtonClick" text="Submit" />
+      <VBox alignment="CENTER">
+         <children>
+            <RadioButton id="customerLogIn" fx:id="customerLogIn" mnemonicParsing="false" prefHeight="75.0" prefWidth="161.0" text="Customer log-in">
+               <toggleGroup>
+                  <ToggleGroup fx:id="landingPageGroup" />
+               </toggleGroup></RadioButton>
+            <RadioButton id="customerRegistration" fx:id="customerRegistration" mnemonicParsing="false" prefHeight="75.0" prefWidth="251.0" text="New Customer Registration" toggleGroup="$landingPageGroup" />
+            <RadioButton id="employeeLogIn" fx:id="employeeLogIn" mnemonicParsing="false" prefHeight="75.0" prefWidth="162.0" text="Employee log-in" toggleGroup="$landingPageGroup" />
+         </children>
+      </VBox>
+       <Button id="landingPageButton" fx:id="landingPageButton" onAction="#onHelloButtonClick" text="Submit" textAlignment="CENTER" textFill="#08b0f8">
+         <font>
+            <Font name="Verdana" size="24.0" />
+         </font></Button>
       <Label fx:id="welcomeText" />
    </children>
 </VBox>
