@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -23,6 +24,8 @@ public class CustomerLoginController {
     public Hyperlink forgotPasswordField;
     @FXML
     public Hyperlink createAccountField;
+    @FXML
+    public Label loginText;
 
     @FXML
     private void onHelloButtonClick() throws IOException {
@@ -39,7 +42,7 @@ public class CustomerLoginController {
              stage.setScene(scene);
              stage.show();
         } else {
-            System.out.println("Incorrect username or password. Try again!");
+            loginText.setText("Incorrect username or password. Try again!");
         }
     }
 

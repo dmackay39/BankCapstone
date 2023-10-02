@@ -38,7 +38,7 @@
         <font>
             <Font name="Verdana" size="24.0" />
         </font></Button>
-    <Label fx:id="welcomeText" />
+    <Label fx:id="loginText" />
       <Hyperlink fx:id="forgotPasswordField" onAction="#onForgotPasswordLinkClick" text="Forgot Password? Click here!" />
 </children>
 </VBox>
