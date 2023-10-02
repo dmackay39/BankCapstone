@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="719.0" prefWidth="712.0" spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankcapstone.CustomerLoginController">
+<padding>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+</padding>
+<children>
+      <Label text="Customer Login" textAlignment="CENTER" textFill="#08b0f8">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label text="Enter Email">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="enterEmailField" prefHeight="31.0" prefWidth="359.0" />
+      <Label text="Enter Password">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="enterPasswordField" />
+      <Hyperlink fx:id="createAccountField" onAction="#onCreateAccountLinkClick" text="Don't have an account? Create an account" />
+    <VBox alignment="CENTER" />
+    <Button id="customerSubmitButton" fx:id="customerSubmitButton" onAction="#onHelloButtonClick" text="Submit" textAlignment="CENTER" textFill="#08b0f8">
+        <font>
+            <Font name="Verdana" size="24.0" />
+        </font></Button>
+    <Label fx:id="welcomeText" />
+      <Hyperlink fx:id="forgotPasswordField" onAction="#onForgotPasswordLinkClick" text="Forgot Password? Click here!" />
+</children>
+</VBox>
