@@ -8,8 +8,19 @@ public class Bank {
     HashMap<String, Customer> customerHashMap = new HashMap<>();
     List<Account> accountList = new ArrayList<>();
     public void populateAccountList(){
-
+        for (String key: customerHashMap.keySet()){
+            for (int i=0; i <customerHashMap.get(key).getAccountList().size(); i++ ){
+                accountList.add(customerHashMap.get(key).getAccountList().get(i));
+            }
+        }
     }
     List<Loan> loanList = new ArrayList<>();
+    public void populateLoanList(){
+        for (String key: customerHashMap.keySet()){
+            for (int i=0; i <customerHashMap.get(key).getLoanList().size(); i++ ){
+                loanList.add(customerHashMap.get(key).getLoanList().get(i));
+            }
+        }
+    }
 
 }
