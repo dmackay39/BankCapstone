@@ -59,7 +59,7 @@ Restrictions and Features
 		(BONUS:  use an exception to have this situation handled on a case by case basis.  A window will pop up and the bank 
 		manager will log in and either approve or disapprove of the payment)
 
-Hints (Pssible ways to solve some problems)
+Hints (Possible ways to solve some problems)
 Account:  
 	Have two constructors,  One will take the account number and balance as parameters.  Use this constructor when creating accounts from the files
 	The other will will take no parameters and auto-assign the account number and set the balance to 0.0
