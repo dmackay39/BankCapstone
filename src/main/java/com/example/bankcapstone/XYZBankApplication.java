@@ -12,7 +12,7 @@ public class XYZBankApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(XYZBankApplication.class.getResource("landing-page.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        Scene scene = new Scene(fxmlLoader.load(), 500, 500);
         stage.setTitle("XYZ Bank - landing page");
         stage.setScene(scene);
         stage.show();
