@@ -32,13 +32,13 @@
          </font>
       </Label>
       <PasswordField fx:id="enterPasswordField" />
-      <Hyperlink fx:id="createAccountField" text="Don't have an account? Create an account" />
+      <Hyperlink fx:id="createAccountField" onAction="#onCreateAccountLinkClick" text="Don't have an account? Create an account" />
     <VBox alignment="CENTER" />
-    <Button id="landingPageButton" fx:id="customerSubmitButton" onAction="#onHelloButtonClick" text="Submit" textAlignment="CENTER" textFill="#08b0f8">
+    <Button id="customerSubmitButton" fx:id="customerSubmitButton" onAction="#onHelloButtonClick" text="Submit" textAlignment="CENTER" textFill="#08b0f8">
         <font>
             <Font name="Verdana" size="24.0" />
         </font></Button>
     <Label fx:id="welcomeText" />
-      <Hyperlink fx:id="forgotPasswordField" text="Forgot Password? Click here!" />
+      <Hyperlink fx:id="forgotPasswordField" onAction="#onForgotPasswordLinkClick" text="Forgot Password? Click here!" />
 </children>
 </VBox>
