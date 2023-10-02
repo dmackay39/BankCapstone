@@ -57,9 +57,29 @@ public class Customer {
         loanList.add(loan);
     }
 
-    public void payOrTransfer(Account accountFrom, Account accountTo, double amount) {
-
+    public String payOrTransfer(Account accountFrom, Account accountTo, double amount) {
+        if ((accountFrom.getBalance() - amount) > 0) {
+            accountFrom.setBalance(accountFrom.getBalance() - amount);
+            accountTo.setBalance(accountTo.getBalance() + amount);
+            return "Transfer Successful";
+        } else if (getAccessibleBalance() > 0) {
+            return "Transfer Failed. You may transfer funds to Account #" + accountFrom.getAccountNumber() + " from your other checking/savings accounts";
+        } else {
+            return "Transfer Failed";
+        }
     }
+
+
+    public double getAccessibleBalance() {
+        double totalAccessibleBalance = 0;
+        for (Account account : accountList) {
+            if (!(account instanceof CdAccount)) {
+                totalAccessibleBalance += account.getBalance();
+            }
+        }
+        return totalAccessibleBalance;
+    }
+
 
     public void depositOrWithdraw(Account account, double amount) {
 
