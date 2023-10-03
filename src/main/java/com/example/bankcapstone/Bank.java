@@ -120,15 +120,17 @@ public class Bank {
         if (verifyLoan(customer, loanBalance, loanType)){
             LoanFactory factory = new LoanFactory();
             customer.addLoan(factory.createLoan(loanType,term,loanBalance,email));
-            double currentBalance = customer.getAccountHashMap.get(accountNumber).getBalance;
-            customer.getAccountHashMap.get(accountNumber).setBalance(currentBalance + loanBalance);
+            double currentBalance = customer.getAccountHashMap().get(accountNumber).getBalance();
+            customer.getAccountHashMap().get(accountNumber).setBalance(currentBalance + loanBalance);
         }
     }
-    public void approveCustomerLoan(String email, double loanBalance, LoanTypeEnum loanType){
+    public void approveCustomerLoan(String email, double loanBalance, LoanTypeEnum loanType, int accountNumber){
         Customer customer = customerHashMap.get(email);
         if (verifyLoan(customer, loanBalance, loanType)){
             LoanFactory factory = new LoanFactory();
             customer.addLoan(factory.createLoan(loanType,loanBalance,email));
+            double currentBalance = customer.getAccountHashMap().get(accountNumber).getBalance();
+            customer.getAccountHashMap().get(accountNumber).setBalance(currentBalance + loanBalance);
         }
     }
 
