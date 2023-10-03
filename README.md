@@ -1,5 +1,9 @@
 # BankCapstone
 
+Kick-off meeting: 
+We started off our project by planning out the design of our app and the logical structure of our backend dev using Figma. This allowed us to collaborate effecitvely as a team and provided a reference for us as we worked through our project - happy to share the link to our Figma board with our instructors and managers on request.
+
+Project outline:
 We will simulate the workings of a Bank.  The bank will have customers and accounts and make loans.
 
 This is a large project.  Break into sub teams and have each sub team handle a part of the solution.  You may have either 2 or 3 sub teams.
