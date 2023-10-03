@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class CustomerAccountController implements Initializable {
@@ -83,7 +84,8 @@ public class CustomerAccountController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+            Bank bank = Bank.getInstance();
+            List<Customer> customers
             VBox account = new VBox();
             Label accountName = new Label("RAINY DAY");
             Label accountNumber = new Label("12345");
