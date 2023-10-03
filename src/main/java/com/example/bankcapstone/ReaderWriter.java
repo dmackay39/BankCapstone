@@ -1,13 +1,8 @@
 package com.example.bankcapstone;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class ReaderWriter {
 
@@ -47,7 +42,7 @@ public class ReaderWriter {
         System.out.println("Customers loaded...");
     }
 
-    public void readAccountsFromFile(){
+    public void readAccountsFromFile() {
 
         FileInputStream fileInputStream = null;
         Scanner scanner = null;
@@ -68,13 +63,13 @@ public class ReaderWriter {
                 LocalDate openingDate = LocalDate.of(Integer.parseInt(dateNums[2]), Integer.parseInt(dateNums[1]), Integer.parseInt(dateNums[0]));
                 Double balance = Double.parseDouble(tokens[4]);
 
-                Account newAccount = AccountFactory.createNewAccount(accountType, username,accountNumber,balance, openingDate);
+                Account newAccount = AccountFactory.createNewAccount(accountType, username, accountNumber, balance, openingDate);
 
-                switch (accountType){
+                switch (accountType) {
                     case CD: {
                         newAccount.setTermLength(Integer.parseInt(tokens[7]));
                     }
-                    case SAVINGS:{
+                    case SAVINGS: {
                         newAccount.setInterestRate(Double.parseDouble(tokens[5]));
                         dateNums = tokens[6].split("/");
                         LocalDate intDate = LocalDate.of(Integer.parseInt(dateNums[2]), Integer.parseInt(dateNums[1]), Integer.parseInt(dateNums[0]));
@@ -96,26 +91,9 @@ public class ReaderWriter {
         System.out.println("Accounts loaded...");
     }
 
-//    public static void main(String[] args){
-//
-////        ReaderWriter readerWriter = new ReaderWriter();
-////        readerWriter.readAccountsFromFile();
-//
-//        Bank bank = Bank.getInstance();
-//        bank.getInstance().populateBankDatabase();
-//
-//        List<Account> accounts =  bank.getCustomerHashMap().get("bobby.ayvazov@email.com").getAccountList();
-//
-//        for(Account account : accounts){
-//            System.out.println(account.getClass().getSimpleName() + " " + account.getAccountNumber() + " -> " + account.getBalance());
-//        }
-//
-//    }
+    public void readLoansFromFile() {
 
-    public static void main(String[] args) {
-        ReaderWriter readerWriter = new ReaderWriter();
-        readerWriter.readCustomersFromFile();
-        readerWriter.writeCustomersToFile();
+        System.out.println("Loans loaded.");
     }
 
     public void writeCustomersToFile() {
@@ -138,8 +116,8 @@ public class ReaderWriter {
         }
         File originalFile = new File(customerPath);
         File tempFile = new File(tempFilePath);
-        System.out.println(originalFile.delete() ? "Original File Deleted" : "Failed to Delete Original File");
-        System.out.println(tempFile.renameTo(originalFile) ? "Temp File Renamed" : "Failed to Rename Temp File");
+        System.out.println(originalFile.delete() ? "Original Customers File Deleted" : "Failed to Delete Customers File");
+        System.out.println(tempFile.renameTo(originalFile) ? "Temp Customers File Renamed" : "Failed to Rename Temp Customers File");
     }
 
     public void writeAccountsToFile() {
@@ -157,6 +135,8 @@ public class ReaderWriter {
                     accountDetails.add(account.getAccountStartDate().toString());
                     accountDetails.add(Double.toString(account.getBalance()));
                     accountDetails.add(Double.toString(account.getInterestRate()));
+                    accountDetails.add(account.getInterestPaidDate() == null ? "" : account.getInterestPaidDate().toString());
+                    accountDetails.add(Integer.toString(account.getTermLength()));
                     fileWriter.write("\n" + String.join(",", accountDetails));
                 }
             }
@@ -164,10 +144,10 @@ public class ReaderWriter {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        //File originalFile = new File(customerPath);
-       // File tempFile = new File(tempFilePath);
-       // System.out.println(originalFile.delete() ? "Original File Deleted" : "Failed to Delete Original File");
-       // System.out.println(tempFile.renameTo(originalFile) ? "Temp File Renamed" : "Failed to Rename Temp File");
+        File originalFile = new File(accountPath);
+        File tempFile = new File(tempFilePath);
+        System.out.println(originalFile.delete() ? "Original Account File Deleted" : "Failed to Delete Original Account File");
+        System.out.println(tempFile.renameTo(originalFile) ? "Temp Account File Renamed" : "Failed to Rename Temp Account File");
     }
 
     /*public void writeCustomersToFile() {
@@ -194,23 +174,16 @@ public class ReaderWriter {
         System.out.println(tempFile.renameTo(originalFile) ? "Temp File Renamed" : "Failed to Rename Temp File");
     }*/
 
-    public void readLoansFromFile(){
-
-
-        System.out.println("Loans loaded.");
+    //for testing
+    public static void main(String[] args) {
+        ReaderWriter readerWriter = new ReaderWriter();
+        readerWriter.readCustomersFromFile();
+        readerWriter.writeCustomersToFile();
+        readerWriter.readAccountsFromFile();
+        readerWriter.writeAccountsToFile();
+        readerWriter.writeAccountsToFile();
     }
+    // for testing
 
-    /**
-     * Just for testing
-     * @param args
-     */
-    public static void main(String[] args){
-
-        Bank.getInstance().populateBankDatabase();
-
-        for(Account account : Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com").getAccountList()){
-            System.out.println(account);
-        }
-
-    }
 }
+
