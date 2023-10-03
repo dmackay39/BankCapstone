@@ -20,10 +20,11 @@
         </Label>
         <VBox alignment="CENTER" />
         <Label fx:id="loginText" textFill="#f51472" />
-        <TextArea prefHeight="200.0" prefWidth="200.0" text="Having trouble accessing your account? Call Employee IT Support and quote your employee ID.&#10;Call:&#10;01234567890&#10;Email:&#10;IT@xyzbank.com">
+        <TextArea prefHeight="200.0" prefWidth="200.0" text="Having trouble accessing your account? Call Employee IT Support and quote your employee ID.&#10;Call:&#10;01234567890&#10;Email:&#10;IT@xyzbank.com" wrapText="true">
             <style>
                 -fx-alignment: center;
             </style>
         </TextArea>
+      <Button fx:id="returnToLoginScreen" mnemonicParsing="false" onAction="#ReturnToLoginScreen" style="-fx-background-color: #fffff0;" text="Return to Login Screen" textFill="#1c3d52" />
     </children>
 </VBox>

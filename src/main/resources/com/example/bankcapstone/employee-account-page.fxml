@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.bankcapstone.EmployeeAccountPage"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<VBox alignment="CENTER" prefHeight="719.0" prefWidth="712.0" spacing="20.0" style="-fx-background-color: #0E1E2B;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankcapstone.EmployeeAccountPageController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <children>
+        <Label text="Employee Account Page" textAlignment="CENTER" textFill="#08b0f8">
+            <font>
+                <Font name="System Bold" size="30.0" />
+            </font>
+        </Label>
+        <VBox alignment="CENTER" />
+      <Label text="Coming Soon!" textFill="WHITE">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+        <Label fx:id="loginText" textFill="#f51472" />
+    </children>
+</VBox>

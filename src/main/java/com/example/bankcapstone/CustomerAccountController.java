@@ -93,7 +93,7 @@ public class CustomerAccountController implements Initializable {
             grid.setHgap(10);
             grid.setVgap(10);
             grid.setPadding(new Insets(0,10,0,10));
-            Label accountName = new Label("ACCOUNT TYPE");
+            Label accountName = new Label(accounts.get(i).getAccountType().toString());
             accountName.setFont(Font.font("Verdana", FontWeight.BOLD,20));
             grid.add(accountName,0,0);
             Label accountNumber = new Label("Account Number: " + Integer.toString(accounts.get(i).getAccountNumber()));
