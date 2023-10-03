@@ -3,27 +3,31 @@ package com.example.bankcapstone;
 public class CdAccount extends Account{
 
     private final double interestRate = 0.07;
-    private int termLenght;
+    private int termLength = 1;
 
-    public CdAccount(int termLenght){
-        super();
-        this.termLenght = termLenght;
+    public CdAccount(String username){
+        super(username);
     }
 
-    public CdAccount(double balance, int termLenght){
-        super(balance);
-        this.termLenght = termLenght;
+    public CdAccount(String username, double balance) {
+        super(username, balance);
     }
 
-    public void setTermLenght(int termLenght) {
-        this.termLenght = termLenght;
+    public CdAccount(String username, double balance, int termLength){
+        super(username, balance);
+
+        this.termLength = termLength;
+    }
+
+    public void setTermLength(int termLength) {
+        this.termLength = termLength;
     }
 
     public double getInterestRate() {
         return interestRate;
     }
 
-    public int getTermLenght() {
-        return termLenght;
+    public int getTermLength() {
+        return termLength;
     }
 }
