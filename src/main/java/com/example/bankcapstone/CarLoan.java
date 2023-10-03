@@ -6,17 +6,17 @@ import java.time.LocalDate;
 public class CarLoan extends Loan{
     private int loanNumber;
     private LocalDate endDate;
-    public CarLoan(double amount, int term) {
-        super(amount);
+    public CarLoan(double amount, int term, String email) {
+        super(amount, email);
         this.endDate = this.getStartDate().plusYears(term);
         this.setMaximumAmount(-50000);
         this.loanNumber = getSuperLoanNumber();
     }
-    public CarLoan(double amount, int term, LocalDate startDate) {
-        super(amount, startDate);
+    public CarLoan(double amount, int term, LocalDate startDate, int loanNumber, String email) {
+        super(amount, startDate, email);
         this.endDate = this.getStartDate().plusYears(term);
         this.setMaximumAmount(-50000);
-        this.loanNumber = getSuperLoanNumber();
+        this.loanNumber = loanNumber;
     }
     public int getLoanNumber(){
         return loanNumber;
