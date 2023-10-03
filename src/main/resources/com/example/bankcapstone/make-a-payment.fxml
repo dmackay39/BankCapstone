@@ -1,14 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.bankcapstone.MakeAPaymentController"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0" prefWidth="594.0" style="-fx-background-color: #0E1E2B;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankcapstone.MakeAPaymentController">
+    <children>
+        <Label text="Make a Payment or Transfer" textFill="#08b0f8">
+            <font>
+                <Font name="System Bold" size="30.0" />
+            </font>
+         <VBox.margin>
+            <Insets bottom="20.0" />
+         </VBox.margin>
+        </Label>
+        <Label text="Choose the account to make your payment/transfer from:" textFill="#08b0f8">
+            <padding>
+                <Insets bottom="10.0" />
+            </padding>
+        </Label>
+        <ComboBox fx:id="paymentTransferFrom" prefWidth="150.0">
+         <VBox.margin>
+            <Insets bottom="20.0" />
+         </VBox.margin></ComboBox>
+      <Label text="Where is the payment/transfer going?" textFill="#08b0f8">
+         <padding>
+            <Insets bottom="10.0" />
+         </padding>
+      </Label>
+      <ComboBox fx:id="paymentTransferTo" prefWidth="150.0" />
+        <Label text="Enter the amount: " textFill="#08b0f8">
+            <padding>
+                <Insets top="20.0" />
+            </padding>
+        </Label>
+        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <children>
+                <Label text="£" textFill="#08b0f8">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                    <padding>
+                        <Insets right="10.0" />
+                    </padding>
+                </Label>
+                <TextField fx:id="paymentTransferPounds" alignment="CENTER_RIGHT" prefWidth="100.0" text="00" />
+                <Label text="." textFill="#08b0f8">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                    <padding>
+                        <Insets left="5.0" right="5.0" />
+                    </padding>
+                </Label>
+                <TextField fx:id="paymentTransferPennies" alignment="CENTER" prefWidth="50.0" text="00" />
+            </children>
+        </HBox>
+        <VBox alignment="CENTER" prefHeight="80.0" prefWidth="100.0">
+            <children>
+                <Button fx:id="paymentTransferSubmitButton" mnemonicParsing="false" onAction="#paymentTransferClicked" prefHeight="40.0" style="-fx-background-color: #fffff0;" text="Submit" textFill="#1c3d52" />
+            </children>
+        </VBox>
+    </children>
+</VBox>
