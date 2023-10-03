@@ -51,7 +51,7 @@ public class SavingsAccount extends Account{
     }
 
     public String toString(){
-        return this.getAccountNumber() + " " + getAccountType() + " " + getBalance() + " " + getInterestPaidDate() + " " + getInterestRate();
+        return this.getAccountNumber() + " " + getAccountType() + " " + getAccountStartDate() + " " + getBalance() + " " + getInterestPaidDate() + " " + getInterestRate();
     }
 
 }

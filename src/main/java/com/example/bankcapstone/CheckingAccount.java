@@ -9,6 +9,7 @@ public class CheckingAccount extends Account {
     public CheckingAccount(String username) {
         super(username);
     }
+
     public CheckingAccount(String username, double balance) {
         super(username, balance);
     }
@@ -37,13 +38,12 @@ public class CheckingAccount extends Account {
 
     }
 
-    public AccountType getAccountType(){
+    public AccountType getAccountType() {
         return this.accountType;
     }
 
-    public String toString(){
-        return this.getAccountNumber() + " " + getAccountType() + " " + getBalance();
+    public String toString() {
+        return this.getAccountNumber() + " " + getAccountStartDate() + " " + getAccountType() + " " + getBalance();
     }
-
 
 }

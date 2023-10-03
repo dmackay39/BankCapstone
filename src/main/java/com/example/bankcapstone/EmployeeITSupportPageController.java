@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ITSupportPageController {
+public class EmployeeITSupportPageController {
     public Button returnToLoginScreen;
 
     public void ReturnToLoginScreen(ActionEvent actionEvent) throws IOException {

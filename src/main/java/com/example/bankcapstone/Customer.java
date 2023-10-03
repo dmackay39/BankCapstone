@@ -87,7 +87,7 @@ public class Customer {
         } else if ((getAccessibleBalance()-amount) > 0) {
             return "Payment Failed. You may transfer funds to Account #" + accountFrom.getAccountNumber() + " from your other checking/savings accounts";
         } else {
-            return "This payment with overdraw your account and requires bank manager approval";
+            return "This payment will overdraw your account and requires bank manager approval";
         }
     }
 
@@ -99,7 +99,7 @@ public class Customer {
         } else if ((getAccessibleBalance()-amount) > 0) {
             return "Payment Failed. You may transfer funds to Account #" + accountFrom.getAccountNumber() + " from your other checking/savings accounts";
         } else {
-            return "This payment with overdraw your account and requires bank manager approval";
+            return "This payment will overdraw your account and requires bank manager approval";
         }
     }
 
