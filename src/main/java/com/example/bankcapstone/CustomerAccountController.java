@@ -111,17 +111,21 @@ public class CustomerAccountController implements Initializable {
             accountsScrollVBox.getChildren().add(grid);
         }
 
-        /*List<Loan> loans = Bank.getInstance().getCustomerHashMap().get("bilal.khan@email.com").getLoanList();
+        List<Loan> loans = Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com").getLoanList();
         for (int i = 0; i < loans.size(); i++) {
             GridPane gridLoans = new GridPane();
             gridLoans.setHgap(10);
             gridLoans.setVgap(10);
             gridLoans.setPadding(new Insets(0,10,0,10));
-            Label loanName = new Label("LOAN TYPE");
+            Label loanName = new Label(loans.get(i).getLoanType().toString());
             loanName.setFont(Font.font("Verdana", FontWeight.BOLD,20));
             gridLoans.add(loanName,0,0);
+            Label loanNumber = new Label("Loan Number: " + Integer.toString(loans.get(i).getLoanNumber()));
+            loanNumber.setFont(Font.font("Verdana", FontWeight.NORMAL,10));
+            gridLoans.add(loanNumber,0,1);
             Label amountOfLoanUnpaid = new Label("- £" + String.format("%.2f",(loans.get(i).getBalance()*-1)));
             amountOfLoanUnpaid.setFont(Font.font("Verdana", FontWeight.BOLD,20));
+            gridLoans.add(amountOfLoanUnpaid,20,0);
             gridLoans.setStyle("-fx-padding: 10;" +
                     "-fx-border-style: solid inside;" +
                     "-fx-border-width: 2;" +
@@ -129,6 +133,6 @@ public class CustomerAccountController implements Initializable {
                     "-fx-border-radius: 5;" +
                     "-fx-border-color: #0E1E2B;");
             LoansScrollVBox.getChildren().add(gridLoans);
-        }*/
+        }
     }
 }

@@ -34,4 +34,9 @@ public class PersonalLoan extends Loan {
         return null;
     }
 
+    @Override
+    public void setEndDate(LocalDate localDate) {
+
+    }
+
 }
