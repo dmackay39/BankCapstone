@@ -133,4 +133,7 @@ public class Customer {
         return "";
     }
 
+    public String toString() {
+        return this.getFirstName() + " " + this.getLastName() + " " + this.getEmail();
+    }
 }
