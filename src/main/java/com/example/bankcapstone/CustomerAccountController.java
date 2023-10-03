@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -84,15 +85,15 @@ public class CustomerAccountController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-            Bank bank = Bank.getInstance();
-            List<Customer> customers
-            VBox account = new VBox();
-            Label accountName = new Label("RAINY DAY");
-            Label accountNumber = new Label("12345");
-            TextField amountInAccount = new TextField("£50.00");
-            account.getChildren().addAll(accountName,accountNumber,amountInAccount);
 
-
-
+        List<Account> accounts = Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com").getAccountList();
+        for (int i = 0; i < accounts.size(); i++) {
+            HBox account = new HBox(20);
+            Label accountName = new Label("ACCOUNT TYPE");
+            Label accountNumber = new Label(Integer.toString(accounts.get(i).getAccountNumber()));
+            Label amountInAccount = new Label(Double.toString(accounts.get(i).getBalance()));
+            account.getChildren().addAll(accountName, accountNumber, amountInAccount);
+            accountsScrollVBox.getChildren().add(account);
+        }
     }
 }
