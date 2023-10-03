@@ -11,6 +11,10 @@ public class CdAccount extends Account {
         super(username);
     }
 
+    public CdAccount(String username, double balance) {
+        super(username, balance);
+    }
+
     public CdAccount(String username, int accountNumber, double balance, LocalDate accountStartDate) {
         super(username, accountNumber, balance, accountStartDate);
     }

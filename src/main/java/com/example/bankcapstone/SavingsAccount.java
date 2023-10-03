@@ -9,6 +9,9 @@ public class SavingsAccount extends Account{
     public SavingsAccount(String username){
         super(username);
     }
+    public SavingsAccount(String username, double balance){
+        super(username, balance);
+    }
 
     public SavingsAccount(String username, int accountNumber, double balance, LocalDate accountStartDate){
         super(username, accountNumber, balance, accountStartDate);

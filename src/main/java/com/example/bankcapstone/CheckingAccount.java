@@ -7,6 +7,9 @@ public class CheckingAccount extends Account {
     public CheckingAccount(String username) {
         super(username);
     }
+    public CheckingAccount(String username, double balance) {
+        super(username, balance);
+    }
 
     public CheckingAccount(String username, int accountNumber, double balance, LocalDate accountStartDate) {
         super(username, accountNumber, balance, accountStartDate);

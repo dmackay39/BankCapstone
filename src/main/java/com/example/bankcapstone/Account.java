@@ -19,12 +19,12 @@ public abstract class Account {
         this.username = username;
     }
 
-//    public Account(String email, double balance){
-//        this.accountNumber = accountNumCounter++;
-//        this.balance = balance;
-//        this.accountStartDate = LocalDate.now();
-//        this.username = username;
-//    }
+    public Account(String email, double balance){
+        this.accountNumber = accountNumCounter++;
+        this.balance = balance;
+        this.accountStartDate = LocalDate.now();
+        this.username = username;
+    }
 
     public Account(String username, int accountNumber, double balance, LocalDate accountStartDate){
         this.accountNumber = accountNumber;
