@@ -26,13 +26,13 @@
       <Label alignment="CENTER" text="My Accounts" textFill="#08b0f8" />
       <ScrollPane prefHeight="192.0" prefWidth="672.0">
          <content>
-            <VBox prefHeight="600.0" prefWidth="650.0" />
+            <VBox fx:id="accountsScrollVBox" prefHeight="600.0" prefWidth="600.0" />
          </content>
       </ScrollPane>
       <Label text="My Loans" textFill="#08b0f8" />
       <ScrollPane prefHeight="192.0" prefWidth="672.0">
          <content>
-            <VBox prefHeight="600.0" prefWidth="650.0">
+            <VBox fx:id="LoansScrollVBox" prefHeight="600.0" prefWidth="600.0">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>

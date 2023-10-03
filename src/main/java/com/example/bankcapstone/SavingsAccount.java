@@ -1,5 +1,7 @@
 package com.example.bankcapstone;
 
+import java.time.LocalDate;
+
 public class SavingsAccount extends Account{
 
     private final double interestRate = 0.05;
@@ -8,8 +10,8 @@ public class SavingsAccount extends Account{
         super(username);
     }
 
-    public SavingsAccount(String username, Double balance){
-        super(username, balance);
+    public SavingsAccount(String username, int accountNumber, double balance, LocalDate accountStartDate){
+        super(username, accountNumber, balance, accountStartDate);
     }
 
     public double getInterestRate() {

@@ -8,6 +8,15 @@ public abstract class Loan {
 
     private String email;
 
+    public LoanTypeEnum getLoanType() {
+        return loanType;
+    }
+
+    public void setLoanType(LoanTypeEnum loanType) {
+        this.loanType = loanType;
+    }
+
+    private LoanTypeEnum loanType;
     private int loanNumber;
     private LocalDate startDate;
     private static int superLoanNumber = 1000000;

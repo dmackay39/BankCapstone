@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import static java.lang.Math.abs;
+
 public class Bank {
 
     private HashMap<String, Customer> customerHashMap = new HashMap<>();
@@ -40,7 +42,6 @@ public class Bank {
         }
     }
 
-
     public void populateLoanList(){
         for (String key: customerHashMap.keySet()){
             for (int i=0; i <customerHashMap.get(key).getLoanList().size(); i++ ){
@@ -65,6 +66,31 @@ public class Bank {
         }
         totalLending = total;
     }
+    
+    public boolean verifyLoan(Customer customer, double loanBalance){
+        double customerLoanOwnership = 0;
+        boolean verification;
+        double totalCustomerLoans = 0;
+        for (int i = 0; i < customer.getLoanList().size(); i++){
+            totalCustomerLoans += customer.getLoanList().get(i).getBalance();
+        }
+        customerLoanOwnership = totalCustomerLoans/totalLending;
+        if ((abs(loanBalance + totalLending) < 0.9*totalDeposits) && (customerLoanOwnership < 0.1)){
+            verification = true;
+        }
+        else {
+            verification = false;
+        }
+        return verification;
+    }
+
+    public void createNewCustomer(String firstName, String lastName, String email, String password){
+        customerHashMap.put(email,new Customer(firstName,lastName,email,password));
+    }
+
+    public void createNewAccount(AccountType accountType, Customer customer){
+        customer.addAccount(AccountFactory.createNewAccount(accountType,customer.getEmail()));
+        }
 
     public HashMap<String, Customer> getCustomerHashMap() {
         return customerHashMap;
@@ -73,4 +99,5 @@ public class Bank {
     public void setCustomerHashMap(HashMap<String, Customer> customerHashMap) {
         this.customerHashMap = customerHashMap;
     }
+
 }

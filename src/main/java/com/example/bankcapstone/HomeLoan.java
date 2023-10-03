@@ -5,6 +5,12 @@ import java.time.LocalDate;
 public class HomeLoan extends Loan{
     private int loanNumber;
     private LocalDate endDate;
+    @Override
+    public LoanTypeEnum getLoanType() {
+        return loanType;
+    }
+
+    private final LoanTypeEnum loanType = LoanTypeEnum.HOME;
     public HomeLoan(double amount, int term, String email) {
         super(amount, email);
         this.endDate = this.getStartDate().plusYears(term);
