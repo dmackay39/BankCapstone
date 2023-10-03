@@ -38,9 +38,7 @@ public class Bank {
             }
         }
     }
-
-    List<Loan> loanList = new ArrayList<>();
-
+    
     public void populateLoanList(){
         for (String key: customerHashMap.keySet()){
             for (int i=0; i <customerHashMap.get(key).getLoanList().size(); i++ ){
