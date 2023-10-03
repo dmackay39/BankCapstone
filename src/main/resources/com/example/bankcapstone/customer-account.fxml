@@ -13,30 +13,58 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
 
-<VBox alignment="CENTER" prefHeight="719.0" prefWidth="712.0" spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankcapstone.CustomerAccountController">
+<VBox alignment="CENTER_LEFT" prefHeight="719.0" prefWidth="712.0" spacing="20.0" style="-fx-background-color: #0E1E2B;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankcapstone.CustomerAccountController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
     <children>
-        <Label text="XYZ Bank" textFill="#08b0f8">
+        <Label text="Welcome, what would you like to do?" textFill="#08b0f8">
             <font>
                 <Font name="System Bold" size="30.0" />
             </font>
         </Label>
-        <VBox alignment="CENTER">
-            <children>
-                <RadioButton id="customerLogIn" fx:id="customerLogIn" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="75.0" prefWidth="161.0" text="Customer log-in">
-                    <toggleGroup>
-                        <ToggleGroup fx:id="landingPageGroup" />
-                    </toggleGroup></RadioButton>
-                <RadioButton id="customerRegistration" fx:id="customerRegistration" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="75.0" prefWidth="251.0" text="New Customer Registration" toggleGroup="$landingPageGroup" />
-                <RadioButton id="employeeLogIn" fx:id="employeeLogIn" mnemonicParsing="false" prefHeight="75.0" prefWidth="162.0" text="Employee log-in" toggleGroup="$landingPageGroup" />
-            </children>
-        </VBox>
-        <Button id="landingPageButton" fx:id="landingPageButton" onAction="#onHelloButtonClick" text="Submit" textAlignment="CENTER" textFill="#08b0f8">
-            <font>
-                <Font name="Verdana" size="24.0" />
-            </font></Button>
-        <Label fx:id="welcomeText" />
+      <Label alignment="CENTER" text="My Accounts" textFill="#08b0f8" />
+      <ScrollPane prefHeight="192.0" prefWidth="672.0">
+         <content>
+            <VBox prefHeight="600.0" prefWidth="650.0" />
+         </content>
+      </ScrollPane>
+      <Label text="My Loans" textFill="#08b0f8" />
+      <ScrollPane prefHeight="192.0" prefWidth="672.0">
+         <content>
+            <VBox prefHeight="600.0" prefWidth="650.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </VBox>
+         </content>
+      </ScrollPane>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Button fx:id="makeAPayment" mnemonicParsing="false" onAction="#MakeAPaymentClicked" prefWidth="600.0" style="-fx-background-color: #fffff0;" text="Make a Payment or Transfer Between Accounts" textFill="#1c3d52">
+               <VBox.margin>
+                  <Insets right="10.0" top="10.0" />
+               </VBox.margin>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="applyForALoan" mnemonicParsing="false" onAction="#ApplyForALoanClicked" prefWidth="600.0" style="-fx-background-color: #fffff0;" text="Apply for a Loan" textFill="#1c3d52">
+               <VBox.margin>
+                  <Insets right="10.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="createAccount" mnemonicParsing="false" onAction="#CreateAccountClicked" prefWidth="600.0" style="-fx-background-color: #fffff0;" text="Create Account" textFill="#1c3d52">
+               <VBox.margin>
+                  <Insets right="10.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="depositWithdrawal" mnemonicParsing="false" onAction="#DepositOrWithdrawalClicked" prefWidth="600.0" style="-fx-background-color: #fffff0;" text="Make a Deposit or Withdrawal from Your Accounts" textFill="#1c3d52">
+               <VBox.margin>
+                  <Insets right="10.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
     </children>
 </VBox>
