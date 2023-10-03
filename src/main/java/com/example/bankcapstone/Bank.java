@@ -67,10 +67,22 @@ public class Bank {
         totalLending = total;
     }
     
-    public boolean verifyLoan(Customer customer, double loanBalance){
+    public boolean verifyLoan(Customer customer, double loanBalance, LoanTypeEnum loanType){
         double customerLoanOwnership = 0;
         boolean verification;
         double totalCustomerLoans = 0;
+
+        switch (loanType){
+            case PERSONAL -> {
+                if(loanBalance > 45000){verification = false;}
+            }
+            case HOME -> {
+                if (loanBalance > 2000000){verification = false;}
+            }
+            case CAR -> {
+                if (loanBalance > 50000) {verification = false;}}
+        }
+
         for (int i = 0; i < customer.getLoanList().size(); i++){
             totalCustomerLoans += customer.getLoanList().get(i).getBalance();
         }
@@ -98,6 +110,20 @@ public class Bank {
 
     public void setCustomerHashMap(HashMap<String, Customer> customerHashMap) {
         this.customerHashMap = customerHashMap;
+    }
+    public void approveCustomerLoan(String email, double loanBalance, LoanTypeEnum loanType, int term){
+        Customer customer = customerHashMap.get(email);
+        if (verifyLoan(customer, loanBalance, loanType)){
+            LoanFactory factory = new LoanFactory();
+            customer.addLoan(factory.createLoan(loanType,term,loanBalance,email));
+        }
+    }
+    public void approveCustomerLoan(String email, double loanBalance, LoanTypeEnum loanType){
+        Customer customer = customerHashMap.get(email);
+        if (verifyLoan(customer, loanBalance, loanType)){
+            LoanFactory factory = new LoanFactory();
+            customer.addLoan(factory.createLoan(loanType,loanBalance,email));
+        }
     }
 
 }
