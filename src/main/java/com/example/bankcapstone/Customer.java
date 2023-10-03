@@ -53,6 +53,10 @@ public class Customer {
         accountHashMap.put(account.getAccountNumber(),account);
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public List<Loan> getLoanList() {
         return loanHashMap.values().stream().toList();
     }

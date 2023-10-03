@@ -1,11 +1,7 @@
 package com.example.bankcapstone;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 public class ReaderWriter {
 
@@ -13,7 +9,9 @@ public class ReaderWriter {
     private final String loanPath = "src/main/resources/com/example/bankcapstone/loans.csv";
     private final String accountPath = "src/main/resources/com/example/bankcapstone/accounts.csv";
 
-    public void readCustomersFromFile(){
+    private final String tempFilePath = "src/main/resources/com/example/bankcapstone/temp.csv";
+
+    public void readCustomersFromFile() {
         HashMap<String, Customer> customerDb = new HashMap<>();
         FileInputStream fileInputStream = null;
         Scanner scanner = null;
@@ -26,23 +24,23 @@ public class ReaderWriter {
                 String[] tokens = scanner.nextLine().split(",");
                 customerDb.put(tokens[2], new Customer(tokens[0], tokens[1], tokens[2], tokens[3]));
             }
-            for (String username : customerDb.keySet()){
+            for (String username : customerDb.keySet()) {
                 System.out.println(username + " -> " + customerDb.get(username));
             }
 
-        } catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             System.out.println("error reading from file");
         } finally {
-            try{
+            try {
                 fileInputStream.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 System.out.println("Cannot close file!");
             }
         }
         Bank.getInstance().setCustomerHashMap(customerDb);
     }
 
-    public void readAccountsFromFile(){
+    public void readAccountsFromFile() {
         //HashMap<String, Customer> customerDb = Bank.getInstance().getCustomerHashMap();
         FileInputStream fileInputStream = null;
         Scanner scanner = null;
@@ -56,22 +54,22 @@ public class ReaderWriter {
                 String[] tokens = scanner.nextLine().split(",");
                 //Arrays.stream(tokens).forEach((token) -> System.out.println(token));
 
-                Account account = AccountFactory.createNewAccount(AccountType.valueOf(tokens[0]),tokens[1],Double.parseDouble(tokens[4]));
+                Account account = AccountFactory.createNewAccount(AccountType.valueOf(tokens[0]), tokens[1], Double.parseDouble(tokens[4]));
                 Bank.getInstance().getCustomerHashMap().get(tokens[1]).addAccount(account);
 
             }
-            List<Account> accounts =  Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com").getAccountList();
+            List<Account> accounts = Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com").getAccountList();
 
-            for(Account account : accounts){
+            for (Account account : accounts) {
                 System.out.println(account.getClass().getSimpleName() + " " + account.getAccountNumber() + " -> " + account.getBalance());
             }
 
-        } catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             System.out.println("error reading from file");
         } finally {
-            try{
+            try {
                 fileInputStream.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 System.out.println("Cannot close file!");
             }
         }
@@ -93,4 +91,87 @@ public class ReaderWriter {
 //        }
 //
 //    }
+
+    public static void main(String[] args) {
+        ReaderWriter readerWriter = new ReaderWriter();
+        readerWriter.readCustomersFromFile();
+        readerWriter.writeCustomersToFile();
+    }
+
+    public void writeCustomersToFile() {
+        HashMap<String, Customer> customerHashMap = Bank.getInstance().getCustomerHashMap();
+        List<String> customerDetails = new LinkedList<>();
+        try {
+            FileWriter fileWriter = new FileWriter(tempFilePath);
+            fileWriter.write("First Name,Last Name,Email,Password");
+            for (Customer customer : customerHashMap.values()) {
+                customerDetails.clear();
+                customerDetails.add(customer.getFirstName());
+                customerDetails.add(customer.getLastName());
+                customerDetails.add(customer.getEmail());
+                customerDetails.add(customer.getPassword());
+                fileWriter.write("\n" + String.join(",", customerDetails));
+            }
+            fileWriter.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        File originalFile = new File(customerPath);
+        File tempFile = new File(tempFilePath);
+        System.out.println(originalFile.delete() ? "Original File Deleted" : "Failed to Delete Original File");
+        System.out.println(tempFile.renameTo(originalFile) ? "Temp File Renamed" : "Failed to Rename Temp File");
+    }
+
+    public void writeAccountsToFile() {
+        HashMap<String, Customer> customerHashMap = Bank.getInstance().getCustomerHashMap();
+        List<String> accountDetails = new LinkedList<>();
+        try {
+            FileWriter fileWriter = new FileWriter(tempFilePath);
+            fileWriter.write("Account Type,Email,Account Number,Opening Date,Balance,Interest Rate,Interest Paid Date,Term");
+            for (Customer customer : customerHashMap.values()) {
+                for (Account account : customer.getAccountList()) {
+                    accountDetails.clear();
+                    accountDetails.add(account.getAccountType().toString());
+                    accountDetails.add(customer.getEmail());
+                    accountDetails.add(Integer.toString(account.getAccountNumber()));
+                    accountDetails.add(account.getAccountStartDate().toString());
+                    accountDetails.add(Double.toString(account.getBalance()));
+                    accountDetails.add(Double.toString(account.getInterestRate()));
+                    fileWriter.write("\n" + String.join(",", accountDetails));
+                }
+            }
+            fileWriter.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        //File originalFile = new File(customerPath);
+       // File tempFile = new File(tempFilePath);
+       // System.out.println(originalFile.delete() ? "Original File Deleted" : "Failed to Delete Original File");
+       // System.out.println(tempFile.renameTo(originalFile) ? "Temp File Renamed" : "Failed to Rename Temp File");
+    }
+
+    /*public void writeCustomersToFile() {
+        HashMap<String, Customer> customerHashMap = Bank.getInstance().getCustomerHashMap();
+        List<String> customerDetails = new LinkedList<>();
+        try {
+            FileWriter fileWriter = new FileWriter(tempFilePath);
+            fileWriter.write("First Name,Last Name,Email,Password");
+            for (Customer customer : customerHashMap.values()) {
+                customerDetails.clear();
+                customerDetails.add(customer.getFirstName() == null ? "" : customer.getFirstName());
+                customerDetails.add(customer.getLastName() == null ? "" : customer.getLastName());
+                customerDetails.add(customer.getEmail() == null ? "" : customer.getEmail());
+                customerDetails.add(customer.getPassword() == null ? "" : customer.getPassword());
+                fileWriter.write("\n" + String.join(",", customerDetails));
+            }
+            fileWriter.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        File originalFile = new File(customerPath);
+        File tempFile = new File(tempFilePath);
+        System.out.println(originalFile.delete() ? "Original File Deleted" : "Failed to Delete Original File");
+        System.out.println(tempFile.renameTo(originalFile) ? "Temp File Renamed" : "Failed to Rename Temp File");
+    }*/
+
 }
