@@ -4,15 +4,27 @@ public class SavingsAccount extends Account{
 
     private final double interestRate = 0.05;
 
-    public SavingsAccount(){
-        super();
+    public SavingsAccount(String username){
+        super(username);
     }
 
-    public SavingsAccount(Double balance){
-        super(balance);
+    public SavingsAccount(String username, Double balance){
+        super(username, balance);
     }
 
     public double getInterestRate() {
         return interestRate;
     }
+
+    @Override
+    public int getTermLength() {
+        return 0;
+    }
+
+    @Override
+    public void setTermLength(int termLength) {
+
+    }
+
+
 }
