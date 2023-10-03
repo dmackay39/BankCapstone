@@ -3,7 +3,7 @@ package com.example.bankcapstone;
 import java.time.LocalDate;
 
 public abstract class Loan {
-    private final double interestRate = 0.1;
+    private double interestRate = 0.1;
     private double balance;
 
     private String email;
@@ -83,4 +83,14 @@ public abstract class Loan {
             interestPaidDate = interestPaidDate.plusYears(1);
         }
     }
+
+    public void setInterestPaidDate(LocalDate interestPaidDate) {
+        this.interestPaidDate = interestPaidDate;
+    }
+
+    public void setInterestRate(double interestRate) {
+        this.interestRate = interestRate;
+    }
+
+    public abstract void setEndDate(LocalDate localDate);
 }

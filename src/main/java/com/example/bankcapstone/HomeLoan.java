@@ -31,6 +31,12 @@ public class HomeLoan extends Loan{
     public LocalDate getEndDate(){
         return endDate;
     }
+
+    @Override
+    public void setEndDate(LocalDate localDate) {
+        this.endDate = localDate;
+    }
+
     public void chargeInterest(){
         double currentBalance = getBalance();
         this.setBalance(currentBalance*getInterestRate());
