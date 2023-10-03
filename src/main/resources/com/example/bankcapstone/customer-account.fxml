@@ -23,13 +23,13 @@
                 <Font name="System Bold" size="30.0" />
             </font>
         </Label>
-      <Label alignment="CENTER" text="Accounts" textFill="#08b0f8" />
+      <Label alignment="CENTER" text="My Accounts" textFill="#08b0f8" />
       <ScrollPane prefHeight="192.0" prefWidth="672.0">
          <content>
             <VBox prefHeight="600.0" prefWidth="650.0" />
          </content>
       </ScrollPane>
-      <Label text="Loans" textFill="#08b0f8" />
+      <Label text="My Loans" textFill="#08b0f8" />
       <ScrollPane prefHeight="192.0" prefWidth="672.0">
          <content>
             <VBox prefHeight="600.0" prefWidth="650.0">
@@ -39,9 +39,9 @@
             </VBox>
          </content>
       </ScrollPane>
-      <VBox prefHeight="200.0" prefWidth="100.0">
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
          <children>
-            <Button mnemonicParsing="false" style="-fx-background-color: #fffff0;" text="Make a Payment" textFill="#1c3d52">
+            <Button fx:id="makeAPayment" mnemonicParsing="false" onAction="#MakeAPaymentClicked" prefWidth="600.0" style="-fx-background-color: #fffff0;" text="Make a Payment or Transfer Between Accounts" textFill="#1c3d52">
                <VBox.margin>
                   <Insets right="10.0" top="10.0" />
                </VBox.margin>
@@ -49,17 +49,17 @@
                   <Insets />
                </opaqueInsets>
             </Button>
-            <Button mnemonicParsing="false" style="-fx-background-color: #fffff0;" text="Apply for a Loan" textFill="#1c3d52">
+            <Button fx:id="applyForALoan" mnemonicParsing="false" onAction="#ApplyForALoanClicked" prefWidth="600.0" style="-fx-background-color: #fffff0;" text="Apply for a Loan" textFill="#1c3d52">
                <VBox.margin>
                   <Insets right="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" style="-fx-background-color: #fffff0;" text="Create Account" textFill="#1c3d52">
+            <Button fx:id="createAccount" mnemonicParsing="false" onAction="#CreateAccountClicked" prefWidth="600.0" style="-fx-background-color: #fffff0;" text="Create Account" textFill="#1c3d52">
                <VBox.margin>
                   <Insets right="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" style="-fx-background-color: #fffff0;" text="Deposit/Withdrawal" textFill="#1c3d52">
+            <Button fx:id="depositWithdrawal" mnemonicParsing="false" onAction="#DepositOrWithdrawalClicked" prefWidth="600.0" style="-fx-background-color: #fffff0;" text="Make a Deposit or Withdrawal from Your Accounts" textFill="#1c3d52">
                <VBox.margin>
                   <Insets right="10.0" top="10.0" />
                </VBox.margin>

@@ -5,8 +5,12 @@ import java.time.LocalDate;
 public abstract class Loan {
     private final double interestRate = 0.1;
     private double balance;
+
+    private String email;
+
+    private int loanNumber;
     private LocalDate startDate;
-    private static int superLoanNumber = 0;
+    private static int superLoanNumber = 1000000;
     private double maximumAmount;
 
     public double getInterestRate() {
@@ -33,15 +37,16 @@ public abstract class Loan {
     public LocalDate getStartDate(){
         return this.startDate;
     }
-    public Loan(double balance) {
+    public Loan(double balance, String email) {
         this.balance = -balance;
         this.startDate = LocalDate.now();
+        this.email = email;
         superLoanNumber++;
     }
-    public Loan (double balance, LocalDate startDate){
-        this.balance = -balance;
+    public Loan (double balance, LocalDate startDate, String email){
+        this.balance = balance;
         this.startDate = startDate;
-        superLoanNumber++;
+        this.email = email;
     }
     public abstract void chargeInterest();
     public abstract int getLoanNumber();
