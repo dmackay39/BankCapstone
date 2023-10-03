@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ForgotPasswordPageController {
+public class EmployeeForgotPasswordPageController {
     public Button returnToLoginScreen;
 
     public void ReturnToLoginScreen(ActionEvent actionEvent) throws IOException {
