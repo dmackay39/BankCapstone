@@ -32,21 +32,25 @@ import java.io.IOException;
 
         @FXML
         private void onSubmitButtonClick() throws IOException {
+            String emailPattern = "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}";
+            String firstName = enterFirstNameField.getText();
+            String lastName = enterLastNameField.getText();
+            String email = enterEmailField.getText();
             String password = enterPasswordField.getText();
             String confirmPassword = confirmPasswordField.getText();
 
-            if (password.equals(confirmPassword)) {
-                // Passwords match, navigate to customer-account.fxml
+            if (!email.matches(emailPattern)){
+                loginText.setText("Invalid Email. Please try again.");
+            } else if (!password.equals(confirmPassword) || password.length() < 8) {
+                loginText.setText("Passwords do not match. Please try again.");
+            } else {
+                Bank.getInstance().createNewCustomer(new Customer(firstName, lastName, email, password));
                 Stage stage2 = (Stage) newRegistrationSubmitButton.getScene().getWindow();
-                stage2.close();
-                Stage stage3 = new Stage();
+
                 FXMLLoader fxmlLoader3 = new FXMLLoader(getClass().getResource("customer-account.fxml"));
                 Scene scene3 = new Scene(fxmlLoader3.load(), 650, 650);
-                stage3.setTitle("Your Account");
-                stage3.setScene(scene3);
-                stage3.show();
-            } else {
-                loginText.setText("Passwords do not match. Please try again.");
+                stage2.setTitle("Your Account");
+                stage2.setScene(scene3);
             }
         }
     }
