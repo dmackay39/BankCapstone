@@ -3,14 +3,20 @@ package com.example.bankcapstone;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class CustomerAccountController {
+public class CustomerAccountController implements Initializable {
 
     @FXML
     public Button makeAPayment;
@@ -20,6 +26,12 @@ public class CustomerAccountController {
     public Button createAccount;
     @FXML
     public Button depositWithdrawal;
+    @FXML
+    public VBox accountsScrollVBox;
+    @FXML
+    public VBox LoansScrollVBox;
+
+
 
     @FXML
     public void MakeAPaymentClicked(ActionEvent actionEvent) throws IOException {
@@ -67,5 +79,18 @@ public class CustomerAccountController {
         stage7.setTitle("Your Account");
         stage7.setScene(scene7);
         stage7.show();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+            VBox account = new VBox();
+            Label accountName = new Label("RAINY DAY");
+            Label accountNumber = new Label("12345");
+            TextField amountInAccount = new TextField("£50.00");
+            account.getChildren().addAll(accountName,accountNumber,amountInAccount);
+
+
+
     }
 }
