@@ -1,12 +1,13 @@
 package com.example.bankcapstone;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Customer {
 
     private String firstName, lastName, email, password;
 
-    private List<Account> accountList;
+    private List<Account> accountList = new ArrayList<>();
     private List<Loan> loanList;
 
     public Customer(String firstName, String lastName, String email, String password) {

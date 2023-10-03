@@ -7,6 +7,8 @@ public abstract class Account {
     private LocalDate accountStartDate;
     private String username;
 
+    private AccountType accountType;
+
     private int accountNumber;
     private double balance;
 
@@ -47,6 +49,13 @@ public abstract class Account {
         return accountStartDate;
     }
 
+    public AccountType getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(AccountType accountType) {
+        this.accountType = accountType;
+    }
 
     public abstract double getInterestRate();
     public abstract int getTermLength();
