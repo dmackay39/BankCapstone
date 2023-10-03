@@ -25,7 +25,7 @@ public abstract class Loan {
 
     private LocalDate startDate;
 
-    private static int superLoanNumber = 1000000;
+    private static int superLoanNumber = 2000000;
     private double maximumAmount;
 
     public double getInterestRate() {
@@ -67,14 +67,20 @@ public abstract class Loan {
     public abstract int getLoanNumber();
     public abstract LocalDate getEndDate();
 
-    LocalDate interestPaidDate = null;
+    private LocalDate interestPaidDate = null;
+
+    public LocalDate getInterestPaidDate() {
+        return interestPaidDate;
+    }
+
+
     public void payInterest(){
         if (interestPaidDate == null){
             interestPaidDate = getStartDate();}
 
         if (LocalDate.now().isAfter(interestPaidDate.plusYears(1))){
             setBalance(balance*(1+getInterestRate()));
-            interestPaidDate = LocalDate.now();
+            interestPaidDate = interestPaidDate.plusYears(1);
         }
     }
 }

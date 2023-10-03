@@ -1,4 +1,4 @@
 Account Type,Email,Account Number,Opening Date,Balance,Interest Rate,Interest Paid Date,Term
-CHECKING,bobby.ayvazov@email.com,1000000,01/10/2023,500,,,,,
-SAVINGS,bobby.ayvazov@email.com,1000001,06/09/2023,20000,0.05,06/09/2024,
-CD,bobby.ayvazov@email.com,1000003,05/09/2023,25000,0.1,06/09/2024,2
+CD,bobby.ayvazov@email.com,1000003,2023-09-05,25000.0,0.1,2024-09-06,2
+SAVINGS,bobby.ayvazov@email.com,1000001,2023-09-06,20000.0,0.05,2024-09-06,0
+CHECKING,bobby.ayvazov@email.com,1000000,2023-10-01,500.0,0.0,,0
