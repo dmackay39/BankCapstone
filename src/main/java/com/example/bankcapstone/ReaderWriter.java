@@ -223,9 +223,11 @@ public class ReaderWriter {
         }
         File originalFile = new File(loanPath);
         File tempFile = new File(tempFilePath);
-        System.out.println(originalFile.delete() ? "Original Account File Deleted" : "Failed to Delete Original Account File");
-        System.out.println(tempFile.renameTo(originalFile) ? "Temp Account File Renamed" : "Failed to Rename Temp Account File");
+        //System.out.println(originalFile.delete() ? "Original Account File Deleted" : "Failed to Delete Original Account File");
+        //System.out.println(tempFile.renameTo(originalFile) ? "Temp Account File Renamed" : "Failed to Rename Temp Account File");
     }
-
 }
+
+
+
 
