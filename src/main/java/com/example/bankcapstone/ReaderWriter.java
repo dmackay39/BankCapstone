@@ -1,7 +1,13 @@
 package com.example.bankcapstone;
 
-import java.io.*;
-import java.util.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Scanner;
 
 public class ReaderWriter {
 
@@ -24,9 +30,9 @@ public class ReaderWriter {
                 String[] tokens = scanner.nextLine().split(",");
                 customerDb.put(tokens[2], new Customer(tokens[0], tokens[1], tokens[2], tokens[3]));
             }
-            for (String username : customerDb.keySet()) {
-                System.out.println(username + " -> " + customerDb.get(username));
-            }
+//            for (String username : customerDb.keySet()){
+//                System.out.println(username + " -> " + customerDb.get(username));
+//            }
 
         } catch (FileNotFoundException e) {
             System.out.println("error reading from file");
@@ -38,10 +44,11 @@ public class ReaderWriter {
             }
         }
         Bank.getInstance().setCustomerHashMap(customerDb);
+        System.out.println("Customers loaded...");
     }
 
-    public void readAccountsFromFile() {
-        //HashMap<String, Customer> customerDb = Bank.getInstance().getCustomerHashMap();
+    public void readAccountsFromFile(){
+
         FileInputStream fileInputStream = null;
         Scanner scanner = null;
 
@@ -54,14 +61,27 @@ public class ReaderWriter {
                 String[] tokens = scanner.nextLine().split(",");
                 //Arrays.stream(tokens).forEach((token) -> System.out.println(token));
 
-                Account account = AccountFactory.createNewAccount(AccountType.valueOf(tokens[0]), tokens[1], Double.parseDouble(tokens[4]));
-                Bank.getInstance().getCustomerHashMap().get(tokens[1]).addAccount(account);
+                AccountType accountType = AccountType.valueOf(tokens[0]);
+                String username = tokens[1];
+                Integer accountNumber = Integer.parseInt(tokens[2]);
+                String[] dateNums = tokens[3].split("/");
+                LocalDate openingDate = LocalDate.of(Integer.parseInt(dateNums[2]), Integer.parseInt(dateNums[1]), Integer.parseInt(dateNums[0]));
+                Double balance = Double.parseDouble(tokens[4]);
 
-            }
-            List<Account> accounts = Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com").getAccountList();
+                Account newAccount = AccountFactory.createNewAccount(accountType, username,accountNumber,balance, openingDate);
 
-            for (Account account : accounts) {
-                System.out.println(account.getClass().getSimpleName() + " " + account.getAccountNumber() + " -> " + account.getBalance());
+                switch (accountType){
+                    case CD: {
+                        newAccount.setTermLength(Integer.parseInt(tokens[7]));
+                    }
+                    case SAVINGS:{
+                        newAccount.setInterestRate(Double.parseDouble(tokens[5]));
+                        dateNums = tokens[6].split("/");
+                        LocalDate intDate = LocalDate.of(Integer.parseInt(dateNums[2]), Integer.parseInt(dateNums[1]), Integer.parseInt(dateNums[0]));
+                        newAccount.setInterestPaidDate(intDate);
+                    }
+                }
+                Bank.getInstance().getCustomerHashMap().get(username).addAccount(newAccount);
             }
 
         } catch (FileNotFoundException e) {
@@ -73,7 +93,7 @@ public class ReaderWriter {
                 System.out.println("Cannot close file!");
             }
         }
-
+        System.out.println("Accounts loaded...");
     }
 
 //    public static void main(String[] args){
@@ -174,4 +194,23 @@ public class ReaderWriter {
         System.out.println(tempFile.renameTo(originalFile) ? "Temp File Renamed" : "Failed to Rename Temp File");
     }*/
 
+    public void readLoansFromFile(){
+
+
+        System.out.println("Loans loaded.");
+    }
+
+    /**
+     * Just for testing
+     * @param args
+     */
+    public static void main(String[] args){
+
+        Bank.getInstance().populateBankDatabase();
+
+        for(Account account : Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com").getAccountList()){
+            System.out.println(account);
+        }
+
+    }
 }
