@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 public class CheckingAccount extends Account {
 
+    private final AccountType accountType = AccountType.CHECKING;
+
     public CheckingAccount(String username) {
         super(username);
     }
@@ -29,5 +31,7 @@ public class CheckingAccount extends Account {
     public void setTermLength(int termLength) {
 
     }
+
+
 
 }

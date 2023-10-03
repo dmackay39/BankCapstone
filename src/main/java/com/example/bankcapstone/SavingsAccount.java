@@ -4,7 +4,9 @@ import java.time.LocalDate;
 
 public class SavingsAccount extends Account{
 
-    private final double interestRate = 0.05;
+    private double interestRate = 0.05;
+    private final AccountType accountType = AccountType.SAVINGS;
+
 
     public SavingsAccount(String username){
         super(username);
@@ -28,6 +30,16 @@ public class SavingsAccount extends Account{
 
     @Override
     public void setTermLength(int termLength) {
+
+    }
+
+    @Override
+    public void setInterestRate(double interestRate) {
+        this.interestRate = interestRate;
+    }
+
+    @Override
+    public void setInterestPaidDate(LocalDate interestPaidDate) {
 
     }
 

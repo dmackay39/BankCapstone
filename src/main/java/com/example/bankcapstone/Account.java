@@ -60,5 +60,7 @@ public abstract class Account {
     public abstract double getInterestRate();
     public abstract int getTermLength();
     public abstract void setTermLength(int termLength);
+    //public abstract void setInterestRate(double interestRate);
+    //public abstract void setInterestPaidDate(LocalDate interestPaidDate);
 
 }

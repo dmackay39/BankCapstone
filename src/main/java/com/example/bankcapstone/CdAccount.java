@@ -4,8 +4,10 @@ import java.time.LocalDate;
 
 public class CdAccount extends Account {
 
-    private final double interestRate = 0.07;
+    private double interestRate = 0.07;
     private int termLength = 1;
+    private final AccountType accountType = AccountType.CD;
+
 
     public CdAccount(String username) {
         super(username);
@@ -21,7 +23,6 @@ public class CdAccount extends Account {
 
     public CdAccount(String username, int accountNumber, double balance, LocalDate accountStartDate, int termLength) {
         super(username, accountNumber, balance, accountStartDate);
-
         this.termLength = termLength;
     }
 
@@ -36,4 +37,10 @@ public class CdAccount extends Account {
     public int getTermLength() {
         return termLength;
     }
+
+    @Override
+    public void setInterestRate(double interestRate) {
+        this.interestRate = interestRate;
+    }
+
 }
