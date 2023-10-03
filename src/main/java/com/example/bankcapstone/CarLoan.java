@@ -18,6 +18,14 @@ public class CarLoan extends Loan{
         this.setMaximumAmount(-50000);
         this.loanNumber = loanNumber;
     }
+
+    @Override
+    public LoanTypeEnum getLoanType() {
+        return loanType;
+    }
+
+    private final LoanTypeEnum loanType = LoanTypeEnum.CAR;
+
     public int getLoanNumber(){
         return loanNumber;
     }
