@@ -29,6 +29,8 @@ public class DepositWithdrawalController implements Initializable {
     @FXML
     public RadioButton withdrawalRadioButton;
 
+    Customer customer = Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com");
+    List<Account> accounts = customer.getAccountList();
     public void depositWithdrawalClicked(ActionEvent actionEvent) {
         try {
             double moneyToDW = 0;
@@ -36,11 +38,11 @@ public class DepositWithdrawalController implements Initializable {
             moneyToDW += (Integer.parseInt(depositWithdrawalPennies.getText().trim())) / 100.0;
 
             Integer accountNumberToDW = (Integer) depositWithdrawalAccountChoice.getValue();
-            Account accountToDW = Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com").getAccountHashMap().get(accountNumberToDW);
+            Account accountToDW = customer.getAccountHashMap().get(accountNumberToDW);
             if (DepositWithdrawal.getSelectedToggle().equals(depositRadioButton)) {
-                Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com").depositOrWithdraw(accountToDW, moneyToDW, "deposit");
+                customer.depositOrWithdraw(accountToDW, moneyToDW, "deposit");
             } else if (DepositWithdrawal.getSelectedToggle().equals(withdrawalRadioButton)) {
-                Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com").depositOrWithdraw(accountToDW, moneyToDW, "withdraw");
+                customer.depositOrWithdraw(accountToDW, moneyToDW, "withdraw");
             }
             Stage stage = (Stage) depositWithdrawalSubmitButton.getScene().getWindow();
             stage.close();
@@ -64,9 +66,8 @@ public class DepositWithdrawalController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        List<Account> accounts = Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com").getAccountList();
-        for (int i = 0; i < accounts.size(); i++) {
-            depositWithdrawalAccountChoice.getItems().add(accounts.get(i).getAccountNumber());
+        for (Account account : accounts) {
+            depositWithdrawalAccountChoice.getItems().add(account.getAccountNumber());
         }
     }
 }
