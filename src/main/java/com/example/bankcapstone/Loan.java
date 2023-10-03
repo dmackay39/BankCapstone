@@ -67,7 +67,13 @@ public abstract class Loan {
     public abstract int getLoanNumber();
     public abstract LocalDate getEndDate();
 
-    LocalDate interestPaidDate = null;
+    private LocalDate interestPaidDate = null;
+
+    public LocalDate getInterestPaidDate() {
+        return interestPaidDate;
+    }
+
+
     public void payInterest(){
         if (interestPaidDate == null){
             interestPaidDate = getStartDate();}
