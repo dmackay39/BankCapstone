@@ -59,8 +59,8 @@ public class ReaderWriter {
                 AccountType accountType = AccountType.valueOf(tokens[0]);
                 String username = tokens[1];
                 Integer accountNumber = Integer.parseInt(tokens[2]);
-                String[] dateNums = tokens[3].split("/");
-                LocalDate openingDate = LocalDate.of(Integer.parseInt(dateNums[2]), Integer.parseInt(dateNums[1]), Integer.parseInt(dateNums[0]));
+                String[] dateNums = tokens[3].split("-");
+                LocalDate openingDate = LocalDate.of(Integer.parseInt(dateNums[0]), Integer.parseInt(dateNums[1]), Integer.parseInt(dateNums[2]));
                 Double balance = Double.parseDouble(tokens[4]);
 
                 Account newAccount = AccountFactory.createNewAccount(accountType, username, accountNumber, balance, openingDate);
@@ -71,8 +71,8 @@ public class ReaderWriter {
                     }
                     case SAVINGS: {
                         newAccount.setInterestRate(Double.parseDouble(tokens[5]));
-                        dateNums = tokens[6].split("/");
-                        LocalDate intDate = LocalDate.of(Integer.parseInt(dateNums[2]), Integer.parseInt(dateNums[1]), Integer.parseInt(dateNums[0]));
+                        dateNums = tokens[6].split("-");
+                        LocalDate intDate = LocalDate.of(Integer.parseInt(dateNums[0]), Integer.parseInt(dateNums[1]), Integer.parseInt(dateNums[2]));
                         newAccount.setInterestPaidDate(intDate);
                     }
                 }
@@ -174,16 +174,25 @@ public class ReaderWriter {
         System.out.println(tempFile.renameTo(originalFile) ? "Temp File Renamed" : "Failed to Rename Temp File");
     }*/
 
-    //for testing
+
     public static void main(String[] args) {
         ReaderWriter readerWriter = new ReaderWriter();
         readerWriter.readCustomersFromFile();
+
+        for (Customer customer : Bank.getInstance().getCustomerHashMap().values()){
+            System.out.println(customer);
+        }
+
         readerWriter.writeCustomersToFile();
+
         readerWriter.readAccountsFromFile();
-        readerWriter.writeAccountsToFile();
-        readerWriter.writeAccountsToFile();
+
+        for (Account account : Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com").getAccountList()){
+            System.out.println(account);
+        }
+
     }
-    // for testing
+
 
 }
 
