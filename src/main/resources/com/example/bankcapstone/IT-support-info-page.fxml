@@ -8,7 +8,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" prefHeight="719.0" prefWidth="712.0" spacing="20.0" style="-fx-background-color: #0E1E2B;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankcapstone.ITSupportPageController">
+<VBox alignment="CENTER" prefHeight="719.0" prefWidth="712.0" spacing="20.0" style="-fx-background-color: #0E1E2B;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankcapstone.EmployeeITSupportPageController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -20,10 +20,11 @@
         </Label>
         <VBox alignment="CENTER" />
         <Label fx:id="loginText" textFill="#f51472" />
-        <TextArea prefHeight="200.0" prefWidth="200.0" text="Having trouble accessing your account? Call Employee IT Support and quote your employee ID.&#10;Call:&#10;01234567890&#10;Email:&#10;IT@xyzbank.com">
+        <TextArea prefHeight="200.0" prefWidth="200.0" text="Having trouble accessing your account? Call Employee IT Support and quote your employee ID.&#10;Call:&#10;01234567890&#10;Email:&#10;IT@xyzbank.com" wrapText="true">
             <style>
                 -fx-alignment: center;
             </style>
         </TextArea>
+      <Button fx:id="returnToLoginScreen" mnemonicParsing="false" onAction="#ReturnToLoginScreen" style="-fx-background-color: #fffff0;" text="Return to Login Screen" textFill="#1c3d52" />
     </children>
 </VBox>
