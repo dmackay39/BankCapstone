@@ -104,6 +104,9 @@ public class Bank {
     public void createNewCustomer(String firstName, String lastName, String email, String password){
         customerHashMap.put(email,new Customer(firstName,lastName,email,password));
     }
+    public void createNewCustomer(Customer customer){
+        this.customerHashMap.put(customer.getEmail(), customer);
+    }
 
     public void createNewAccount(AccountType accountType, Customer customer){
         customer.addAccount(AccountFactory.createNewAccount(accountType,customer.getEmail()));

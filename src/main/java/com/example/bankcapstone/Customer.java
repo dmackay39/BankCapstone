@@ -53,6 +53,10 @@ public class Customer {
         accountHashMap.put(account.getAccountNumber(),account);
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public List<Loan> getLoanList() {
         return loanHashMap.values().stream().toList();
     }
@@ -129,4 +133,7 @@ public class Customer {
         return "";
     }
 
+    public String toString() {
+        return this.getFirstName() + " " + this.getLastName() + " " + this.getEmail();
+    }
 }
