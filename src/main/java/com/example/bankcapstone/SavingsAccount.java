@@ -30,7 +30,6 @@ public class SavingsAccount extends Account{
 
     @Override
     public void setTermLength(int termLength) {
-
     }
 
     @Override

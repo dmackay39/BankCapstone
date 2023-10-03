@@ -33,6 +33,8 @@ public abstract class Account {
         this.username = username;
     }
 
+    private LocalDate interestPaidDate = null;
+
     public int getAccountNumber() {
         return accountNumber;
     }
@@ -62,5 +64,15 @@ public abstract class Account {
     public abstract void setTermLength(int termLength);
     //public abstract void setInterestRate(double interestRate);
     //public abstract void setInterestPaidDate(LocalDate interestPaidDate);
+
+    public void payInterest(){
+        if (interestPaidDate == null){
+            interestPaidDate = getAccountStartDate();}
+
+        if (LocalDate.now().isAfter(interestPaidDate.plusYears(1))){
+            setBalance(balance*(1+getInterestRate()));
+            interestPaidDate = LocalDate.now();
+        }
+    }
 
 }
