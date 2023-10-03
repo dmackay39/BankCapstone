@@ -8,7 +8,13 @@ public class HomeLoan extends Loan{
     public HomeLoan(double amount, int term) {
         super(amount);
         this.endDate = this.getStartDate().plusYears(term);
-        this.setMaximumAmount(2000000);
+        this.setMaximumAmount(-2000000);
+        this.loanNumber = getSuperLoanNumber();
+    }
+    public HomeLoan(double amount, int term, LocalDate startDate) {
+        super(amount, startDate);
+        this.endDate = this.getStartDate().plusYears(term);
+        this.setMaximumAmount(-2000000);
         this.loanNumber = getSuperLoanNumber();
     }
     public int getLoanNumber(){
@@ -16,5 +22,9 @@ public class HomeLoan extends Loan{
     }
     public LocalDate getEndDate(){
         return endDate;
+    }
+    public void chargeInterest(){
+        double currentBalance = getBalance();
+        this.setBalance(currentBalance*getInterestRate());
     }
 }

@@ -9,7 +9,13 @@ public class CarLoan extends Loan{
     public CarLoan(double amount, int term) {
         super(amount);
         this.endDate = this.getStartDate().plusYears(term);
-        this.setMaximumAmount(50000);
+        this.setMaximumAmount(-50000);
+        this.loanNumber = getSuperLoanNumber();
+    }
+    public CarLoan(double amount, int term, LocalDate startDate) {
+        super(amount, startDate);
+        this.endDate = this.getStartDate().plusYears(term);
+        this.setMaximumAmount(-50000);
         this.loanNumber = getSuperLoanNumber();
     }
     public int getLoanNumber(){
@@ -17,5 +23,10 @@ public class CarLoan extends Loan{
     }
     public LocalDate getEndDate(){
         return endDate;
+    }
+
+    public void chargeInterest(){
+        double currentBalance = getBalance();
+        this.setBalance(currentBalance*getInterestRate());
     }
 }

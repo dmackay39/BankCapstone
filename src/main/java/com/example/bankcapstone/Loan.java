@@ -21,6 +21,9 @@ public abstract class Loan {
     public int getSuperLoanNumber(){
         return superLoanNumber;
     }
+    public void setSuperLoanNumber(int number){
+        superLoanNumber = number;
+    }
     public void setMaximumAmount(double maximumAmount){
         this.maximumAmount = maximumAmount;
     }
@@ -31,8 +34,16 @@ public abstract class Loan {
         return this.startDate;
     }
     public Loan(double balance) {
-        this.balance = balance;
+        this.balance = -balance;
         this.startDate = LocalDate.now();
         superLoanNumber++;
     }
+    public Loan (double balance, LocalDate startDate){
+        this.balance = -balance;
+        this.startDate = startDate;
+        superLoanNumber++;
+    }
+    public abstract void chargeInterest();
+    public abstract int getLoanNumber();
+    public abstract LocalDate getEndDate();
 }
