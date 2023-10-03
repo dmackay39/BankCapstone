@@ -32,9 +32,9 @@
             </font>
         </Label>
         <PasswordField fx:id="enterPasswordField" />
-        <Hyperlink fx:id="createAccountField" onAction="#CallEmployeeITSupportClick" text="Having trouble accessing your account? Call Employee IT Support " textFill="#2c5f78" />
+        <Hyperlink fx:id="ITSupportClickField" onAction="#CallEmployeeITSupportClick" text="Having trouble accessing your account? Call Employee IT Support " textFill="#2c5f78" />
         <VBox alignment="CENTER" />
-        <Button id="customerSubmitButton" fx:id="customerSubmitButton" onAction="#onHelloButtonClick" style="-fx-background-color: #fffff0;" text="Submit" textAlignment="CENTER" textFill="#1c3d52">
+        <Button id="employeeSubmitButton" fx:id="employeeSubmitButton" onAction="#employeeSubmitButtonClick" style="-fx-background-color: #fffff0;" text="Submit" textAlignment="CENTER" textFill="#1c3d52">
             <font>
                 <Font name="Verdana" size="24.0" />
             </font></Button>
