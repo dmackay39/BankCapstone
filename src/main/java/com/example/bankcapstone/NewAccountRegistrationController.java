@@ -31,23 +31,20 @@ import java.io.IOException;
         private Label loginText;
 
         @FXML
-        private void onSubmitButtonClick() {
+        private void onSubmitButtonClick() throws IOException {
             String password = enterPasswordField.getText();
             String confirmPassword = confirmPasswordField.getText();
 
             if (password.equals(confirmPassword)) {
                 // Passwords match, navigate to customer-account.fxml
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("customer-account.fxml"));
-                Parent root = null;
-                try {
-                    root = loader.load();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                Scene scene = new Scene(root);
-                 Stage stage = (Stage) newRegistrationSubmitButton.getScene().getWindow();
-                 stage.setScene(scene);
-                 stage.show();
+                Stage stage2 = (Stage) newRegistrationSubmitButton.getScene().getWindow();
+                stage2.close();
+                Stage stage3 = new Stage();
+                FXMLLoader fxmlLoader3 = new FXMLLoader(getClass().getResource("customer-account.fxml"));
+                Scene scene3 = new Scene(fxmlLoader3.load(), 650, 650);
+                stage3.setTitle("Your Account");
+                stage3.setScene(scene3);
+                stage3.show();
             } else {
                 loginText.setText("Passwords do not match. Please try again.");
             }

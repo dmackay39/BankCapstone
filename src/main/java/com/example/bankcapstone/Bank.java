@@ -5,8 +5,32 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Bank {
-    HashMap<String, Customer> customerHashMap = new HashMap<>();
-    List<Account> accountList = new ArrayList<>();
+
+    private HashMap<String, Customer> customerHashMap = new HashMap<>();
+    private List<Account> accountList = new ArrayList<>();
+    private List<Loan> loanList = new ArrayList<>();
+    private double totalDeposits;
+    private double totalLending;
+    private ReaderWriter readerWriter;
+
+    private static Bank bankInstance;
+
+    private Bank(){
+        readerWriter = new ReaderWriter();
+    }
+
+    public static Bank getInstance(){
+        if (bankInstance == null){
+            bankInstance = new Bank();
+        }
+        return bankInstance;
+    }
+
+    public void populateBankDatabase(){
+        readerWriter.readCustomersFromFile();
+    }
+
+
     public void populateAccountList(){
         for (String key: customerHashMap.keySet()){
             for (int i=0; i <customerHashMap.get(key).getAccountList().size(); i++ ){
@@ -16,6 +40,7 @@ public class Bank {
     }
 
     List<Loan> loanList = new ArrayList<>();
+
     public void populateLoanList(){
         for (String key: customerHashMap.keySet()){
             for (int i=0; i <customerHashMap.get(key).getLoanList().size(); i++ ){
@@ -24,8 +49,7 @@ public class Bank {
         }
     }
 
-    private double totalDeposits;
-    private double totalLending;
+
     public void calculateTotalDeposits(){
         double total = 0;
         for (int i = 0; i < accountList.size();i++){
@@ -50,4 +74,11 @@ public class Bank {
         customer.addAccount(AccountFactory.createNewAccount(accountType,customer.getEmail()));
         }
 
+    public HashMap<String, Customer> getCustomerHashMap() {
+        return customerHashMap;
+    }
+
+    public void setCustomerHashMap(HashMap<String, Customer> customerHashMap) {
+        this.customerHashMap = customerHashMap;
+    }
 }

@@ -39,7 +39,7 @@ public class CustomerLoginController {
             stage2.close();
             Stage stage3 = new Stage();
             FXMLLoader fxmlLoader3 = new FXMLLoader(getClass().getResource("customer-account.fxml"));
-            Scene scene3 = new Scene(fxmlLoader3.load(), 800, 800);
+            Scene scene3 = new Scene(fxmlLoader3.load(), 650, 650);
             stage3.setTitle("Your Account");
             stage3.setScene(scene3);
             stage3.show();
