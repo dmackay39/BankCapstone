@@ -38,9 +38,24 @@ public class XYZBankController {
                 stage2.setScene(scene2);
                 stage2.show();
             } else if (landingPageGroup.getSelectedToggle().equals(customerRegistration)) {
-                welcomeText.setText("customer registration selected");
+                Stage stage = (Stage) landingPageButton.getScene().getWindow();
+                stage.close();
+                Stage stage2 = new Stage();
+                FXMLLoader fxmlLoader2 = new FXMLLoader(XYZBankApplication.class.getResource("new-account-registration.fxml"));
+                Scene scene2 = new Scene(fxmlLoader2.load(), 650, 650);
+                stage2.setTitle("Customer Registration");
+                stage2.setScene(scene2);
+                stage2.show();
             } else if (landingPageGroup.getSelectedToggle().equals(employeeLogIn)) {
                 welcomeText.setText("employee Log in selected");
+                /*Stage stage = (Stage) landingPageButton.getScene().getWindow();
+                stage.close();
+                Stage stage2 = new Stage();
+                FXMLLoader fxmlLoader2 = new FXMLLoader(XYZBankApplication.class.getResource("employee-login.fxml"));
+                Scene scene2 = new Scene(fxmlLoader2.load(), 650, 650);
+                stage2.setTitle("Employee Login");
+                stage2.setScene(scene2);
+                stage2.show();*/
             }
         }
         catch(RuntimeException re){
