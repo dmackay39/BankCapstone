@@ -2,6 +2,7 @@ package com.example.bankcapstone;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -10,8 +11,10 @@ import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class XYZBankController {
+public class XYZBankController implements Initializable {
     @FXML
     public RadioButton customerLogIn;
     @FXML
@@ -26,7 +29,7 @@ public class XYZBankController {
     private Label welcomeText;
 
     @FXML
-    protected void onHelloButtonClick() {
+    protected void onHelloButtonClick(){
         try {
             if (landingPageGroup.getSelectedToggle().equals(customerLogIn)) {
                 Stage stage = (Stage) landingPageButton.getScene().getWindow();
@@ -63,6 +66,14 @@ public class XYZBankController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Initialise the bank when we run the application
+        Bank bank = Bank.getInstance();
+        bank.populateBankDatabase();
 
     }
 }

@@ -42,5 +42,13 @@ public class CdAccount extends Account {
     public void setInterestRate(double interestRate) {
         this.interestRate = interestRate;
     }
+    public AccountType getAccountType(){
+        return this.accountType;
+    }
+
+    public String toString(){
+        return this.getAccountNumber() + " " + getAccountType() + " " + getBalance() + " " + getTermLength() + " " + getInterestRate() + " " + getInterestPaidDate();
+    }
+
 
 }

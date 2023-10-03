@@ -62,8 +62,15 @@ public abstract class Account {
     public abstract double getInterestRate();
     public abstract int getTermLength();
     public abstract void setTermLength(int termLength);
-    //public abstract void setInterestRate(double interestRate);
-    //public abstract void setInterestPaidDate(LocalDate interestPaidDate);
+    public abstract void setInterestRate(double interestRate);
+
+    public LocalDate getInterestPaidDate(){
+        return this.interestPaidDate;
+    }
+
+    public void setInterestPaidDate(LocalDate interestPaidDate){
+        this.interestPaidDate = interestPaidDate;
+    }
 
     public void payInterest(){
         if (interestPaidDate == null){

@@ -32,6 +32,18 @@ public class CheckingAccount extends Account {
 
     }
 
+    @Override
+    public void setInterestRate(double interestRate) {
+
+    }
+
+    public AccountType getAccountType(){
+        return this.accountType;
+    }
+
+    public String toString(){
+        return this.getAccountNumber() + " " + getAccountType() + " " + getBalance();
+    }
 
 
 }

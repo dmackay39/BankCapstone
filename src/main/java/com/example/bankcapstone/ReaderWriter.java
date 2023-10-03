@@ -28,9 +28,9 @@ public class ReaderWriter {
                 String[] tokens = scanner.nextLine().split(",");
                 customerDb.put(tokens[2], new Customer(tokens[0], tokens[1], tokens[2], tokens[3]));
             }
-            for (String username : customerDb.keySet()){
-                System.out.println(username + " -> " + customerDb.get(username));
-            }
+//            for (String username : customerDb.keySet()){
+//                System.out.println(username + " -> " + customerDb.get(username));
+//            }
 
         } catch (FileNotFoundException e){
             System.out.println("error reading from file");
@@ -42,10 +42,11 @@ public class ReaderWriter {
             }
         }
         Bank.getInstance().setCustomerHashMap(customerDb);
+        System.out.println("Customers loaded...");
     }
 
     public void readAccountsFromFile(){
-        //HashMap<String, Customer> customerDb = Bank.getInstance().getCustomerHashMap();
+
         FileInputStream fileInputStream = null;
         Scanner scanner = null;
 
@@ -56,7 +57,7 @@ public class ReaderWriter {
 
             while (scanner.hasNextLine()) {
                 String[] tokens = scanner.nextLine().split(",");
-                Arrays.stream(tokens).forEach((token) -> System.out.println(token));
+                //Arrays.stream(tokens).forEach((token) -> System.out.println(token));
 
                 AccountType accountType = AccountType.valueOf(tokens[0]);
                 String username = tokens[1];
@@ -71,24 +72,15 @@ public class ReaderWriter {
                     case CD: {
                         newAccount.setTermLength(Integer.parseInt(tokens[7]));
                     }
-                    case CHECKING:{
+                    case SAVINGS:{
                         newAccount.setInterestRate(Double.parseDouble(tokens[5]));
                         dateNums = tokens[6].split("/");
                         LocalDate intDate = LocalDate.of(Integer.parseInt(dateNums[2]), Integer.parseInt(dateNums[1]), Integer.parseInt(dateNums[0]));
                         newAccount.setInterestPaidDate(intDate);
                     }
                 }
-
-
-//
-//                Bank.getInstance().getCustomerHashMap().get(tokens[1]).addAccount(account);
-
+                Bank.getInstance().getCustomerHashMap().get(username).addAccount(newAccount);
             }
-//            List<Account> accounts =  Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com").getAccountList();
-//
-//            for(Account account : accounts){
-//                System.out.println(account.getClass().getSimpleName() + " " + account.getAccountNumber() + " -> " + account.getBalance());
-//            }
 
         } catch (FileNotFoundException e){
             System.out.println("error reading from file");
@@ -99,21 +91,26 @@ public class ReaderWriter {
                 System.out.println("Cannot close file!");
             }
         }
-
+        System.out.println("Accounts loaded...");
     }
 
+    public void readLoansFromFile(){
+
+
+        System.out.println("Loans loaded.");
+    }
+
+    /**
+     * Just for testing
+     * @param args
+     */
     public static void main(String[] args){
 
-        ReaderWriter readerWriter = new ReaderWriter();
-        readerWriter.readAccountsFromFile();
+        Bank.getInstance().populateBankDatabase();
 
-
-
-
-
-//        for(Account account : accounts){
-//            System.out.println(account.getClass().getSimpleName() + " " + account.getAccountNumber() + " -> " + account.getBalance());
-//        }
+        for(Account account : Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com").getAccountList()){
+            System.out.println(account);
+        }
 
     }
 }

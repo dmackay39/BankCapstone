@@ -21,23 +21,6 @@ public class AccountFactory {
         }
     }
 
-    public static Account createNewAccount(AccountType accountType, String username, double balance) {
-        switch (accountType) {
-            case CHECKING -> {
-                return new CheckingAccount(username, balance);
-            }
-            case SAVINGS -> {
-                return new SavingsAccount(username, balance);
-            }
-            case CD -> {
-                return new CdAccount(username, balance);
-            }
-            default -> {
-                return new CheckingAccount(username, balance);
-            }
-        }
-    }
-
     public static Account createNewAccount(AccountType accountType, String username, int accountNumber, double balance, LocalDate accountStartDate) {
         switch (accountType) {
             case CHECKING -> {

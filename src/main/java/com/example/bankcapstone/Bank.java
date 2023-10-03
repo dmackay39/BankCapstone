@@ -31,6 +31,7 @@ public class Bank {
     public void populateBankDatabase(){
         readerWriter.readCustomersFromFile();
         readerWriter.readAccountsFromFile();
+        readerWriter.readLoansFromFile();
     }
 
 

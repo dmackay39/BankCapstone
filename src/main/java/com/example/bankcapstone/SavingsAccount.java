@@ -39,8 +39,19 @@ public class SavingsAccount extends Account{
 
     @Override
     public void setInterestPaidDate(LocalDate interestPaidDate) {
-
+        super.setInterestPaidDate(interestPaidDate);
     }
 
+    public LocalDate getInterestPaidDate(){
+        return super.getInterestPaidDate();
+    }
+
+    public AccountType getAccountType(){
+        return this.accountType;
+    }
+
+    public String toString(){
+        return this.getAccountNumber() + " " + getAccountType() + " " + getBalance() + " " + getInterestPaidDate() + " " + getInterestRate();
+    }
 
 }
