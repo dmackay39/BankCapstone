@@ -29,14 +29,11 @@
                 <Insets top="20.0" />
             </padding>
         </Label>
-      <TextArea fx:id="createAccountInfo" prefHeight="200.0" prefWidth="200.0">
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
+      <TextField fx:id="createAccountInfo" prefHeight="100.0">
          <VBox.margin>
-            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+            <Insets left="20.0" right="20.0" />
          </VBox.margin>
-      </TextArea>
+      </TextField>
       <Label text="Please allow 1-2 working days for your request to be processed" textFill="#08b0f8">
          <padding>
             <Insets top="20.0" />
