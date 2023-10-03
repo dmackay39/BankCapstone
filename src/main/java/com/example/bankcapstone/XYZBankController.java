@@ -33,7 +33,7 @@ public class XYZBankController {
                 stage.close();
                 Stage stage2 = new Stage();
                 FXMLLoader fxmlLoader2 = new FXMLLoader(XYZBankApplication.class.getResource("customer-login.fxml"));
-                Scene scene2 = new Scene(fxmlLoader2.load(), 500, 500);
+                Scene scene2 = new Scene(fxmlLoader2.load(), 800, 800);
                 stage2.setTitle("Customer Login");
                 stage2.setScene(scene2);
                 stage2.show();

@@ -21,7 +21,7 @@ public class CustomerAccountController {
         stage3.close();
         Stage stage4 = new Stage();
         FXMLLoader fxmlLoader4 = new FXMLLoader(getClass().getResource("make-a-payment.fxml"));
-        Scene scene4 = new Scene(fxmlLoader4.load(), 500, 500);
+        Scene scene4 = new Scene(fxmlLoader4.load(), 800, 800);
         stage4.setTitle("Make A Payment");
         stage4.setScene(scene4);
         stage4.show();
@@ -32,7 +32,7 @@ public class CustomerAccountController {
         stage3.close();
         Stage stage5 = new Stage();
         FXMLLoader fxmlLoader5 = new FXMLLoader(getClass().getResource("loan-application.fxml"));
-        Scene scene5 = new Scene(fxmlLoader5.load(), 500, 500);
+        Scene scene5 = new Scene(fxmlLoader5.load(), 800, 800);
         stage5.setTitle("Loan Application");
         stage5.setScene(scene5);
         stage5.show();
@@ -43,7 +43,7 @@ public class CustomerAccountController {
         stage3.close();
         Stage stage6 = new Stage();
         FXMLLoader fxmlLoader6 = new FXMLLoader(getClass().getResource("create-account.fxml"));
-        Scene scene6 = new Scene(fxmlLoader6.load(), 500, 500);
+        Scene scene6 = new Scene(fxmlLoader6.load(), 800, 800);
         stage6.setTitle("Create Account");
         stage6.setScene(scene6);
         stage6.show();
@@ -54,7 +54,7 @@ public class CustomerAccountController {
         stage3.close();
         Stage stage7 = new Stage();
         FXMLLoader fxmlLoader7 = new FXMLLoader(getClass().getResource("deposit-withdrawal.fxml"));
-        Scene scene7 = new Scene(fxmlLoader7.load(), 500, 500);
+        Scene scene7 = new Scene(fxmlLoader7.load(), 800, 800);
         stage7.setTitle("Your Account");
         stage7.setScene(scene7);
         stage7.show();
