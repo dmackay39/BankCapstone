@@ -4,13 +4,19 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -88,12 +94,46 @@ public class CustomerAccountController implements Initializable {
 
         List<Account> accounts = Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com").getAccountList();
         for (int i = 0; i < accounts.size(); i++) {
-            HBox account = new HBox(20);
+            GridPane grid = new GridPane();
+            grid.setHgap(10);
+            grid.setVgap(10);
+            grid.setPadding(new Insets(0,10,0,10));
             Label accountName = new Label("ACCOUNT TYPE");
-            Label accountNumber = new Label(Integer.toString(accounts.get(i).getAccountNumber()));
-            Label amountInAccount = new Label(Double.toString(accounts.get(i).getBalance()));
-            account.getChildren().addAll(accountName, accountNumber, amountInAccount);
-            accountsScrollVBox.getChildren().add(account);
+            accountName.setFont(Font.font("Verdana", FontWeight.BOLD,20));
+            grid.add(accountName,0,0);
+            Label accountNumber = new Label("Account Number: " + Integer.toString(accounts.get(i).getAccountNumber()));
+            accountNumber.setFont(Font.font("Verdana", FontWeight.NORMAL,10));
+            grid.add(accountNumber,0,1);
+            Label amountInAccount = new Label("£" + String.format("%.2f",accounts.get(i).getBalance()));
+            amountInAccount.setFont(Font.font("Verdana", FontWeight.BOLD,20));
+            grid.add(amountInAccount,20,0);
+            grid.setStyle("-fx-padding: 10;" +
+                    "-fx-border-style: solid inside;" +
+                    "-fx-border-width: 2;" +
+                    "-fx-border-insets: 5;" +
+                    "-fx-border-radius: 5;" +
+                    "-fx-border-color: #0E1E2B;");
+            accountsScrollVBox.getChildren().add(grid);
         }
+
+        /*List<Loan> loans = Bank.getInstance().getCustomerHashMap().get("bilal.khan@email.com").getLoanList();
+        for (int i = 0; i < loans.size(); i++) {
+            GridPane gridLoans = new GridPane();
+            gridLoans.setHgap(10);
+            gridLoans.setVgap(10);
+            gridLoans.setPadding(new Insets(0,10,0,10));
+            Label loanName = new Label("LOAN TYPE");
+            loanName.setFont(Font.font("Verdana", FontWeight.BOLD,20));
+            gridLoans.add(loanName,0,0);
+            Label amountOfLoanUnpaid = new Label("- £" + String.format("%.2f",(loans.get(i).getBalance()*-1)));
+            amountOfLoanUnpaid.setFont(Font.font("Verdana", FontWeight.BOLD,20));
+            gridLoans.setStyle("-fx-padding: 10;" +
+                    "-fx-border-style: solid inside;" +
+                    "-fx-border-width: 2;" +
+                    "-fx-border-insets: 5;" +
+                    "-fx-border-radius: 5;" +
+                    "-fx-border-color: #0E1E2B;");
+            LoansScrollVBox.getChildren().add(gridLoans);
+        }*/
     }
 }
