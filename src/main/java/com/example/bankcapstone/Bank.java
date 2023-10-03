@@ -14,6 +14,7 @@ public class Bank {
             }
         }
     }
+
     List<Loan> loanList = new ArrayList<>();
     public void populateLoanList(){
         for (String key: customerHashMap.keySet()){
@@ -40,5 +41,13 @@ public class Bank {
         }
         totalLending = total;
     }
+
+    public void createNewCustomer(String firstName, String lastName, String email, String password){
+        customerHashMap.put(email,new Customer(firstName,lastName,email,password));
+    }
+
+    public void createNewAccount(AccountType accountType, Customer customer){
+        customer.addAccount(AccountFactory.createNewAccount(accountType,customer.getEmail()));
+        }
 
 }
