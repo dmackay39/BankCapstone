@@ -9,8 +9,8 @@ import static java.lang.Math.abs;
 public class Bank {
 
     private HashMap<String, Customer> customerHashMap = new HashMap<>();
-    private List<Account> accountList = new ArrayList<>();
-    private List<Loan> loanList = new ArrayList<>();
+//    private List<Account> accountList = new ArrayList<>();
+//    private List<Loan> loanList = new ArrayList<>();
     private double totalDeposits;
     private double totalLending;
     private ReaderWriter readerWriter;
@@ -34,35 +34,39 @@ public class Bank {
     }
 
 
-    public void populateAccountList(){
-        for (String key: customerHashMap.keySet()){
-            for (int i=0; i <customerHashMap.get(key).getAccountList().size(); i++ ){
-                accountList.add(customerHashMap.get(key).getAccountList().get(i));
-            }
-        }
-    }
+//    public void populateAccountList(){
+//        for (String key: customerHashMap.keySet()){
+//            for (int i = 0; i <customerHashMap.get(key).getAccountList().size(); i++ ){
+//                accountList.add(customerHashMap.get(key).getAccountList().get(i));
+//            }
+//        }
+//    }
 
-    public void populateLoanList(){
-        for (String key: customerHashMap.keySet()){
-            for (int i=0; i <customerHashMap.get(key).getLoanList().size(); i++ ){
-                loanList.add(customerHashMap.get(key).getLoanList().get(i));
-            }
-        }
-    }
+//    public void populateLoanList(){
+//        for (String key: customerHashMap.keySet()){
+//            for (int i=0; i <customerHashMap.get(key).getLoanList().size(); i++ ){
+//                loanList.add(customerHashMap.get(key).getLoanList().get(i));
+//            }
+//        }
+//    }
 
 
     public void calculateTotalDeposits(){
         double total = 0;
-        for (int i = 0; i < accountList.size();i++){
-            total += accountList.get(i).getBalance();
+        for (Customer customer: customerHashMap.values()){
+            for (Account account: customer.getAccountList()){
+                total += account.getBalance();
+            }
         }
         totalDeposits = total;
     }
 
     public void calculateTotalLending(){
         double total = 0;
-        for (int i=0; i < loanList.size(); i++){
-            total += loanList.get(i).getBalance();
+        for (Customer customer: customerHashMap.values()){
+            for (Loan loan: customer.getLoanList()){
+                total += loan.getBalance();
+            }
         }
         totalLending = total;
     }
@@ -111,18 +115,22 @@ public class Bank {
     public void setCustomerHashMap(HashMap<String, Customer> customerHashMap) {
         this.customerHashMap = customerHashMap;
     }
-    public void approveCustomerLoan(String email, double loanBalance, LoanTypeEnum loanType, int term){
+    public void approveCustomerLoan(String email, double loanBalance, LoanTypeEnum loanType, int term, int accountNumber){
         Customer customer = customerHashMap.get(email);
         if (verifyLoan(customer, loanBalance, loanType)){
             LoanFactory factory = new LoanFactory();
             customer.addLoan(factory.createLoan(loanType,term,loanBalance,email));
+            double currentBalance = customer.getAccountHashMap().get(accountNumber).getBalance();
+            customer.getAccountHashMap().get(accountNumber).setBalance(currentBalance + loanBalance);
         }
     }
-    public void approveCustomerLoan(String email, double loanBalance, LoanTypeEnum loanType){
+    public void approveCustomerLoan(String email, double loanBalance, LoanTypeEnum loanType, int accountNumber){
         Customer customer = customerHashMap.get(email);
         if (verifyLoan(customer, loanBalance, loanType)){
             LoanFactory factory = new LoanFactory();
             customer.addLoan(factory.createLoan(loanType,loanBalance,email));
+            double currentBalance = customer.getAccountHashMap().get(accountNumber).getBalance();
+            customer.getAccountHashMap().get(accountNumber).setBalance(currentBalance + loanBalance);
         }
     }
 

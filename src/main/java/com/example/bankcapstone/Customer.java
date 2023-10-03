@@ -1,14 +1,14 @@
 package com.example.bankcapstone;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Customer {
 
     private String firstName, lastName, email, password;
 
-    private List<Account> accountList = new ArrayList<>();
-    private List<Loan> loanList;
+    private HashMap<Integer,Account> accountHashMap = new HashMap<>();
+    private HashMap<Integer,Loan> loanHashMap = new HashMap<>();
 
     public Customer(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
@@ -25,6 +25,14 @@ public class Customer {
         return lastName;
     }
 
+    public HashMap<Integer, Account> getAccountHashMap() {
+        return accountHashMap;
+    }
+
+    public HashMap<Integer, Loan> getLoanHashMap() {
+        return loanHashMap;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -38,19 +46,19 @@ public class Customer {
     }
 
     public List<Account> getAccountList() {
-        return accountList;
+        return accountHashMap.values().stream().toList();
     }
 
     public void addAccount(Account account) {
-        accountList.add(account);
+        accountHashMap.put(account.getAccountNumber(),account);
     }
 
     public List<Loan> getLoanList() {
-        return loanList;
+        return loanHashMap.values().stream().toList();
     }
 
     public void addLoan(Loan loan) {
-        loanList.add(loan);
+        loanHashMap.put(loan.getLoanNumber(),loan);
     }
 
     //payOrTransfer method for transfers between accounts
@@ -93,7 +101,7 @@ public class Customer {
 
     public double getAccessibleBalance() {
         double totalAccessibleBalance = 0;
-        for (Account account : accountList) {
+        for (Account account : accountHashMap.values()) {
             if (!(account instanceof CdAccount)) {
                 totalAccessibleBalance += account.getBalance();
             }
