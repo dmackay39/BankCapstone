@@ -18,7 +18,13 @@ public abstract class Loan {
 
     private LoanTypeEnum loanType;
     private int loanNumber;
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
     private LocalDate startDate;
+
     private static int superLoanNumber = 1000000;
     private double maximumAmount;
 
@@ -60,4 +66,15 @@ public abstract class Loan {
     public abstract void chargeInterest();
     public abstract int getLoanNumber();
     public abstract LocalDate getEndDate();
+
+    LocalDate interestPaidDate = null;
+    public void payInterest(){
+        if (interestPaidDate == null){
+            interestPaidDate = getStartDate();}
+
+        if (LocalDate.now().isAfter(interestPaidDate.plusYears(1))){
+            setBalance(balance*(1+getInterestRate()));
+            interestPaidDate = LocalDate.now();
+        }
+    }
 }
