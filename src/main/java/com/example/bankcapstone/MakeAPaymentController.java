@@ -82,5 +82,8 @@ public class MakeAPaymentController implements Initializable {
             paymentTransferFrom.getItems().add(account.getAccountNumber());
             paymentTransferTo.getItems().add(account.getAccountNumber());
         }
+        for (Loan loan : loans){
+            paymentTransferTo.getItems().add(loan.getLoanNumber());
+        }
     }
 }
