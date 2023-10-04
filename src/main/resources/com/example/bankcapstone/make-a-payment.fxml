@@ -60,10 +60,18 @@
                 <TextField fx:id="paymentTransferPennies" alignment="CENTER" prefWidth="50.0" text="00" />
             </children>
         </HBox>
-        <VBox alignment="CENTER" prefHeight="80.0" prefWidth="100.0">
-            <children>
-                <Button fx:id="paymentTransferSubmitButton" mnemonicParsing="false" onAction="#paymentTransferClicked" prefHeight="40.0" style="-fx-background-color: #fffff0;" text="Submit" textFill="#1c3d52" />
-            </children>
-        </VBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="paymentTransferCancelButton" mnemonicParsing="false" onAction="#paymentTransferCancelClicked" prefHeight="40.0" style="-fx-background-color: #fffff0;" text="Cancel" textFill="#1c3d52">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </Button>
+                <Button fx:id="paymentTransferSubmitButton" mnemonicParsing="false" onAction="#paymentTransferClicked" prefHeight="40.0" style="-fx-background-color: #fffff0;" text="Submit" textFill="#1c3d52">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin></Button>
+         </children>
+      </HBox>
     </children>
 </VBox>

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
 
-<VBox alignment="CENTER_LEFT" prefHeight="719.0" prefWidth="712.0" spacing="20.0" style="-fx-background-color: #0E1E2B;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankcapstone.CustomerAccountController">
+<VBox alignment="CENTER_LEFT" prefHeight="750.0" prefWidth="723.0" spacing="20.0" style="-fx-background-color: #0E1E2B;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankcapstone.CustomerAccountController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -39,7 +39,7 @@
             </VBox>
          </content>
       </ScrollPane>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+      <VBox alignment="CENTER" prefWidth="100.0">
          <children>
             <Button fx:id="makeAPayment" mnemonicParsing="false" onAction="#MakeAPaymentClicked" prefWidth="600.0" style="-fx-background-color: #fffff0;" text="Make a Payment or Transfer Between Accounts" textFill="#1c3d52">
                <VBox.margin>
@@ -60,6 +60,11 @@
                </VBox.margin>
             </Button>
             <Button fx:id="depositWithdrawal" mnemonicParsing="false" onAction="#DepositOrWithdrawalClicked" prefWidth="600.0" style="-fx-background-color: #fffff0;" text="Make a Deposit or Withdrawal from Your Accounts" textFill="#1c3d52">
+               <VBox.margin>
+                  <Insets right="10.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="logout" mnemonicParsing="false" onAction="#LogOutClicked" prefWidth="600.0" style="-fx-background-color: #fffff0;" text="Log out" textFill="#1c3d52">
                <VBox.margin>
                   <Insets right="10.0" top="10.0" />
                </VBox.margin>

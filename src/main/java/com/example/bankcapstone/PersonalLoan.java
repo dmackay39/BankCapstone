@@ -21,9 +21,7 @@ public class PersonalLoan extends Loan {
     }
 
     private final LoanTypeEnum loanType = LoanTypeEnum.PERSONAL;
-    @Override
-    public void chargeInterest() {
-    }
+
 
     public int getLoanNumber(){
         return this.loanNumber;
