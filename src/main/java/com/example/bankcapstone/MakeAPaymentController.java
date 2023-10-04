@@ -39,43 +39,51 @@ public class MakeAPaymentController implements Initializable {
     List<Loan> loans = customer.getLoanList();
 
 
-    public void paymentTransferClicked(ActionEvent actionEvent) throws IOException {
-        double moneyToTransfer = 0;
-        moneyToTransfer += Integer.parseInt(paymentTransferPounds.getText().trim());
-        moneyToTransfer += (Integer.parseInt(paymentTransferPennies.getText().trim())) / 100.0;
+    public void paymentTransferClicked(ActionEvent actionEvent) throws IllegalArgumentException {
+        try {
+            double moneyToTransfer = 0;
+            moneyToTransfer += Integer.parseInt(paymentTransferPounds.getText().trim());
+            moneyToTransfer += (Integer.parseInt(paymentTransferPennies.getText().trim())) / 100.0;
 
-        Integer accountNumberToPay = (Integer) paymentTransferFrom.getValue();
-        Account accountToPay = customer.getAccountHashMap().get(accountNumberToPay);
-        if (paymentTransferTo.getValue().equals("Bills")) {
-            String result = customer.payOrTransfer(accountToPay, moneyToTransfer);
-            insufficientFundsLabel.setText(result);
-            if (result.equals("This payment will overdraw your account and requires bank manager approval")) {
+            if (moneyToTransfer > 0) {
+                Integer accountNumberToPay = (Integer) paymentTransferFrom.getValue();
+                Account accountToPay = customer.getAccountHashMap().get(accountNumberToPay);
+                if (paymentTransferTo.getValue().equals("Bills")) {
+                    String result = customer.payOrTransfer(accountToPay, moneyToTransfer);
+                    insufficientFundsLabel.setText(result);
+                    if (result.equals("This payment will overdraw your account and requires bank manager approval")) {
 
-                //bring up manager authenticate window
-                Stage stage2 = new Stage();
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("manager-credentials.fxml"));
-                Scene scene2 = new Scene(fxmlLoader.load(), 400, 400);
-                stage2.setTitle("Manager Authentication");
-                stage2.setScene(scene2);
-                stage2.showAndWait();
+                        //bring up manager authenticate window
+                        Stage stage2 = new Stage();
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("manager-credentials.fxml"));
+                        Scene scene2 = new Scene(fxmlLoader.load(), 400, 400);
+                        stage2.setTitle("Manager Authentication");
+                        stage2.setScene(scene2);
+                        stage2.showAndWait();
 
-                insufficientFundsLabel.setText(Bank.getInstance().overridePayment(accountToPay, moneyToTransfer));
+                        insufficientFundsLabel.setText(Bank.getInstance().overridePayment(accountToPay, moneyToTransfer));
 
-            }
-        } else {
-            Integer accountNumberToReceive = (Integer) paymentTransferTo.getValue();
+                    }
+                } else {
+                    Integer accountNumberToReceive = (Integer) paymentTransferTo.getValue();
 
-            if (accountNumberToReceive < 1999999) {
-                Account accountToReceive = customer.getAccountHashMap().get(accountNumberToReceive);
-                String result = customer.payOrTransfer(accountToPay, accountToReceive, moneyToTransfer);
-                insufficientFundsLabel.setText(result);
-                System.out.println(result);
+                    if (accountNumberToReceive < 1999999) {
+                        Account accountToReceive = customer.getAccountHashMap().get(accountNumberToReceive);
+                        String result = customer.payOrTransfer(accountToPay, accountToReceive, moneyToTransfer);
+                        insufficientFundsLabel.setText(result);
+                        System.out.println(result);
+                    } else {
+                        Loan loanToReceive = customer.getLoanHashMap().get(accountNumberToReceive);
+                        String result = customer.payOrTransfer(accountToPay, loanToReceive, moneyToTransfer);
+                        insufficientFundsLabel.setText(result);
+                        System.out.println(result);
+                    }
+                }
             } else {
-                Loan loanToReceive = customer.getLoanHashMap().get(accountNumberToReceive);
-                String result = customer.payOrTransfer(accountToPay, loanToReceive, moneyToTransfer);
-                insufficientFundsLabel.setText(result);
-                System.out.println(result);
+                throw new IllegalArgumentException();
             }
+        } catch (Exception e){
+            insufficientFundsLabel.setText("Please enter a positive number");
         }
     }
 
