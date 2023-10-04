@@ -1,5 +1,6 @@
 package com.example.bankcapstone;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,6 +16,7 @@ import java.io.IOException;
 
     public class NewAccountRegistrationController {
 
+        public Button newRegistrationCancelButton;
         @FXML
         private TextField enterFirstNameField;
         @FXML
@@ -51,6 +53,14 @@ import java.io.IOException;
                 stage.setTitle("Your Account");
                 stage.setScene(scene);
             }
+        }
+
+        public void onCancelButtonClick(ActionEvent actionEvent) throws IOException {
+            Stage stage = (Stage) newRegistrationCancelButton.getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("landing-page.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+            stage.setTitle("XYZ Bank - Landing Page");
+            stage.setScene(scene);
         }
     }
 

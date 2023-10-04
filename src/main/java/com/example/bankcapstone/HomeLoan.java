@@ -5,12 +5,17 @@ import java.time.LocalDate;
 public class HomeLoan extends Loan{
     private int loanNumber;
     private LocalDate endDate;
-    @Override
-    public LoanTypeEnum getLoanType() {
-        return loanType;
+    private final LoanTypeEnum loanType = LoanTypeEnum.HOME;
+
+    public HomeLoan(double amount, LocalDate startDate, int loanNumber, String email) {
+        super(amount,startDate,loanNumber,email);
     }
 
-    private final LoanTypeEnum loanType = LoanTypeEnum.HOME;
+    @Override
+    public LoanTypeEnum getLoanType() {
+        return this.loanType;
+    }
+
     public HomeLoan(double amount, int term, String email) {
         super(amount, email);
         this.endDate = this.getStartDate().plusYears(term);
@@ -24,10 +29,7 @@ public class HomeLoan extends Loan{
         this.setMaximumAmount(-2000000);
         this.loanNumber = loanNumber;
     }
-    //for existing loans to be read
-    public int getLoanNumber(){
-        return loanNumber;
-    }
+
     public LocalDate getEndDate(){
         return endDate;
     }

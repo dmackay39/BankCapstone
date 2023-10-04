@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 public class PersonalLoan extends Loan {
     private int loanNumber;
+    private final LoanTypeEnum loanType = LoanTypeEnum.PERSONAL;
+
     public PersonalLoan(double amount, String email) {
         super(amount, email);
         this.setMaximumAmount(-45000);
@@ -20,7 +22,7 @@ public class PersonalLoan extends Loan {
         return loanType;
     }
 
-    private final LoanTypeEnum loanType = LoanTypeEnum.PERSONAL;
+
     @Override
     public void chargeInterest() {
     }

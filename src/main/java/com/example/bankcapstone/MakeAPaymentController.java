@@ -26,6 +26,7 @@ public class MakeAPaymentController implements Initializable {
     public ComboBox paymentTransferTo;
     @FXML
     public ComboBox paymentTransferFrom;
+    public Button paymentTransferCancelButton;
 
     Customer customer = Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com");
     List<Account> accounts = customer.getAccountList();
@@ -85,5 +86,13 @@ public class MakeAPaymentController implements Initializable {
         for (Loan loan : loans){
             paymentTransferTo.getItems().add(loan.getLoanNumber());
         }
+    }
+
+    public void paymentTransferCancelClicked(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) paymentTransferCancelButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("customer-account.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        stage.setTitle("Your Account");
+        stage.setScene(scene);
     }
 }

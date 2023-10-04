@@ -28,6 +28,7 @@ public class DepositWithdrawalController implements Initializable {
     public RadioButton depositRadioButton;
     @FXML
     public RadioButton withdrawalRadioButton;
+    public Button depositWithdrawalCancelButton;
 
     Customer customer = Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com");
     List<Account> accounts = customer.getAccountList();
@@ -70,5 +71,13 @@ public class DepositWithdrawalController implements Initializable {
         for (Account account : accounts) {
             depositWithdrawalAccountChoice.getItems().add(account.getAccountNumber());
         }
+    }
+
+    public void depositWithdrawalCancelClicked(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) depositWithdrawalCancelButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("customer-account.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        stage.setTitle("Your Account");
+        stage.setScene(scene);
     }
 }

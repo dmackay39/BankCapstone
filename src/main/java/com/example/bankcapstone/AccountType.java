@@ -6,9 +6,4 @@ public enum AccountType {
     SAVINGS,
     CD;
 
-    AccountType(){
-
-    }
-
-
 }
