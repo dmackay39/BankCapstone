@@ -18,22 +18,31 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
    <children>
+
       <Label text="XYZ Bank" textFill="#08b0f8">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <RadioButton id="customerLogIn" fx:id="customerLogIn" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="75.0" prefWidth="161.0" text="Customer log-in" textFill="#08b0f8">
-         <toggleGroup>
-            <ToggleGroup fx:id="landingPageGroup" />
-         </toggleGroup>
-      </RadioButton>
-      <RadioButton id="customerRegistration" fx:id="customerRegistration" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="75.0" prefWidth="251.0" text="New Customer Registration" textFill="#08b0f8" toggleGroup="$landingPageGroup" />
-      <RadioButton id="employeeLogIn" fx:id="employeeLogIn" mnemonicParsing="false" prefHeight="75.0" prefWidth="162.0" text="Employee log-in" textFill="#08b0f8" toggleGroup="$landingPageGroup" />
+
+       <VBox alignment="CENTER_LEFT">
+           <children>
+              <RadioButton id="customerLogIn" fx:id="customerLogIn" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="75.0" prefWidth="161.0" text="Customer log-in" textFill="#08b0f8">
+                 <toggleGroup>
+                    <ToggleGroup fx:id="landingPageGroup" />
+                 </toggleGroup>
+              </RadioButton>
+              <RadioButton id="customerRegistration" fx:id="customerRegistration" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="75.0" prefWidth="251.0" text="New Customer Registration" textFill="#08b0f8" toggleGroup="$landingPageGroup" />
+              <RadioButton id="employeeLogIn" fx:id="employeeLogIn" mnemonicParsing="false" prefHeight="75.0" prefWidth="162.0" text="Employee log-in" textFill="#08b0f8" toggleGroup="$landingPageGroup" />
+           </children>
+       </VBox>
+
        <Button id="landingPageButton" fx:id="landingPageButton" onAction="#onHelloButtonClick" style="-fx-background-color: #fffff0;" text="Submit" textAlignment="CENTER" textFill="#1c3d52">
-         <font>
-            <Font name="Verdana" size="24.0" />
-         </font></Button>
+           <font>
+               <Font name="System" size="18.0" />
+           </font>
+       </Button>
       <Label fx:id="welcomeText" textFill="#f51472" />
+
    </children>
 </VBox>
