@@ -66,7 +66,7 @@ public class Bank {
         double total = 0;
         for (Customer customer: customerHashMap.values()){
             for (Loan loan: customer.getLoanList()){
-                total += loan.getBalance();
+                total += abs(loan.getBalance());
             }
         }
         totalLending = total;
@@ -89,15 +89,22 @@ public class Bank {
         }
 
         for (int i = 0; i < customer.getLoanList().size(); i++){
-            totalCustomerLoans += customer.getLoanList().get(i).getBalance();
+            totalCustomerLoans += abs(customer.getLoanList().get(i).getBalance());
         }
+        System.out.println(totalLending);
+        calculateTotalLending();
+        System.out.println(totalLending);
+        calculateTotalDeposits();
+        System.out.println(totalDeposits);
         customerLoanOwnership = totalCustomerLoans/totalLending;
-        if ((abs(loanBalance + totalLending) < 0.9*totalDeposits) && (customerLoanOwnership < 0.1)){
+        System.out.println(customerLoanOwnership);
+        if (((abs(loanBalance) + totalLending) < 0.9*totalDeposits) && (customerLoanOwnership < 0.1)){
             verification = true;
         }
         else {
             verification = false;
         }
+        System.out.println(verification);
         return verification;
     }
 
