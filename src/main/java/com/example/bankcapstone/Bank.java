@@ -9,19 +9,19 @@ import static java.lang.Math.abs;
 public class Bank {
 
     private HashMap<String, Customer> customerHashMap = new HashMap<>();
-//    private List<Account> accountList = new ArrayList<>();
-//    private List<Loan> loanList = new ArrayList<>();
     private double totalDeposits;
     private double totalLending;
     private ReaderWriter readerWriter;
 
     private static Bank bankInstance;
+    private Customer activeCustomer;
 
     private Bank(){
         readerWriter = new ReaderWriter();
     }
 
     public static Bank getInstance(){
+
         if (bankInstance == null){
             bankInstance = new Bank();
         }
@@ -32,9 +32,8 @@ public class Bank {
         readerWriter.readCustomersFromFile();
         readerWriter.readAccountsFromFile();
         readerWriter.readLoansFromFile();
-        Account.setAccountNumCounter(readerWriter.getLatestAccountNumber());
-        Loan.setSuperLoanNumber(readerWriter.getLatestLoanNumber());
-
+        Account.setAccountNumCounter(readerWriter.getLatestAccountNumber() + 1);
+        Loan.setSuperLoanNumber(readerWriter.getLatestLoanNumber() + 1);
     }
 
     public void saveDataToFile(){
@@ -42,23 +41,6 @@ public class Bank {
         readerWriter.writeAccountsToFile();
         readerWriter.writeLoansToFile();
     }
-
-
-//    public void populateAccountList(){
-//        for (String key: customerHashMap.keySet()){
-//            for (int i = 0; i <customerHashMap.get(key).getAccountList().size(); i++ ){
-//                accountList.add(customerHashMap.get(key).getAccountList().get(i));
-//            }
-//        }
-//    }
-
-//    public void populateLoanList(){
-//        for (String key: customerHashMap.keySet()){
-//            for (int i=0; i <customerHashMap.get(key).getLoanList().size(); i++ ){
-//                loanList.add(customerHashMap.get(key).getLoanList().get(i));
-//            }
-//        }
-//    }
 
 
     public void calculateTotalDeposits(){
@@ -139,25 +121,43 @@ public class Bank {
     public void setCustomerHashMap(HashMap<String, Customer> customerHashMap) {
         this.customerHashMap = customerHashMap;
     }
-    public void approveCustomerLoan(String email, double loanBalance, LoanTypeEnum loanType, int term, int accountNumber){
+    public String approveCustomerLoan(String email, double loanBalance, LoanTypeEnum loanType, int term, int accountNumber){
         Customer customer = customerHashMap.get(email);
+        String approvalString;
         if (verifyLoan(customer, loanBalance, loanType)){
             LoanFactory factory = new LoanFactory();
             customer.addLoan(factory.createLoan(loanType,term,loanBalance,email));
             double currentBalance = customer.getAccountHashMap().get(accountNumber).getBalance();
             customer.getAccountHashMap().get(accountNumber).setBalance(currentBalance + loanBalance);
+            approvalString = "Loan approved, see accounts";
+        } else{
+            approvalString = "Loan rejected.";
         }
+        return approvalString;
     }
-    public void approveCustomerLoan(String email, double loanBalance, LoanTypeEnum loanType, int accountNumber){
+    public String approveCustomerLoan(String email, double loanBalance, LoanTypeEnum loanType, int accountNumber){
         Customer customer = customerHashMap.get(email);
+        String approvalString;
         if (verifyLoan(customer, loanBalance, loanType)){
             LoanFactory factory = new LoanFactory();
             customer.addLoan(factory.createLoan(loanType,loanBalance,email));
             double currentBalance = customer.getAccountHashMap().get(accountNumber).getBalance();
             customer.getAccountHashMap().get(accountNumber).setBalance(currentBalance + loanBalance);
+            approvalString = "Loan approved, see accounts";
+        } else{
+            approvalString = "Loan rejected.";
         }
+        return approvalString;
     }
 
+
+    public Customer getActiveCustomer() {
+        return activeCustomer;
+    }
+
+    public void setActiveCustomer(Customer activeCustomer) {
+        this.activeCustomer = activeCustomer;
+    }
     public boolean authenticateManager(String user, String password){
         return (user.equals("admin") && password.equals("password"));
     }

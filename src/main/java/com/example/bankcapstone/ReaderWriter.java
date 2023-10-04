@@ -201,7 +201,6 @@ public class ReaderWriter {
             for (Customer customer : customerHashMap.values()) {
                 for (Loan loans : customer.getLoanList()) {
                     loanDetails.clear();
-                    System.out.println(loans.getLoanType().toString());
                     loanDetails.add(loans.getLoanType().toString());
                     loanDetails.add(customer.getEmail());
                     loanDetails.add(Integer.toString(loans.getLoanNumber()));

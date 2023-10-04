@@ -35,13 +35,18 @@ public class CustomerLoginController {
         String email = enterEmailField.getText();
         String password = enterPasswordField.getText();
 
-        if (email.matches(emailPattern) && password.length() >= 8) {
-            // Valid email and password, navigate to the mainAccountPage
-            Stage stage = (Stage) customerSubmitButton.getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("customer-account.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 650, 650);
-            stage.setTitle("Your Account");
-            stage.setScene(scene);
+        if (email.matches(emailPattern) && Bank.getInstance().getCustomerHashMap().containsKey(email)){
+            Customer customer = Bank.getInstance().getCustomerHashMap().get(email);
+            if (customer.getPassword().equals(password)){
+                Bank.getInstance().setActiveCustomer(customer);
+                Stage stage = (Stage) customerSubmitButton.getScene().getWindow();
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("customer-account.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+                stage.setTitle("Your Account");
+                stage.setScene(scene);
+            } else {
+                loginText.setText("Incorrect username or password. Try again!");
+            }
         } else {
             loginText.setText("Incorrect username or password. Try again!");
         }

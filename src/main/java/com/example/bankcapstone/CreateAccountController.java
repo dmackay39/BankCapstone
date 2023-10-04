@@ -29,7 +29,7 @@ public class CreateAccountController implements Initializable {
     public Label statusText;
 
     private AccountType accountType;
-    Customer customer = Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com");
+    Customer customer = Bank.getInstance().getActiveCustomer();
 
     public void createAccountClicked(ActionEvent actionEvent) throws IOException {
         //create account - needs added

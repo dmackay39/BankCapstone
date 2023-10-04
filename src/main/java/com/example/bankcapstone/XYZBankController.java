@@ -61,8 +61,8 @@ public class XYZBankController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Initialise the bank when we run the application
-        Bank bank = Bank.getInstance();
-        bank.populateBankDatabase();
+//        Bank bank = Bank.getInstance();
+//        bank.populateBankDatabase();
 
     }
 
