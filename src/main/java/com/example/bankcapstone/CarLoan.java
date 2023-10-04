@@ -33,6 +33,11 @@ public class CarLoan extends Loan{
         return endDate;
     }
 
+    @Override
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+
     public void chargeInterest(){
         double currentBalance = getBalance();
         this.setBalance(currentBalance*getInterestRate());

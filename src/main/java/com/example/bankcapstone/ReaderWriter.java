@@ -92,9 +92,56 @@ public class ReaderWriter {
     }
 
     public void readLoansFromFile() {
+        FileInputStream fileInputStream = null;
+        Scanner scanner = null;
 
+        try {
+            fileInputStream = new FileInputStream(loanPath);
+            scanner = new Scanner(fileInputStream);
+            scanner.nextLine();
+
+            while (scanner.hasNextLine()) {
+                String[] tokens = scanner.nextLine().split(",");
+//                Arrays.stream(tokens).forEach((token) -> System.out.println(token));
+
+                LoanTypeEnum loanType = LoanTypeEnum.valueOf(tokens[0]);
+                String username = tokens[1];
+                Integer accountNumber = Integer.parseInt(tokens[2]);
+                String[] dateNums = tokens[3].split("-");
+                LocalDate openingDate = LocalDate.of(Integer.parseInt(dateNums[0]), Integer.parseInt(dateNums[1]), Integer.parseInt(dateNums[2]));
+                Double balance = Double.parseDouble(tokens[4]);
+                Double interestRate = Double.parseDouble(tokens[5]);
+
+                dateNums = tokens[6].split("-");
+                LocalDate interestAddedDate = LocalDate.of(Integer.parseInt(dateNums[0]), Integer.parseInt(dateNums[1]), Integer.parseInt(dateNums[2]));
+
+                LoanFactory loanFactory = new LoanFactory();
+                Loan newLoan = loanFactory.createLoan(loanType, balance, openingDate, accountNumber, username);
+                newLoan.setInterestPaidDate(interestAddedDate);
+                newLoan.setInterestRate(interestRate);
+
+                switch (loanType) {
+                    case CAR, HOME: {
+                        dateNums = tokens[7].split("-");
+                        LocalDate endDate = LocalDate.of(Integer.parseInt(dateNums[0]), Integer.parseInt(dateNums[1]), Integer.parseInt(dateNums[2]));
+                        newLoan.setEndDate(endDate);
+                    }
+                }
+
+                Bank.getInstance().getCustomerHashMap().get(username).addLoan(newLoan);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("error reading from file");
+        } finally {
+            try {
+                fileInputStream.close();
+            } catch (IOException e) {
+                System.out.println("Cannot close file!");
+            }
+        }
         System.out.println("Loans loaded.");
     }
+
 
     public void writeCustomersToFile() {
         HashMap<String, Customer> customerHashMap = Bank.getInstance().getCustomerHashMap();
@@ -179,32 +226,6 @@ public class ReaderWriter {
         //System.out.println(originalFile.delete() ? "Original Account File Deleted" : "Failed to Delete Original Account File");
         //System.out.println(tempFile.renameTo(originalFile) ? "Temp Account File Renamed" : "Failed to Rename Temp Account File");
     }
-
-
-    public static void main(String[] args) {
-        ReaderWriter readerWriter = new ReaderWriter();
-//        readerWriter.readCustomersFromFile();
-//
-//        for (Customer customer : Bank.getInstance().getCustomerHashMap().values()){
-//            System.out.println(customer);
-//        }
-//
-//        readerWriter.writeCustomersToFile();
-//
-//        readerWriter.readAccountsFromFile();
-//
-//        for (Account account : Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com").getAccountList()){
-//            System.out.println(account);
-        readerWriter.readCustomersFromFile();
-        readerWriter.readAccountsFromFile();
-        readerWriter.readLoansFromFile();
-
-        readerWriter.writeCustomersToFile();
-        readerWriter.writeAccountsToFile();
-        readerWriter.writeLoansToFile();
-    }
-
-
 }
 
 
