@@ -12,7 +12,7 @@ public class CarLoan extends Loan{
         super(amount, email);
         this.endDate = this.getStartDate().plusYears(term);
         this.setMaximumAmount(-50000);
-        this.loanNumber = getSuperLoanNumber();
+        this.loanNumber = super.getSuperLoanNumber();
     }
     public CarLoan(double amount, int term, LocalDate startDate, int loanNumber, String email) {
         super(amount, startDate, email);
@@ -21,14 +21,15 @@ public class CarLoan extends Loan{
         this.loanNumber = loanNumber;
     }
 
+    public CarLoan(double amount, LocalDate startDate, int loanNumber, String email) {
+        super(amount, startDate,loanNumber,email);
+    }
+
     @Override
     public LoanTypeEnum getLoanType() {
         return loanType;
     }
 
-    public int getLoanNumber(){
-        return loanNumber;
-    }
     public LocalDate getEndDate(){
         return this.endDate;
     }
