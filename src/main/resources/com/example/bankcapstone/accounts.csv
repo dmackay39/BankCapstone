@@ -1,1 +1,4 @@
 Account Type,Email,Account Number,Opening Date,Balance,Interest Rate,Interest Paid Date,Term
+SAVINGS,sarah.irvine@email.com,3,2023-10-04,0.0,0.05,2023-10-04,0
+CHECKING,daniel.mackay@email.com,1,2023-10-04,90.0,0.0,2023-10-04,0
+CHECKING,daniel.mackay@email.com,2,2023-10-04,10.0,0.0,2023-10-04,0
