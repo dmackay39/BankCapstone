@@ -50,6 +50,7 @@
          </padding>
       </Label>
       <ComboBox fx:id="paymentTransferTo" prefWidth="150.0" />
+      <Label fx:id="accountFromFundsLabel" textFill="#f51472" />
         <Label text="Enter the amount: " textFill="#08b0f8">
             <padding>
                 <Insets top="20.0" />

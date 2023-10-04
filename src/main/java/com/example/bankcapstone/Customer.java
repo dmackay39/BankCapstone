@@ -80,19 +80,25 @@ public class Customer {
 
     //payOrTransfer method for payments from accounts to loans
     public String payOrTransfer(Account accountFrom, Loan loanTo, double amount) {
-        if ((accountFrom.getBalance() - amount) > 0) {
-            accountFrom.setBalance(accountFrom.getBalance() - amount);
-            loanTo.setBalance(loanTo.getBalance() + amount);
-            return "Payment Successful";
+        String result = "";
+        if ((accountFrom.getBalance() - amount) >= 0) {
+            if ((loanTo.getBalance() - amount > 0)) {
+                result = "You can't pay more than you owe.";
+            } else if (loanTo.getBalance() - amount == 0) {
+                accountFrom.setBalance(accountFrom.getBalance() - amount);
+                loanHashMap.remove(loanTo.getLoanNumber());
+                result = "Payment successful. Loan #" + loanTo.getLoanNumber() + " has been fully paid off and removed from your account.";
+            } else {
+                accountFrom.setBalance(accountFrom.getBalance() - amount);
+                loanTo.setBalance(loanTo.getBalance() + amount);
+                result = "Payment Successful";
+            }
         } else if ((getAccessibleBalance() - amount) > 0) {
-            return "Payment Failed. You may transfer funds to Account #" + accountFrom.getAccountNumber() + " from your other checking/savings accounts";
-        } else if (((accountFrom.getBalance() - amount) == 0)) {
-            accountFrom.setBalance(accountFrom.getBalance() - amount);
-            loanHashMap.remove(loanTo.getLoanNumber());
-            return "Payment successful. Loan #" + loanTo.getLoanNumber() + " has been fully paid off and removed from your account.";
+            result = "Payment Failed. You may transfer funds to Account #" + accountFrom.getAccountNumber() + " from your other checking/savings accounts";
         } else {
-            return "You do not have sufficient funds to make this payment.";
+            result = "You do not have sufficient funds to make this payment.";
         }
+        return result;
     }
 
     //payOrTransfer method for payments from checking account to pay bills
