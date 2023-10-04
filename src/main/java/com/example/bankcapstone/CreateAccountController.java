@@ -28,13 +28,10 @@ public class CreateAccountController implements Initializable {
     public void createAccountClicked(ActionEvent actionEvent) throws IOException {
         //create account - needs added
         Stage stage = (Stage) createAccountRequestButton.getScene().getWindow();
-        stage.close();
-        Stage stage2 = new Stage();
-        FXMLLoader fxmlLoader2 = new FXMLLoader(XYZBankApplication.class.getResource("customer-account.fxml"));
-        Scene scene2 = new Scene(fxmlLoader2.load(), 650, 650);
-        stage2.setTitle("Customer Account");
-        stage2.setScene(scene2);
-        stage2.show();
+        FXMLLoader fxmlLoader = new FXMLLoader(XYZBankApplication.class.getResource("customer-account.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        stage.setTitle("Customer Account");
+        stage.setScene(scene);
     }
 
     @FXML

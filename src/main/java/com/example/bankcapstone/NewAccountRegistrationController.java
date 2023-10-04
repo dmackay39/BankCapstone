@@ -46,7 +46,6 @@ import java.io.IOException;
             } else {
                 Bank.getInstance().createNewCustomer(new Customer(firstName, lastName, email, password));
                 Stage stage = (Stage) newRegistrationSubmitButton.getScene().getWindow();
-
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("customer-account.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 650, 650);
                 stage.setTitle("Your Account");
