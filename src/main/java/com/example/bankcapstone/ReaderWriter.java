@@ -215,6 +215,69 @@ public class ReaderWriter {
             throw new RuntimeException(e);
         }
     }
+
+    public int getLatestAccountNumber(){
+        FileInputStream fileInputStream = null;
+        Scanner scanner;
+        List<Integer> accountNoList = new ArrayList<>();
+
+        try {
+            fileInputStream = new FileInputStream(accountPath);
+            scanner = new Scanner(fileInputStream);
+            scanner.nextLine();
+
+            while (scanner.hasNextLine()) {
+                String[] tokens = scanner.nextLine().split(",");
+                accountNoList.add(Integer.parseInt(tokens[2]));
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("error reading from file");
+        } finally {
+            try {
+                fileInputStream.close();
+            } catch (IOException e) {
+                System.out.println("Cannot close file!");
+            }
+        }
+        int max = accountNoList.stream().max(Comparator.comparing(Integer::intValue)).orElseThrow(NoSuchElementException::new);
+        System.out.println(max);
+        return max;
+    }
+
+    public int getLatestNumber(String string){
+        FileInputStream fileInputStream = null;
+        Scanner scanner;
+        List<Integer> accountNoList = new ArrayList<>();
+        String path = "";
+
+        switch (string){
+            case "loan" -> path = loanPath;
+            case "account" -> path = accountPath;
+        }
+
+        try {
+            fileInputStream = new FileInputStream(path);
+            scanner = new Scanner(fileInputStream);
+            scanner.nextLine();
+
+            while (scanner.hasNextLine()) {
+                String[] tokens = scanner.nextLine().split(",");
+                accountNoList.add(Integer.parseInt(tokens[2]));
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("error reading from file");
+        } finally {
+            try {
+                fileInputStream.close();
+            } catch (IOException e) {
+                System.out.println("Cannot close file!");
+            }
+        }
+        //System.out.println(max);
+        return accountNoList.stream().max(Comparator.comparing(Integer::intValue)).orElseThrow(NoSuchElementException::new);
+    }
+
+
 }
 
 
