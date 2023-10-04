@@ -181,7 +181,7 @@ public class ReaderWriter {
                     accountDetails.add(account.getAccountStartDate().toString());
                     accountDetails.add(Double.toString(account.getBalance()));
                     accountDetails.add(Double.toString(account.getInterestRate()));
-                    accountDetails.add(account.getInterestPaidDate() == null ? "" : account.getInterestPaidDate().toString());
+                    accountDetails.add(account.getInterestPaidDate() == null ? account.getAccountStartDate().toString() : account.getInterestPaidDate().toString());
                     accountDetails.add(Integer.toString(account.getTermLength()));
                     fileWriter.write("\n" + String.join(",", accountDetails));
                 }

@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -33,6 +35,7 @@ public class MakeAPaymentController implements Initializable {
 
     Customer customer = Bank.getInstance().getActiveCustomer();
     List<Account> accounts = customer.getAccountList();
+
     List<Loan> loans = customer.getLoanList();
 
 
@@ -90,6 +93,22 @@ public class MakeAPaymentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        accounts = accounts.stream()
+                .filter((Account account) -> {
+                    if (account.getAccountType().equals(AccountType.SAVINGS) || account.getAccountType().equals(AccountType.CHECKING)){
+                        return true;
+                    }
+                    if (account.getAccountType().equals(AccountType.CD)){
+                        LocalDate openDate = account.getAccountStartDate();
+                        int closeDate = account.getTermLength();
+                        if(Math.abs(openDate.until(LocalDate.now()).getYears()) >= account.getTermLength()){
+                            return true;
+                        }
+                    }
+                    return false;
+
+                }).toList();
+
         for (Account account : accounts) {
             paymentTransferFrom.getItems().add(account.getAccountNumber());
             paymentTransferTo.getItems().add(account.getAccountNumber());
