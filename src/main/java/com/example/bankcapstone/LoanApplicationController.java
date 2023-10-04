@@ -42,13 +42,13 @@ public class LoanApplicationController implements Initializable {
             String lApoundsString = loanApplicationPounds.getText().trim();
             String lApenniesString = loanApplicationPennies.getText().trim();
             double moneyToLoan = Integer.parseInt(lApoundsString) + Integer.parseInt(lApenniesString) / 100.0;
-
+            String loanApproval;
             if (term == 0) {
-                Bank.getInstance().approveCustomerLoan(customer.getEmail(), moneyToLoan, loanType, accountChoice);
-                loanLabel.setText("New loan requested. It will appear in your loans if approved");
+                loanApproval = Bank.getInstance().approveCustomerLoan(customer.getEmail(), moneyToLoan, loanType, accountChoice);
+                loanLabel.setText(loanApproval);
             } else {
-                Bank.getInstance().approveCustomerLoan(customer.getEmail(), moneyToLoan, loanType, term, accountChoice);
-                loanLabel.setText("New loan requested. It will appear in your loans if approved");
+                loanApproval = Bank.getInstance().approveCustomerLoan(customer.getEmail(), moneyToLoan, loanType, term, accountChoice);
+                loanLabel.setText(loanApproval);
             }
             // Put code here to submit the loan application with the selected loan type and amount in pounds and pennies
 
