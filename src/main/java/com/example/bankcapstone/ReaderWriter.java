@@ -78,6 +78,7 @@ public class ReaderWriter {
                         newAccount.setInterestPaidDate(intDate);
                     }
                 }
+                newAccount.payInterest();
                 Bank.getInstance().getCustomerHashMap().get(username).addAccount(newAccount);
             }
 
@@ -130,7 +131,7 @@ public class ReaderWriter {
                         newLoan.setEndDate(endDate);
                     }
                 }
-
+                newLoan.addInterest();
                 Bank.getInstance().getCustomerHashMap().get(username).addLoan(newLoan);
             }
         } catch (FileNotFoundException e) {
