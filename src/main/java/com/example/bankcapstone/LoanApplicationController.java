@@ -27,6 +27,7 @@ public class LoanApplicationController implements Initializable {
     public ComboBox loanChoicePicker;
     @FXML
     public ComboBox loanApplicationAccountPicker;
+    public Button loanApplicationCancelButton;
 
     Customer customer = Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com");
     List<Account> accounts = customer.getAccountList();
@@ -121,5 +122,13 @@ public class LoanApplicationController implements Initializable {
 
     public void onAccountTypePicker(ActionEvent actionEvent) {
         accountChoice = (Integer) loanApplicationAccountPicker.getValue();
+    }
+
+    public void loanApplicationCancelClicked(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) loanApplicationCancelButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("customer-account.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        stage.setTitle("Your Account");
+        stage.setScene(scene);
     }
 }

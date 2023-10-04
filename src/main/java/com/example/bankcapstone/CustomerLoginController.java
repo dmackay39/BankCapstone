@@ -1,5 +1,6 @@
 package com.example.bankcapstone;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -26,6 +27,7 @@ public class CustomerLoginController {
     public Hyperlink createAccountField;
     @FXML
     public Label loginText;
+    public Button newRegistrationCancelButton;
 
     @FXML
     private void onHelloButtonClick() throws IOException {
@@ -53,6 +55,14 @@ public class CustomerLoginController {
     @FXML
     private void onForgotPasswordLinkClick() {
         // Navigate to the forgotPasswordPage
+    }
+
+    public void onCancelButtonClick(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) newRegistrationCancelButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("landing-page.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        stage.setTitle("XYZ Bank - Landing Page");
+        stage.setScene(scene);
     }
 }
 

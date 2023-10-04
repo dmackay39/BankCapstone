@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class EmployeeLoginPageController {
+    public Button employeeBackButton;
     @FXML
     private TextField enterEmailField;
     @FXML
@@ -51,6 +52,14 @@ public class EmployeeLoginPageController {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("employee-account-page.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 650, 650);
         stage.setTitle("Your Account");
+        stage.setScene(scene);
+    }
+
+    public void employeeBackButtonClick(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) employeeBackButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("landing-page.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        stage.setTitle("XYZ Bank - Landing Page");
         stage.setScene(scene);
     }
 }

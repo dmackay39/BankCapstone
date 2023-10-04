@@ -22,6 +22,7 @@ public class CreateAccountController implements Initializable {
     public TextField createAccountInfo;
     @FXML
     public ComboBox createAccountType;
+    public Button createAccountCancelButton;
 
     @FXML
     public void createAccountClicked(ActionEvent actionEvent) throws IOException {
@@ -52,5 +53,13 @@ public class CreateAccountController implements Initializable {
         createAccountType.getItems().add("Checking Account");
         createAccountType.getItems().add("CD Account - 1 year fixed term");
         createAccountType.getItems().add("CD Account - 2 year fixed term");
+    }
+
+    public void createAccountCancelClicked(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) createAccountCancelButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("customer-account.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        stage.setTitle("Your Account");
+        stage.setScene(scene);
     }
 }

@@ -33,7 +33,7 @@ public class CustomerAccountController implements Initializable {
     public VBox accountsScrollVBox;
     @FXML
     public VBox LoansScrollVBox;
-
+    public Button logout;
 
 
     @FXML
@@ -122,5 +122,13 @@ public class CustomerAccountController implements Initializable {
                     "-fx-border-color: #0E1E2B;");
             LoansScrollVBox.getChildren().add(gridLoans);
         }
+    }
+
+    public void LogOutClicked(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) logout.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("landing-page.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        stage.setTitle("XYZ Bank - Landing Page");
+        stage.setScene(scene);
     }
 }
