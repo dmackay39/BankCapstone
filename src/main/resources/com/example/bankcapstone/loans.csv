@@ -1,4 +1,3 @@
 Loan Type,Email,Loan Number,Opening Date,Balance,Interest Rate,Interest Added Date,End Date
-HOME,bilal.khan@email.com,2000000,2023-10-04,-10000.0,0.1,2023-10-04,2038-10-04
 CAR,bobby.ayvazov@email.com,2000002,2023-10-04,-10.0,0.1,2023-10-04,2026-10-04
 HOME,bobby.ayvazov@email.com,2000001,2023-10-04,-100.0,0.1,2023-10-04,2043-10-04

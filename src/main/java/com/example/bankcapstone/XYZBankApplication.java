@@ -27,7 +27,6 @@ public class XYZBankApplication extends Application {
         System.out.println("Saving Data to file...");
         Bank.getInstance().saveDataToFile();
         System.out.println("DONE. Stage is closing");
-
     }
 
     public static void main(String[] args) {

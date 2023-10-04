@@ -36,13 +36,27 @@ public class ManagerCredentialsController {
         String managerEmail = enterManagerEmailField.getText();
         String managerPassword = enterManagerPasswordField.getText();
 
-        // Bilal - put code here for managerEmail and managerPassword
 
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Payment Override Completed");
-        alert.setHeaderText(null);
-        alert.setContentText("Payment Override completed");
+        if (Bank.getInstance().authenticateManager(managerEmail, managerPassword)) {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Payment Override Completed");
+            alert.setHeaderText(null);
+            alert.setContentText("Payment Override completed");
+            alert.showAndWait();
 
-        alert.showAndWait();
+            Stage stage = (Stage) managerOverrideCancelButton.getScene().getWindow();
+            stage.close();
+        } else {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Authentication Failed");
+            alert.setHeaderText(null);
+            alert.setContentText("Authentication Failed");
+            alert.showAndWait();
+
+            Stage stage = (Stage) managerOverrideCancelButton.getScene().getWindow();
+            stage.close();
+        }
+
+
     }
 }

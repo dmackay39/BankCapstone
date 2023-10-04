@@ -36,7 +36,7 @@ public class MakeAPaymentController implements Initializable {
     List<Loan> loans = customer.getLoanList();
 
 
-    public void paymentTransferClicked(ActionEvent actionEvent){
+    public void paymentTransferClicked(ActionEvent actionEvent) throws IOException {
         double moneyToTransfer = 0;
         moneyToTransfer += Integer.parseInt(paymentTransferPounds.getText().trim());
         moneyToTransfer += (Integer.parseInt(paymentTransferPennies.getText().trim())) / 100.0;
@@ -44,8 +44,21 @@ public class MakeAPaymentController implements Initializable {
         Integer accountNumberToPay = (Integer) paymentTransferFrom.getValue();
         Account accountToPay = customer.getAccountHashMap().get(accountNumberToPay);
         if (paymentTransferTo.getValue().equals("Bills")) {
-            String result = customer.depositOrWithdraw(accountToPay, moneyToTransfer, "withdraw");
+            String result = customer.payOrTransfer(accountToPay, moneyToTransfer);
             insufficientFundsLabel.setText(result);
+            if (result.equals("This payment will overdraw your account and requires bank manager approval")) {
+
+                //bring up manager authenticate window
+                Stage stage2 = new Stage();
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("manager-credentials.fxml"));
+                Scene scene2 = new Scene(fxmlLoader.load(), 400, 400);
+                stage2.setTitle("Manager Authentication");
+                stage2.setScene(scene2);
+                stage2.showAndWait();
+
+                insufficientFundsLabel.setText(Bank.getInstance().overridePayment(accountToPay, moneyToTransfer));
+
+            }
         } else {
             Integer accountNumberToReceive = (Integer) paymentTransferTo.getValue();
 
@@ -63,10 +76,10 @@ public class MakeAPaymentController implements Initializable {
         }
     }
 
-    public void comboChoiceSelected(ActionEvent actionEvent){
+    public void comboChoiceSelected(ActionEvent actionEvent) {
 
         for (Account account : accounts) {
-            paymentTransferTo.getItems().remove((Integer)account.getAccountNumber());
+            paymentTransferTo.getItems().remove((Integer) account.getAccountNumber());
         }
         for (Account account : accounts) {
             paymentTransferTo.getItems().add(account.getAccountNumber());
@@ -74,13 +87,14 @@ public class MakeAPaymentController implements Initializable {
         Integer accountNumberToRemove = (Integer) paymentTransferFrom.getValue();
         paymentTransferTo.getItems().remove(accountNumberToRemove);
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         for (Account account : accounts) {
             paymentTransferFrom.getItems().add(account.getAccountNumber());
             paymentTransferTo.getItems().add(account.getAccountNumber());
         }
-        for (Loan loan : loans){
+        for (Loan loan : loans) {
             paymentTransferTo.getItems().add(loan.getLoanNumber());
         }
         paymentTransferTo.getItems().add("Bills");
