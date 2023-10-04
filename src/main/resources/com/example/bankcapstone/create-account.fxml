@@ -34,7 +34,7 @@
             <Insets left="20.0" right="20.0" />
          </VBox.margin>
       </TextField>
-      <Label text="Please allow 1-2 working days for your request to be processed" textFill="#08b0f8">
+      <Label fx:id="statusText" text="Please allow 1-2 working days for your request to be processed" textFill="#08b0f8">
          <padding>
             <Insets top="20.0" />
          </padding>
