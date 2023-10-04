@@ -140,11 +140,20 @@ public class Bank {
         }
     }
 
+
     public Customer getActiveCustomer() {
         return activeCustomer;
     }
 
     public void setActiveCustomer(Customer activeCustomer) {
         this.activeCustomer = activeCustomer;
+    }
+    public boolean authenticateManager(String user, String password){
+        return (user.equals("admin") && password.equals("password"));
+    }
+
+    public String overridePayment(Account account, double amount){
+        account.setBalance(account.getBalance()-amount);
+        return "Payment Successful";
     }
 }
