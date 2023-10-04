@@ -52,7 +52,7 @@ public class CreateAccountController implements Initializable {
             createAccountInfo.setText("An account to save your pennies for a rainy day. Pays 5% interest");
             accountType = AccountType.SAVINGS;
         } else if (createAccountType.getValue().toString().equals("Checking Account")) {
-            createAccountInfo.setText("An simple current account for your day-to-day spending");
+            createAccountInfo.setText("A simple current account for your day-to-day spending");
             accountType = AccountType.CHECKING;
         } else if (createAccountType.getValue().toString().equals("CD Account - 1 year fixed term")) {
             createAccountInfo.setText("A 1 year fixed term savings account. Pays 7% interest");
