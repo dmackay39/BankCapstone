@@ -25,51 +25,33 @@ public class EmployeeLoginPageController {
     private Hyperlink forgotPasswordField;
 
     @FXML
-    private void CallEmployeeITSupportClick() {
+    private void CallEmployeeITSupportClick() throws IOException {
         // Navigate to IT-support-info-page.fxml
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("IT-support-info-page.fxml"));
-        Parent root = null;
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        Scene scene = new Scene(root);
-         Stage stage = (Stage) ITSupportClickField.getScene().getWindow();
-         stage.setScene(scene);
-         stage.show();
+        Stage stage = (Stage) ITSupportClickField.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("IT-support-info-page.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        stage.setTitle("IT Support");
+        stage.setScene(scene);
     }
 
     @FXML
-    private void onForgotPasswordLinkClick() {
+    private void onForgotPasswordLinkClick() throws IOException {
         // Navigate to forgot-password-page.fxml
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("forgot-password-page.fxml"));
-        Parent root = null;
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        Scene scene = new Scene(root);
-         Stage stage = (Stage) forgotPasswordField.getScene().getWindow();
-         stage.setScene(scene);
-         stage.show();
+        Stage stage = (Stage) forgotPasswordField.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("forgot-password-page.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        stage.setTitle("Forgot Password");
+        stage.setScene(scene);
     }
 
     @FXML
-    private void employeeSubmitButtonClick() {
+    private void employeeSubmitButtonClick() throws IOException {
         // Navigate to employee-account-page.fxml
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("employee-account-page.fxml"));
-        Parent root = null;
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        Scene scene = new Scene(root);
-         Stage stage = (Stage) employeeSubmitButton.getScene().getWindow();
-         stage.setScene(scene);
-         stage.show();
+        Stage stage = (Stage) employeeSubmitButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("employee-account-page.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        stage.setTitle("Your Account");
+        stage.setScene(scene);
     }
 }
 
