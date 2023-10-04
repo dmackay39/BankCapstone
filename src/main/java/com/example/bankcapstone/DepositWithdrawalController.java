@@ -36,30 +36,35 @@ public class DepositWithdrawalController implements Initializable {
     private List<Account> accounts = customer.getAccountList();
     private List<Loan> loans = customer.getLoanList();
 
-    public void depositWithdrawalClicked(ActionEvent actionEvent) {
+    public void depositWithdrawalClicked(ActionEvent actionEvent) throws IllegalArgumentException {
         try {
             double moneyToDW = 0;
             moneyToDW += Integer.parseInt(depositWithdrawalPounds.getText().trim());
             moneyToDW += (Integer.parseInt(depositWithdrawalPennies.getText().trim())) / 100.0;
 
-            Integer accountNumberToDW = (Integer) depositWithdrawalAccountChoice.getValue();
-            Account accountToDW = customer.getAccountHashMap().get(accountNumberToDW);
-            if (DepositWithdrawal.getSelectedToggle().equals(depositRadioButton)) {
-                String result = customer.depositOrWithdraw(accountToDW, moneyToDW, "deposit");
-                insufficientFundsLabel.setText(result);
-                System.out.println(result);
-            } else if (DepositWithdrawal.getSelectedToggle().equals(withdrawalRadioButton)) {
-                String result = customer.depositOrWithdraw(accountToDW, moneyToDW, "withdraw");
-                System.out.println(result);
-                insufficientFundsLabel.setText(result);
+            if (moneyToDW > 0) {
+                Integer accountNumberToDW = (Integer) depositWithdrawalAccountChoice.getValue();
+                Account accountToDW = customer.getAccountHashMap().get(accountNumberToDW);
+                if (DepositWithdrawal.getSelectedToggle().equals(depositRadioButton)) {
+                    String result = customer.depositOrWithdraw(accountToDW, moneyToDW, "deposit");
+                    insufficientFundsLabel.setText(result);
+                    System.out.println(result);
+                } else if (DepositWithdrawal.getSelectedToggle().equals(withdrawalRadioButton)) {
+                    String result = customer.depositOrWithdraw(accountToDW, moneyToDW, "withdraw");
+                    System.out.println(result);
+                    insufficientFundsLabel.setText(result);
+                }
+                Stage stage = (Stage) depositWithdrawalSubmitButton.getScene().getWindow();
+                FXMLLoader fxmlLoader = new FXMLLoader(XYZBankApplication.class.getResource("customer-account.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+                stage.setTitle("Customer Account");
+                stage.setScene(scene);
             }
-            Stage stage = (Stage) depositWithdrawalSubmitButton.getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(XYZBankApplication.class.getResource("customer-account.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 650, 650);
-            stage.setTitle("Customer Account");
-            stage.setScene(scene);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            else {
+                throw new IllegalArgumentException();
+            }
+        } catch (Exception e) {
+            insufficientFundsLabel.setText("Enter a positive number");
         }
         ;
 
