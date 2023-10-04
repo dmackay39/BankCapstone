@@ -34,6 +34,8 @@ public class CustomerAccountController implements Initializable {
     @FXML
     public VBox LoansScrollVBox;
     public Button logout;
+    @FXML
+    public Label welcomeLabel;
 
 
     @FXML
@@ -75,7 +77,10 @@ public class CustomerAccountController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        List<Account> accounts = Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com").getAccountList();
+        Customer activeCustomer = Bank.getInstance().getActiveCustomer();
+        welcomeLabel.setText("Welcome " + activeCustomer.getFirstName() +", what would you like to do?");
+        List<Account> accounts = activeCustomer.getAccountList();
+
         for (int i = 0; i < accounts.size(); i++) {
             GridPane grid = new GridPane();
             grid.setHgap(10);
@@ -99,7 +104,7 @@ public class CustomerAccountController implements Initializable {
             accountsScrollVBox.getChildren().add(grid);
         }
 
-        List<Loan> loans = Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com").getLoanList();
+        List<Loan> loans = activeCustomer.getLoanList();
         for (int i = 0; i < loans.size(); i++) {
             GridPane gridLoans = new GridPane();
             gridLoans.setHgap(10);

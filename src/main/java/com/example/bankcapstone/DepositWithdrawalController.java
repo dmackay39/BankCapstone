@@ -30,9 +30,10 @@ public class DepositWithdrawalController implements Initializable {
     public RadioButton withdrawalRadioButton;
     public Button depositWithdrawalCancelButton;
 
-    Customer customer = Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com");
-    List<Account> accounts = customer.getAccountList();
-    List<Loan> loans = customer.getLoanList();
+    private Customer customer = Bank.getInstance().getActiveCustomer();
+    private List<Account> accounts = customer.getAccountList();
+    private List<Loan> loans = customer.getLoanList();
+
     public void depositWithdrawalClicked(ActionEvent actionEvent) {
         try {
             double moneyToDW = 0;

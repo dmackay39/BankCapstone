@@ -46,7 +46,9 @@ import java.io.IOException;
             } else if (!password.equals(confirmPassword) || password.length() < 8) {
                 loginText.setText("Passwords do not match. Please try again.");
             } else {
-                Bank.getInstance().createNewCustomer(new Customer(firstName, lastName, email, password));
+                Customer newCustomer = new Customer(firstName, lastName, email, password);
+                Bank.getInstance().createNewCustomer(newCustomer);
+                Bank.getInstance().setActiveCustomer(newCustomer);
                 Stage stage = (Stage) newRegistrationSubmitButton.getScene().getWindow();
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("customer-account.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 650, 650);

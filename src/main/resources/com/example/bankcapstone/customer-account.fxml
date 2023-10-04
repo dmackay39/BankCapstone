@@ -18,7 +18,7 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
     <children>
-        <Label text="Welcome, what would you like to do?" textFill="#08b0f8">
+        <Label fx:id="welcomeLabel" text="Welcome, what would you like to do?" textFill="#08b0f8">
             <font>
                 <Font name="System Bold" size="30.0" />
             </font>

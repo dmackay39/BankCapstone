@@ -28,7 +28,7 @@ public class MakeAPaymentController implements Initializable {
     public ComboBox paymentTransferFrom;
     public Button paymentTransferCancelButton;
 
-    Customer customer = Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com");
+    Customer customer = Bank.getInstance().getActiveCustomer();
     List<Account> accounts = customer.getAccountList();
     List<Loan> loans = customer.getLoanList();
 

@@ -9,19 +9,19 @@ import static java.lang.Math.abs;
 public class Bank {
 
     private HashMap<String, Customer> customerHashMap = new HashMap<>();
-//    private List<Account> accountList = new ArrayList<>();
-//    private List<Loan> loanList = new ArrayList<>();
     private double totalDeposits;
     private double totalLending;
     private ReaderWriter readerWriter;
 
     private static Bank bankInstance;
+    private Customer activeCustomer;
 
     private Bank(){
         readerWriter = new ReaderWriter();
     }
 
     public static Bank getInstance(){
+
         if (bankInstance == null){
             bankInstance = new Bank();
         }
@@ -34,7 +34,6 @@ public class Bank {
         readerWriter.readLoansFromFile();
         Account.setAccountNumCounter(readerWriter.getLatestAccountNumber());
         Loan.setSuperLoanNumber(readerWriter.getLatestLoanNumber());
-
     }
 
     public void saveDataToFile(){
@@ -42,23 +41,6 @@ public class Bank {
         readerWriter.writeAccountsToFile();
         readerWriter.writeLoansToFile();
     }
-
-
-//    public void populateAccountList(){
-//        for (String key: customerHashMap.keySet()){
-//            for (int i = 0; i <customerHashMap.get(key).getAccountList().size(); i++ ){
-//                accountList.add(customerHashMap.get(key).getAccountList().get(i));
-//            }
-//        }
-//    }
-
-//    public void populateLoanList(){
-//        for (String key: customerHashMap.keySet()){
-//            for (int i=0; i <customerHashMap.get(key).getLoanList().size(); i++ ){
-//                loanList.add(customerHashMap.get(key).getLoanList().get(i));
-//            }
-//        }
-//    }
 
 
     public void calculateTotalDeposits(){
@@ -158,4 +140,11 @@ public class Bank {
         }
     }
 
+    public Customer getActiveCustomer() {
+        return activeCustomer;
+    }
+
+    public void setActiveCustomer(Customer activeCustomer) {
+        this.activeCustomer = activeCustomer;
+    }
 }

@@ -29,7 +29,7 @@ public class LoanApplicationController implements Initializable {
     public ComboBox loanApplicationAccountPicker;
     public Button loanApplicationCancelButton;
 
-    Customer customer = Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com");
+    Customer customer = Bank.getInstance().getActiveCustomer();
     List<Account> accounts = customer.getAccountList();
 
     private LoanTypeEnum loanType;
@@ -46,9 +46,9 @@ public class LoanApplicationController implements Initializable {
             double moneyToLoan = Integer.parseInt(lApoundsString) + Integer.parseInt(lApenniesString) / 100.0;
 
             if (term == 0) {
-                Bank.getInstance().approveCustomerLoan("bobby.ayvazov@email.com", moneyToLoan, loanType, accountChoice);
+                Bank.getInstance().approveCustomerLoan(customer.getEmail(), moneyToLoan, loanType, accountChoice);
             } else {
-                Bank.getInstance().approveCustomerLoan("bobby.ayvazov@email.com", moneyToLoan, loanType, term, accountChoice);
+                Bank.getInstance().approveCustomerLoan(customer.getEmail(), moneyToLoan, loanType, term, accountChoice);
             }
             // Put code here to submit the loan application with the selected loan type and amount in pounds and pennies
 
