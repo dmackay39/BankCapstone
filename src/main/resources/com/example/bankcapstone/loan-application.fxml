@@ -10,13 +10,23 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0E1E2B;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankcapstone.LoanApplicationController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="623.0" prefWidth="594.0" style="-fx-background-color: #0E1E2B;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankcapstone.LoanApplicationController">
     <children>
         <Label text="Apply for a loan" textFill="#08b0f8">
             <font>
                 <Font name="System Bold" size="30.0" />
             </font>
         </Label>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Select Account :" textFill="#08b0f8">
+               <padding>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+               </padding>
+            </Label>
+            <ComboBox fx:id="loanApplicationAccountPicker" onAction="#onAccountTypePicker" prefWidth="150.0" />
+         </children>
+      </HBox>
         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
               <Label text="Select a Loan Type" textFill="#08b0f8">
@@ -54,10 +64,18 @@
                 <TextField fx:id="loanApplicationPennies" alignment="CENTER" prefWidth="50.0" text="00" />
             </children>
         </HBox>
-        <VBox alignment="CENTER" prefHeight="80.0" prefWidth="100.0">
-            <children>
-                <Button fx:id="loanApplicationSubmitButton" mnemonicParsing="false" onAction="#loanApplicationSubmitClicked" prefHeight="40.0" style="-fx-background-color: #fffff0;" text="Submit Request" textFill="#1c3d52" />
-            </children>
-        </VBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="loanApplicationCancelButton" mnemonicParsing="false" onAction="#loanApplicationCancelClicked" prefHeight="40.0" style="-fx-background-color: #fffff0;" text="Cancel" textFill="#1c3d52">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </Button>
+                <Button fx:id="loanApplicationSubmitButton" mnemonicParsing="false" onAction="#loanApplicationSubmitClicked" prefHeight="40.0" style="-fx-background-color: #fffff0;" text="Submit Request" textFill="#1c3d52">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin></Button>
+         </children>
+      </HBox>
     </children>
 </VBox>

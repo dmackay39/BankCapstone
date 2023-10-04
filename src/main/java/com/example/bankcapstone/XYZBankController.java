@@ -33,31 +33,22 @@ public class XYZBankController implements Initializable {
         try {
             if (landingPageGroup.getSelectedToggle().equals(customerLogIn)) {
                 Stage stage = (Stage) landingPageButton.getScene().getWindow();
-                stage.close();
-                Stage stage2 = new Stage();
-                FXMLLoader fxmlLoader2 = new FXMLLoader(XYZBankApplication.class.getResource("customer-login.fxml"));
-                Scene scene2 = new Scene(fxmlLoader2.load(), 650, 650);
-                stage2.setTitle("Customer Login");
-                stage2.setScene(scene2);
-                stage2.show();
+                FXMLLoader fxmlLoader = new FXMLLoader(XYZBankApplication.class.getResource("customer-login.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+                stage.setTitle("Customer Login");
+                stage.setScene(scene);
             } else if (landingPageGroup.getSelectedToggle().equals(customerRegistration)) {
                 Stage stage = (Stage) landingPageButton.getScene().getWindow();
-                stage.close();
-                Stage stage2 = new Stage();
-                FXMLLoader fxmlLoader2 = new FXMLLoader(XYZBankApplication.class.getResource("new-account-registration.fxml"));
-                Scene scene2 = new Scene(fxmlLoader2.load(), 650, 650);
-                stage2.setTitle("Customer Registration");
-                stage2.setScene(scene2);
-                stage2.show();
+                FXMLLoader fxmlLoader = new FXMLLoader(XYZBankApplication.class.getResource("new-account-registration.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+                stage.setTitle("Customer Registration");
+                stage.setScene(scene);
             } else if (landingPageGroup.getSelectedToggle().equals(employeeLogIn)) {
                 Stage stage = (Stage) landingPageButton.getScene().getWindow();
-                stage.close();
-                Stage stage2 = new Stage();
-                FXMLLoader fxmlLoader2 = new FXMLLoader(XYZBankApplication.class.getResource("employee-login-page.fxml"));
-                Scene scene2 = new Scene(fxmlLoader2.load(), 650, 650);
-                stage2.setTitle("Employee Login");
-                stage2.setScene(scene2);
-                stage2.show();
+                FXMLLoader fxmlLoader = new FXMLLoader(XYZBankApplication.class.getResource("employee-login-page.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+                stage.setTitle("Employee Login");
+                stage.setScene(scene);
             }
         }
         catch(RuntimeException re){

@@ -36,43 +36,54 @@ public abstract class Loan {
     public double getInterestRate() {
         return interestRate;
     }
+
     public double getBalance() {
         return this.balance;
     }
+
     public void setBalance(double balance) {
         this.balance = balance;
     }
-    public int getSuperLoanNumber(){
+
+    public int getSuperLoanNumber() {
         return superLoanNumber;
     }
-    public void setSuperLoanNumber(int number){
+
+    public void setSuperLoanNumber(int number) {
         superLoanNumber = number;
     }
-    public void setMaximumAmount(double maximumAmount){
+
+    public void setMaximumAmount(double maximumAmount) {
         this.maximumAmount = maximumAmount;
     }
-    public double getMaximumAmount(){
+
+    public double getMaximumAmount() {
         return this.maximumAmount;
     }
-    public LocalDate getStartDate(){
+
+    public LocalDate getStartDate() {
         return this.startDate;
     }
+
     public Loan(double balance, String email) {
         this.balance = -balance;
         this.startDate = LocalDate.now();
         this.email = email;
         superLoanNumber++;
     }
-    public Loan (double balance, LocalDate startDate, String email){
+
+    public Loan(double balance, LocalDate startDate, String email) {
         this.balance = balance;
         this.startDate = startDate;
         this.email = email;
     }
+
     public abstract void chargeInterest();
 
     public int getLoanNumber(){
         return this.loanNumber;
     }
+
 
     public abstract LocalDate getEndDate();
 
@@ -82,17 +93,16 @@ public abstract class Loan {
         return interestPaidDate;
     }
 
-
-
-    public void payInterest(){
-        if (interestPaidDate == null){
-            interestPaidDate = getStartDate();}
-
-        if (LocalDate.now().isAfter(interestPaidDate.plusYears(1))){
-            setBalance(balance*(1+getInterestRate()));
+    public void addInterest() {
+        if (interestPaidDate == null) {
+            interestPaidDate = getStartDate();
+        }
+        while (LocalDate.now().isAfter(interestPaidDate.plusYears(1))) {
+            setBalance(balance * (1 + getInterestRate()));
             interestPaidDate = interestPaidDate.plusYears(1);
         }
     }
+
 
     public void setInterestPaidDate(LocalDate interestPaidDate) {
         this.interestPaidDate = interestPaidDate;
