@@ -64,9 +64,6 @@ public class MakeAPaymentController implements Initializable {
     }
 
     public void comboChoiceSelected(ActionEvent actionEvent){
-        for (Loan loan: loans){
-            paymentTransferTo.getItems().add(loan.getLoanNumber());
-        }
 
         for (Account account : accounts) {
             paymentTransferTo.getItems().remove((Integer)account.getAccountNumber());

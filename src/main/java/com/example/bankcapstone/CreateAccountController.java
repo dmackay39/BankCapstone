@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -22,28 +23,31 @@ public class CreateAccountController implements Initializable {
     public TextField createAccountInfo;
     @FXML
     public ComboBox createAccountType;
-    public Button createAccountCancelButton;
-
     @FXML
+    public Button createAccountCancelButton;
+    @FXML
+    public Label statusText;
+
+    private AccountType accountType;
+    Customer customer = Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com");
+
     public void createAccountClicked(ActionEvent actionEvent) throws IOException {
         //create account - needs added
-        Stage stage = (Stage) createAccountRequestButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(XYZBankApplication.class.getResource("customer-account.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
-        stage.setTitle("Customer Account");
-        stage.setScene(scene);
+        Bank.getInstance().createNewAccount(accountType,customer);
+        statusText.setText("New account successfully created");
     }
 
     public void createAccountTypeClicked(ActionEvent actionEvent) {
         //need some help getting this working
         if (createAccountType.getValue().toString().equals("Savings Account")) {
-            createAccountInfo.setText("An account to save your pennies for a rainy day.");
+            createAccountInfo.setText("An account to save your pennies for a rainy day. Pays 5% interest");
+            accountType = AccountType.SAVINGS;
         } else if (createAccountType.getValue().toString().equals("Checking Account")) {
             createAccountInfo.setText("An simple current account for your day-to-day spending");
+            accountType = AccountType.CHECKING;
         } else if (createAccountType.getValue().toString().equals("CD Account - 1 year fixed term")) {
-            createAccountInfo.setText("A 1 year fixed term savings account");
-        } else if (createAccountType.getValue().toString().equals("CD Account - 2 year fixed term")) {
-            createAccountInfo.setText("A 2 year fixed term savings account");
+            createAccountInfo.setText("A 1 year fixed term savings account. Pays 7% interest");
+            accountType = AccountType.CD;
         }
     }
 
@@ -52,7 +56,6 @@ public class CreateAccountController implements Initializable {
         createAccountType.getItems().add("Savings Account");
         createAccountType.getItems().add("Checking Account");
         createAccountType.getItems().add("CD Account - 1 year fixed term");
-        createAccountType.getItems().add("CD Account - 2 year fixed term");
     }
 
     public void createAccountCancelClicked(ActionEvent actionEvent) throws IOException {

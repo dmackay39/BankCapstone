@@ -7,8 +7,8 @@ public class Customer {
 
     private String firstName, lastName, email, password;
 
-    private HashMap<Integer,Account> accountHashMap = new HashMap<>();
-    private HashMap<Integer,Loan> loanHashMap = new HashMap<>();
+    private HashMap<Integer, Account> accountHashMap = new HashMap<>();
+    private HashMap<Integer, Loan> loanHashMap = new HashMap<>();
 
     public Customer(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
@@ -50,7 +50,7 @@ public class Customer {
     }
 
     public void addAccount(Account account) {
-        accountHashMap.put(account.getAccountNumber(),account);
+        accountHashMap.put(account.getAccountNumber(), account);
     }
 
     public String getPassword() {
@@ -62,7 +62,7 @@ public class Customer {
     }
 
     public void addLoan(Loan loan) {
-        loanHashMap.put(loan.getLoanNumber(),loan);
+        loanHashMap.put(loan.getLoanNumber(), loan);
     }
 
     //payOrTransfer method for transfers between accounts
@@ -71,10 +71,10 @@ public class Customer {
             accountFrom.setBalance(accountFrom.getBalance() - amount);
             accountTo.setBalance(accountTo.getBalance() + amount);
             return "Transfer Successful";
-        } else if ((getAccessibleBalance()-amount) > 0) {
-            return "Transfer Failed. You may transfer funds to Account #" + accountFrom.getAccountNumber() + " from your other checking/savings accounts";
+        } else if ((getAccessibleBalance() - amount) > 0) {
+            return "Transfer Failed. You may transfer funds to Account #" + accountFrom.getAccountNumber() + " from your other checking/savings accounts.";
         } else {
-            return "Transfer failed as you do not have sufficient funds";
+            return "You do not have sufficient funds to make this transfer.";
         }
     }
 
@@ -84,10 +84,14 @@ public class Customer {
             accountFrom.setBalance(accountFrom.getBalance() - amount);
             loanTo.setBalance(loanTo.getBalance() + amount);
             return "Payment Successful";
-        } else if ((getAccessibleBalance()-amount) > 0) {
+        } else if ((getAccessibleBalance() - amount) > 0) {
             return "Payment Failed. You may transfer funds to Account #" + accountFrom.getAccountNumber() + " from your other checking/savings accounts";
+        } else if (((accountFrom.getBalance() - amount) == 0)) {
+            accountFrom.setBalance(accountFrom.getBalance() - amount);
+            loanHashMap.remove(loanTo.getLoanNumber());
+            return "Payment successful. Loan #" + loanTo.getLoanNumber() + " has been fully paid off and removed from your account.";
         } else {
-            return "This payment will overdraw your account and requires bank manager approval";
+            return "You do not have sufficient funds to make this payment.";
         }
     }
 
@@ -96,7 +100,7 @@ public class Customer {
         if ((accountFrom.getBalance() - amount) > 0) {
             accountFrom.setBalance(accountFrom.getBalance() - amount);
             return "Payment Successful";
-        } else if ((getAccessibleBalance()-amount) > 0) {
+        } else if ((getAccessibleBalance() - amount) > 0) {
             return "Payment Failed. You may transfer funds to Account #" + accountFrom.getAccountNumber() + " from your other checking/savings accounts";
         } else {
             return "This payment will overdraw your account and requires bank manager approval";
@@ -112,7 +116,6 @@ public class Customer {
         }
         return totalAccessibleBalance;
     }
-
 
     public String depositOrWithdraw(Account account, double amount, String option) {
         switch (option) {
