@@ -29,6 +29,9 @@ public class MakeAPaymentController implements Initializable {
     public ComboBox paymentTransferTo;
     @FXML
     public ComboBox paymentTransferFrom;
+
+    @FXML
+    public Label accountFromFundsLabel;
     public Button paymentTransferCancelButton;
     public Label availableFunds;
     public Label insufficientFundsLabel;
