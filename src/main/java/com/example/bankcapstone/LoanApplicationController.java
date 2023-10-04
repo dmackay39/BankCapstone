@@ -45,8 +45,10 @@ public class LoanApplicationController implements Initializable {
 
             if (term == 0) {
                 Bank.getInstance().approveCustomerLoan(customer.getEmail(), moneyToLoan, loanType, accountChoice);
+                loanLabel.setText("New loan requested. It will appear in your loans if approved");
             } else {
                 Bank.getInstance().approveCustomerLoan(customer.getEmail(), moneyToLoan, loanType, term, accountChoice);
+                loanLabel.setText("New loan requested. It will appear in your loans if approved");
             }
             // Put code here to submit the loan application with the selected loan type and amount in pounds and pennies
 
