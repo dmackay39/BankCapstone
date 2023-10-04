@@ -121,23 +121,33 @@ public class Bank {
     public void setCustomerHashMap(HashMap<String, Customer> customerHashMap) {
         this.customerHashMap = customerHashMap;
     }
-    public void approveCustomerLoan(String email, double loanBalance, LoanTypeEnum loanType, int term, int accountNumber){
+    public String approveCustomerLoan(String email, double loanBalance, LoanTypeEnum loanType, int term, int accountNumber){
         Customer customer = customerHashMap.get(email);
+        String approvalString;
         if (verifyLoan(customer, loanBalance, loanType)){
             LoanFactory factory = new LoanFactory();
             customer.addLoan(factory.createLoan(loanType,term,loanBalance,email));
             double currentBalance = customer.getAccountHashMap().get(accountNumber).getBalance();
             customer.getAccountHashMap().get(accountNumber).setBalance(currentBalance + loanBalance);
+            approvalString = "Loan approved, see accounts";
+        } else{
+            approvalString = "Loan rejected.";
         }
+        return approvalString;
     }
-    public void approveCustomerLoan(String email, double loanBalance, LoanTypeEnum loanType, int accountNumber){
+    public String approveCustomerLoan(String email, double loanBalance, LoanTypeEnum loanType, int accountNumber){
         Customer customer = customerHashMap.get(email);
+        String approvalString;
         if (verifyLoan(customer, loanBalance, loanType)){
             LoanFactory factory = new LoanFactory();
             customer.addLoan(factory.createLoan(loanType,loanBalance,email));
             double currentBalance = customer.getAccountHashMap().get(accountNumber).getBalance();
             customer.getAccountHashMap().get(accountNumber).setBalance(currentBalance + loanBalance);
+            approvalString = "Loan approved, see accounts";
+        } else{
+            approvalString = "Loan rejected.";
         }
+        return approvalString;
     }
 
 

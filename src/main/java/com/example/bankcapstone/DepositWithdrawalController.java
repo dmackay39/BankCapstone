@@ -29,6 +29,8 @@ public class DepositWithdrawalController implements Initializable {
     @FXML
     public RadioButton withdrawalRadioButton;
     public Button depositWithdrawalCancelButton;
+    public Label availableFunds;
+    public Label insufficientFundsLabel;
 
     private Customer customer = Bank.getInstance().getActiveCustomer();
     private List<Account> accounts = customer.getAccountList();
@@ -44,11 +46,12 @@ public class DepositWithdrawalController implements Initializable {
             Account accountToDW = customer.getAccountHashMap().get(accountNumberToDW);
             if (DepositWithdrawal.getSelectedToggle().equals(depositRadioButton)) {
                 String result = customer.depositOrWithdraw(accountToDW, moneyToDW, "deposit");
+                insufficientFundsLabel.setText(result);
                 System.out.println(result);
             } else if (DepositWithdrawal.getSelectedToggle().equals(withdrawalRadioButton)) {
                 String result = customer.depositOrWithdraw(accountToDW, moneyToDW, "withdraw");
                 System.out.println(result);
-
+                insufficientFundsLabel.setText(result);
             }
             Stage stage = (Stage) depositWithdrawalSubmitButton.getScene().getWindow();
             FXMLLoader fxmlLoader = new FXMLLoader(XYZBankApplication.class.getResource("customer-account.fxml"));

@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -29,6 +30,8 @@ public class MakeAPaymentController implements Initializable {
     @FXML
     public ComboBox paymentTransferFrom;
     public Button paymentTransferCancelButton;
+    public Label availableFunds;
+    public Label insufficientFundsLabel;
 
     Customer customer = Bank.getInstance().getActiveCustomer();
     List<Account> accounts = customer.getAccountList();
@@ -37,32 +40,29 @@ public class MakeAPaymentController implements Initializable {
 
     public void paymentTransferClicked(ActionEvent actionEvent){
 
-        try {
-            double moneyToTransfer = 0;
-            moneyToTransfer += Integer.parseInt(paymentTransferPounds.getText().trim());
-            moneyToTransfer += (Integer.parseInt(paymentTransferPennies.getText().trim())) / 100.0;
+        double moneyToTransfer = 0;
+        moneyToTransfer += Integer.parseInt(paymentTransferPounds.getText().trim());
+        moneyToTransfer += (Integer.parseInt(paymentTransferPennies.getText().trim())) / 100.0;
 
-            Integer accountNumberToPay = (Integer) paymentTransferFrom.getValue();
+        Integer accountNumberToPay = (Integer) paymentTransferFrom.getValue();
+        Account accountToPay = customer.getAccountHashMap().get(accountNumberToPay);
+        if (paymentTransferTo.getValue().equals("Bills")) {
+            String result = customer.depositOrWithdraw(accountToPay, moneyToTransfer, "withdraw");
+            insufficientFundsLabel.setText(result);
+        } else {
             Integer accountNumberToReceive = (Integer) paymentTransferTo.getValue();
 
-            Account accountToPay = customer.getAccountHashMap().get(accountNumberToPay);
             if (accountNumberToReceive < 1999999) {
                 Account accountToReceive = customer.getAccountHashMap().get(accountNumberToReceive);
                 String result = customer.payOrTransfer(accountToPay, accountToReceive, moneyToTransfer);
+                insufficientFundsLabel.setText(result);
                 System.out.println(result);
             } else {
                 Loan loanToReceive = customer.getLoanHashMap().get(accountNumberToReceive);
                 String result = customer.payOrTransfer(accountToPay, loanToReceive, moneyToTransfer);
+                insufficientFundsLabel.setText(result);
                 System.out.println(result);
             }
-            Stage stage = (Stage) paymentTransferSubmitButton.getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(XYZBankApplication.class.getResource("customer-account.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 650, 650);
-            stage.setTitle("Customer Account");
-            stage.setScene(scene);
-        }
-        catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
 
@@ -102,6 +102,7 @@ public class MakeAPaymentController implements Initializable {
         for (Loan loan : loans){
             paymentTransferTo.getItems().add(loan.getLoanNumber());
         }
+        paymentTransferTo.getItems().add("Bills");
     }
 
     public void paymentTransferCancelClicked(ActionEvent actionEvent) throws IOException {
