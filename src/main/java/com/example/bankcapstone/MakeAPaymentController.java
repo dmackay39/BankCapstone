@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -27,6 +28,8 @@ public class MakeAPaymentController implements Initializable {
     @FXML
     public ComboBox paymentTransferFrom;
     public Button paymentTransferCancelButton;
+    public Label availableFunds;
+    public Label insufficientFundsLabel;
 
     Customer customer = Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com");
     List<Account> accounts = customer.getAccountList();

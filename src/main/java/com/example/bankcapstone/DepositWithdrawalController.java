@@ -29,6 +29,8 @@ public class DepositWithdrawalController implements Initializable {
     @FXML
     public RadioButton withdrawalRadioButton;
     public Button depositWithdrawalCancelButton;
+    public Label availableFunds;
+    public Label insufficientFundsLabel;
 
     Customer customer = Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com");
     List<Account> accounts = customer.getAccountList();
