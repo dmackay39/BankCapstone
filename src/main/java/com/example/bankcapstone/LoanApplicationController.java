@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class LoanApplicationController implements Initializable {
@@ -24,18 +25,29 @@ public class LoanApplicationController implements Initializable {
     public TextField loanApplicationPounds;
     @FXML
     public ComboBox loanChoicePicker;
+    @FXML
+    public ComboBox loanApplicationAccountPicker;
+
+    Customer customer = Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com");
+    List<Account> accounts = customer.getAccountList();
 
     private LoanTypeEnum loanType;
     private int term = 0;
+    private int accountChoice;
+
 
     @FXML
     public void loanApplicationSubmitClicked(ActionEvent actionEvent) throws IOException {
-        String selectedLoanType = loanChoicePicker.getValue().toString();
 
         String lApoundsString = loanApplicationPounds.getText().trim();
         String lApenniesString = loanApplicationPennies.getText().trim();
-        double moneyToLoan = Integer.parseInt(lApoundsString) + Integer.parseInt(lApoundsString)/10.0;
+        double moneyToLoan = Integer.parseInt(lApoundsString) + Integer.parseInt(lApenniesString)/10.0;
 
+        if (term==0){
+            Bank.getInstance().approveCustomerLoan("bobby.ayvazov@email.com",moneyToLoan,loanType,accountChoice);
+        } else{
+            Bank.getInstance().approveCustomerLoan("bobby.ayvazov@email.com",moneyToLoan,loanType,term,accountChoice);
+        }
         // Put code here to submit the loan application with the selected loan type and amount in pounds and pennies
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -100,9 +112,14 @@ public class LoanApplicationController implements Initializable {
         loanChoicePicker.getItems().add("Car Loan - 4 years");
         loanChoicePicker.getItems().add("Car Loan - 5 years");
         loanChoicePicker.getItems().add("Personal Loan");
+
+        for (Account account:accounts){
+            loanApplicationAccountPicker.getItems().add(account.getAccountNumber());
+        }
     }
 
 
     public void onAccountTypePicker(ActionEvent actionEvent) {
+        accountChoice = (Integer) loanApplicationAccountPicker.getValue();
     }
 }
