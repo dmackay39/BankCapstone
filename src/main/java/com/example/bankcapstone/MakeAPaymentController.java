@@ -44,10 +44,12 @@ public class MakeAPaymentController implements Initializable {
             Account accountToPay = customer.getAccountHashMap().get(accountNumberToPay);
             if (accountNumberToReceive < 1999999) {
                 Account accountToReceive = customer.getAccountHashMap().get(accountNumberToReceive);
-                customer.payOrTransfer(accountToPay, accountToReceive, moneyToTransfer);
+                String result = customer.payOrTransfer(accountToPay, accountToReceive, moneyToTransfer);
+                System.out.println(result);
             } else {
                 Loan loanToReceive = customer.getLoanHashMap().get(accountNumberToReceive);
-                customer.payOrTransfer(accountToPay, loanToReceive, moneyToTransfer);
+                String result = customer.payOrTransfer(accountToPay, loanToReceive, moneyToTransfer);
+                System.out.println(result);
             }
             Stage stage = (Stage) paymentTransferSubmitButton.getScene().getWindow();
             stage.close();

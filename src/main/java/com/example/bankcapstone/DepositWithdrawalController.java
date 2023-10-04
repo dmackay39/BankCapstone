@@ -40,9 +40,12 @@ public class DepositWithdrawalController implements Initializable {
             Integer accountNumberToDW = (Integer) depositWithdrawalAccountChoice.getValue();
             Account accountToDW = customer.getAccountHashMap().get(accountNumberToDW);
             if (DepositWithdrawal.getSelectedToggle().equals(depositRadioButton)) {
-                customer.depositOrWithdraw(accountToDW, moneyToDW, "deposit");
+                String result = customer.depositOrWithdraw(accountToDW, moneyToDW, "deposit");
+                System.out.println(result);
             } else if (DepositWithdrawal.getSelectedToggle().equals(withdrawalRadioButton)) {
-                customer.depositOrWithdraw(accountToDW, moneyToDW, "withdraw");
+                String result = customer.depositOrWithdraw(accountToDW, moneyToDW, "withdraw");
+                System.out.println(result);
+
             }
             Stage stage = (Stage) depositWithdrawalSubmitButton.getScene().getWindow();
             stage.close();
