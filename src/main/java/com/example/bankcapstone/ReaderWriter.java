@@ -10,8 +10,8 @@ public class ReaderWriter {
     private final String loanPath = "src/main/resources/com/example/bankcapstone/loans.csv";
     private final String accountPath = "src/main/resources/com/example/bankcapstone/accounts.csv";
 
-    private int maxAccountNumber = 0;
-    private int maxLoanNumber = 0;
+    private int maxAccountNumber = 1000000;
+    private int maxLoanNumber = 2000000;
 
     public void readCustomersFromFile() {
         HashMap<String, Customer> customerDb = new HashMap<>();
