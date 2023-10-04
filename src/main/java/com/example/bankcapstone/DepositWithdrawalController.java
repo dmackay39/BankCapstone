@@ -31,6 +31,7 @@ public class DepositWithdrawalController implements Initializable {
 
     Customer customer = Bank.getInstance().getCustomerHashMap().get("bobby.ayvazov@email.com");
     List<Account> accounts = customer.getAccountList();
+    List<Loan> loans = customer.getLoanList();
     public void depositWithdrawalClicked(ActionEvent actionEvent) {
         try {
             double moneyToDW = 0;
@@ -48,13 +49,10 @@ public class DepositWithdrawalController implements Initializable {
 
             }
             Stage stage = (Stage) depositWithdrawalSubmitButton.getScene().getWindow();
-            stage.close();
-            Stage stage2 = new Stage();
             FXMLLoader fxmlLoader2 = new FXMLLoader(XYZBankApplication.class.getResource("customer-account.fxml"));
             Scene scene2 = new Scene(fxmlLoader2.load(), 650, 650);
-            stage2.setTitle("Customer Account");
-            stage2.setScene(scene2);
-            stage2.show();
+            stage.setTitle("Customer Account");
+            stage.setScene(scene2);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
