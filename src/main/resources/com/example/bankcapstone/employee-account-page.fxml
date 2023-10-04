@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 
 <VBox alignment="CENTER" prefHeight="719.0" prefWidth="712.0" spacing="20.0" style="-fx-background-color: #0E1E2B;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankcapstone.EmployeeAccountPageController">
     <padding>
@@ -24,5 +23,6 @@
          </font>
       </Label>
         <Label fx:id="loginText" textFill="#f51472" />
+      <Button fx:id="employeeLogoutButton" mnemonicParsing="false" onAction="#EmployeeLogoutClicked" style="-fx-background-color: #fffff0;" text="Log out" textFill="#1c3d52" />
     </children>
 </VBox>
