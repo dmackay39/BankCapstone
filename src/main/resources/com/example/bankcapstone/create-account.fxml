@@ -23,7 +23,7 @@
                 <Insets bottom="10.0" />
             </padding>
         </Label>
-        <ComboBox fx:id="createAccountType" onAction="#createAccountInfoClicked" prefWidth="600.0" />
+        <ComboBox fx:id="createAccountType" onAction="#createAccountTypeClicked" prefWidth="600.0" />
         <Label text="Account Info:" textFill="#08b0f8">
             <padding>
                 <Insets top="20.0" />

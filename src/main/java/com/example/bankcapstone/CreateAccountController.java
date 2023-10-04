@@ -7,13 +7,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class CreateAccountController implements Initializable {
@@ -34,32 +33,24 @@ public class CreateAccountController implements Initializable {
         stage.setScene(scene);
     }
 
-    @FXML
-    public void createAccountInfoClicked(ActionEvent actionEvent) {
+    public void createAccountTypeClicked(ActionEvent actionEvent) {
         //need some help getting this working
-        if(createAccountType.equals("Savings Account")){
+        if (createAccountType.getValue().toString().equals("Savings Account")) {
             createAccountInfo.setText("An account to save your pennies for a rainy day.");
-        }
-        else if(createAccountType.equals("Checking Account")){
+        } else if (createAccountType.getValue().toString().equals("Checking Account")) {
             createAccountInfo.setText("An simple current account for your day-to-day spending");
-        }
-        else if(createAccountType.equals("CD Account - 1 year fixed term")){
+        } else if (createAccountType.getValue().toString().equals("CD Account - 1 year fixed term")) {
             createAccountInfo.setText("A 1 year fixed term savings account");
-        }
-        else if(createAccountType.equals("CD Account - 2 year fixed term")){
+        } else if (createAccountType.getValue().toString().equals("CD Account - 2 year fixed term")) {
             createAccountInfo.setText("A 2 year fixed term savings account");
         }
-
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         createAccountType.getItems().add("Savings Account");
         createAccountType.getItems().add("Checking Account");
         createAccountType.getItems().add("CD Account - 1 year fixed term");
         createAccountType.getItems().add("CD Account - 2 year fixed term");
-
     }
-
 }
