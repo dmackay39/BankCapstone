@@ -25,12 +25,16 @@ public class LoanApplicationController implements Initializable {
     @FXML
     public ComboBox loanChoicePicker;
 
+    private LoanTypeEnum loanType;
+    private int term = 0;
+
     @FXML
     public void loanApplicationSubmitClicked(ActionEvent actionEvent) throws IOException {
         String selectedLoanType = loanChoicePicker.getValue().toString();
 
-        String lApoundsString = loanApplicationPounds.getText();
-        String lApenniesString = loanApplicationPennies.getText();
+        String lApoundsString = loanApplicationPounds.getText().trim();
+        String lApenniesString = loanApplicationPennies.getText().trim();
+        double moneyToLoan = Integer.parseInt(lApoundsString) + Integer.parseInt(lApoundsString)/10.0;
 
         // Put code here to submit the loan application with the selected loan type and amount in pounds and pennies
 
@@ -59,18 +63,32 @@ public class LoanApplicationController implements Initializable {
         if (selectedLoanType != null) {
             if (selectedLoanType.equals("Home Loan - 15 years")) {
                 // 15-year home loan
+                loanType = LoanTypeEnum.HOME;
+                term = 15;
             } else if (selectedLoanType.equals("Home Loan - 20 years")) {
                 // 20-year home loan
+                loanType = LoanTypeEnum.HOME;
+                term = 20;
             } else if (selectedLoanType.equals("Home Loan - 30 years")) {
                 // 30-year home loan
+                loanType = LoanTypeEnum.HOME;
+                term = 30;
             } else if (selectedLoanType.equals("Car Loan - 3 years")) {
                 // 3-year car loan
+                loanType = LoanTypeEnum.CAR;
+                term = 3;
             } else if (selectedLoanType.equals("Car Loan - 4 years")) {
                 // 4-year car loan
+                loanType = LoanTypeEnum.CAR;
+                term = 4;
             } else if (selectedLoanType.equals("Car Loan - 5 years")) {
                 // 5-year car loan
+                loanType = LoanTypeEnum.CAR;
+                term = 5;
             } else if (selectedLoanType.equals("Personal Loan")) {
                 // Personal loan
+                loanType = LoanTypeEnum.PERSONAL;
+                term = 0;
             }
         }
 
