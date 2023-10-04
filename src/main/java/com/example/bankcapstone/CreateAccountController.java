@@ -5,10 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -35,6 +32,18 @@ public class CreateAccountController implements Initializable {
         //create account - needs added
         Bank.getInstance().createNewAccount(accountType,customer);
         statusText.setText("New account successfully created");
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Account Application");
+        alert.setHeaderText(null);
+        alert.setContentText("New Account application submitted");
+
+        alert.showAndWait();
+
+        Stage stage = (Stage) createAccountRequestButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(XYZBankApplication.class.getResource("customer-account.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        stage.setTitle("Customer Account");
+        stage.setScene(scene);
     }
 
     public void createAccountTypeClicked(ActionEvent actionEvent) {
