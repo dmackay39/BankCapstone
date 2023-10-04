@@ -49,10 +49,10 @@ public class DepositWithdrawalController implements Initializable {
 
             }
             Stage stage = (Stage) depositWithdrawalSubmitButton.getScene().getWindow();
-            FXMLLoader fxmlLoader2 = new FXMLLoader(XYZBankApplication.class.getResource("customer-account.fxml"));
-            Scene scene2 = new Scene(fxmlLoader2.load(), 650, 650);
+            FXMLLoader fxmlLoader = new FXMLLoader(XYZBankApplication.class.getResource("customer-account.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 650, 650);
             stage.setTitle("Customer Account");
-            stage.setScene(scene2);
+            stage.setScene(scene);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

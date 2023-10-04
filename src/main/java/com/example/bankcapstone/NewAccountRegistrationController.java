@@ -45,12 +45,12 @@ import java.io.IOException;
                 loginText.setText("Passwords do not match. Please try again.");
             } else {
                 Bank.getInstance().createNewCustomer(new Customer(firstName, lastName, email, password));
-                Stage stage2 = (Stage) newRegistrationSubmitButton.getScene().getWindow();
+                Stage stage = (Stage) newRegistrationSubmitButton.getScene().getWindow();
 
-                FXMLLoader fxmlLoader3 = new FXMLLoader(getClass().getResource("customer-account.fxml"));
-                Scene scene3 = new Scene(fxmlLoader3.load(), 650, 650);
-                stage2.setTitle("Your Account");
-                stage2.setScene(scene3);
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("customer-account.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+                stage.setTitle("Your Account");
+                stage.setScene(scene);
             }
         }
     }
