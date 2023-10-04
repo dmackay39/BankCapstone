@@ -17,6 +17,16 @@
                 <Font name="System Bold" size="30.0" />
             </font>
         </Label>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Select Account :" textFill="#08b0f8">
+               <padding>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+               </padding>
+            </Label>
+            <ComboBox fx:id="loanApplicationAccountPicker" onAction="#onAccountTypePicker" prefWidth="150.0" />
+         </children>
+      </HBox>
         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
               <Label text="Select a Loan Type" textFill="#08b0f8">

@@ -147,7 +147,7 @@ public class ReaderWriter {
         HashMap<String, Customer> customerHashMap = Bank.getInstance().getCustomerHashMap();
         List<String> customerDetails = new LinkedList<>();
         try {
-            FileWriter fileWriter = new FileWriter(tempFilePath);
+            FileWriter fileWriter = new FileWriter(customerPath);
             fileWriter.write("First Name,Last Name,Email,Password");
             for (Customer customer : customerHashMap.values()) {
                 customerDetails.clear();
@@ -161,17 +161,13 @@ public class ReaderWriter {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        File originalFile = new File(customerPath);
-        File tempFile = new File(tempFilePath);
-        System.out.println(originalFile.delete() ? "Original Customers File Deleted" : "Failed to Delete Customers File");
-        System.out.println(tempFile.renameTo(originalFile) ? "Temp Customers File Renamed" : "Failed to Rename Temp Customers File");
     }
 
     public void writeAccountsToFile() {
         HashMap<String, Customer> customerHashMap = Bank.getInstance().getCustomerHashMap();
         List<String> accountDetails = new LinkedList<>();
         try {
-            FileWriter fileWriter = new FileWriter(tempFilePath);
+            FileWriter fileWriter = new FileWriter(accountPath);
             fileWriter.write("Account Type,Email,Account Number,Opening Date,Balance,Interest Rate,Interest Paid Date,Term");
             for (Customer customer : customerHashMap.values()) {
                 for (Account account : customer.getAccountList()) {
@@ -191,17 +187,13 @@ public class ReaderWriter {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        File originalFile = new File(accountPath);
-        File tempFile = new File(tempFilePath);
-        System.out.println(originalFile.delete() ? "Original Account File Deleted" : "Failed to Delete Original Account File");
-        System.out.println(tempFile.renameTo(originalFile) ? "Temp Account File Renamed" : "Failed to Rename Temp Account File");
     }
 
     public void writeLoansToFile() {
         HashMap<String, Customer> customerHashMap = Bank.getInstance().getCustomerHashMap();
         List<String> loanDetails = new LinkedList<>();
         try {
-            FileWriter fileWriter = new FileWriter(tempFilePath);
+            FileWriter fileWriter = new FileWriter(loanPath);
             fileWriter.write("Loan Type,Email,Loan Number,Opening Date,Balance,Interest Rate,Interest Added Date,End Date");
             for (Customer customer : customerHashMap.values()) {
                 for (Loan loans : customer.getLoanList()) {
@@ -213,7 +205,7 @@ public class ReaderWriter {
                     loanDetails.add(Double.toString(loans.getBalance()));
                     loanDetails.add(Double.toString(loans.getInterestRate()));
                     loanDetails.add(loans.getInterestPaidDate().toString());
-                    loanDetails.add(loans.getEndDate().toString());
+                    loanDetails.add(loans.getEndDate() == null ? "" : loans.getEndDate().toString());
                     fileWriter.write("\n" + String.join(",", loanDetails));
                 }
             }
@@ -221,10 +213,6 @@ public class ReaderWriter {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        File originalFile = new File(loanPath);
-        File tempFile = new File(tempFilePath);
-        //System.out.println(originalFile.delete() ? "Original Account File Deleted" : "Failed to Delete Original Account File");
-        //System.out.println(tempFile.renameTo(originalFile) ? "Temp Account File Renamed" : "Failed to Rename Temp Account File");
     }
 }
 

@@ -35,14 +35,11 @@ public class CustomerLoginController {
 
         if (email.matches(emailPattern) && password.length() >= 8) {
             // Valid email and password, navigate to the mainAccountPage
-            Stage stage2 = (Stage) customerSubmitButton.getScene().getWindow();
-            stage2.close();
-            Stage stage3 = new Stage();
-            FXMLLoader fxmlLoader3 = new FXMLLoader(getClass().getResource("customer-account.fxml"));
-            Scene scene3 = new Scene(fxmlLoader3.load(), 650, 650);
-            stage3.setTitle("Your Account");
-            stage3.setScene(scene3);
-            stage3.show();
+            Stage stage = (Stage) customerSubmitButton.getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("customer-account.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+            stage.setTitle("Your Account");
+            stage.setScene(scene);
         } else {
             loginText.setText("Incorrect username or password. Try again!");
         }
