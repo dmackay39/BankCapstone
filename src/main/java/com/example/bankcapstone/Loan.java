@@ -69,6 +69,8 @@ public abstract class Loan {
         this.balance = -balance;
         this.startDate = LocalDate.now();
         this.email = email;
+        this.interestPaidDate = LocalDate.now();
+        this.loanNumber = superLoanNumber;
         superLoanNumber++;
     }
 
