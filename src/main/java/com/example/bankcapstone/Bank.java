@@ -32,6 +32,9 @@ public class Bank {
         readerWriter.readCustomersFromFile();
         readerWriter.readAccountsFromFile();
         readerWriter.readLoansFromFile();
+        Account.setAccountNumCounter(readerWriter.getLatestAccountNumber());
+        Loan.setSuperLoanNumber(readerWriter.getLatestLoanNumber());
+
     }
 
     public void saveDataToFile(){

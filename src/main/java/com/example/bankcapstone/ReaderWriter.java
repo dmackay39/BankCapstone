@@ -10,7 +10,8 @@ public class ReaderWriter {
     private final String loanPath = "src/main/resources/com/example/bankcapstone/loans.csv";
     private final String accountPath = "src/main/resources/com/example/bankcapstone/accounts.csv";
 
-    private final String tempFilePath = "src/main/resources/com/example/bankcapstone/temp.csv";
+    private int maxAccountNumber = 0;
+    private int maxLoanNumber = 0;
 
     public void readCustomersFromFile() {
         HashMap<String, Customer> customerDb = new HashMap<>();
@@ -59,6 +60,7 @@ public class ReaderWriter {
                 AccountType accountType = AccountType.valueOf(tokens[0]);
                 String username = tokens[1];
                 Integer accountNumber = Integer.parseInt(tokens[2]);
+                maxAccountNumber = Math.max(maxAccountNumber,accountNumber);
                 String[] dateNums = tokens[3].split("-");
                 LocalDate openingDate = LocalDate.of(Integer.parseInt(dateNums[0]), Integer.parseInt(dateNums[1]), Integer.parseInt(dateNums[2]));
                 Double balance = Double.parseDouble(tokens[4]);
@@ -107,6 +109,7 @@ public class ReaderWriter {
                 LoanTypeEnum loanType = LoanTypeEnum.valueOf(tokens[0]);
                 String username = tokens[1];
                 Integer loanNumber = Integer.parseInt(tokens[2]);
+                maxLoanNumber = Math.max(maxLoanNumber, loanNumber);
                 String[] dateNums = tokens[3].split("-");
                 LocalDate openingDate = LocalDate.of(Integer.parseInt(dateNums[0]), Integer.parseInt(dateNums[1]), Integer.parseInt(dateNums[2]));
                 Double balance = Double.parseDouble(tokens[4]);
@@ -217,64 +220,11 @@ public class ReaderWriter {
     }
 
     public int getLatestAccountNumber(){
-        FileInputStream fileInputStream = null;
-        Scanner scanner;
-        List<Integer> accountNoList = new ArrayList<>();
-
-        try {
-            fileInputStream = new FileInputStream(accountPath);
-            scanner = new Scanner(fileInputStream);
-            scanner.nextLine();
-
-            while (scanner.hasNextLine()) {
-                String[] tokens = scanner.nextLine().split(",");
-                accountNoList.add(Integer.parseInt(tokens[2]));
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("error reading from file");
-        } finally {
-            try {
-                fileInputStream.close();
-            } catch (IOException e) {
-                System.out.println("Cannot close file!");
-            }
-        }
-        int max = accountNoList.stream().max(Comparator.comparing(Integer::intValue)).orElseThrow(NoSuchElementException::new);
-        System.out.println(max);
-        return max;
+        return this.maxAccountNumber;
     }
 
-    public int getLatestNumber(String string){
-        FileInputStream fileInputStream = null;
-        Scanner scanner;
-        List<Integer> accountNoList = new ArrayList<>();
-        String path = "";
-
-        switch (string){
-            case "loan" -> path = loanPath;
-            case "account" -> path = accountPath;
-        }
-
-        try {
-            fileInputStream = new FileInputStream(path);
-            scanner = new Scanner(fileInputStream);
-            scanner.nextLine();
-
-            while (scanner.hasNextLine()) {
-                String[] tokens = scanner.nextLine().split(",");
-                accountNoList.add(Integer.parseInt(tokens[2]));
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("error reading from file");
-        } finally {
-            try {
-                fileInputStream.close();
-            } catch (IOException e) {
-                System.out.println("Cannot close file!");
-            }
-        }
-        //System.out.println(max);
-        return accountNoList.stream().max(Comparator.comparing(Integer::intValue)).orElseThrow(NoSuchElementException::new);
+    public int getLatestLoanNumber(){
+        return this.maxLoanNumber;
     }
 
 
