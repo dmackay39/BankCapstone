@@ -74,6 +74,7 @@ public abstract class Loan {
     }
 
 
+
     public void payInterest(){
         if (interestPaidDate == null){
             interestPaidDate = getStartDate();}

@@ -6,6 +6,8 @@ import java.time.LocalDate;
 public class CarLoan extends Loan{
     private int loanNumber;
     private LocalDate endDate;
+    private final LoanTypeEnum loanType = LoanTypeEnum.CAR;
+
     public CarLoan(double amount, int term, String email) {
         super(amount, email);
         this.endDate = this.getStartDate().plusYears(term);
@@ -24,19 +26,18 @@ public class CarLoan extends Loan{
         return loanType;
     }
 
-    private final LoanTypeEnum loanType = LoanTypeEnum.CAR;
-
     public int getLoanNumber(){
         return loanNumber;
     }
     public LocalDate getEndDate(){
-        return endDate;
+        return this.endDate;
     }
 
     @Override
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
+
 
     public void chargeInterest(){
         double currentBalance = getBalance();

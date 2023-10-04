@@ -19,6 +19,13 @@ public class XYZBankApplication extends Application {
         stage.setScene(scene);
         stage.show();
     }
+    @Override
+    public void stop(){
+        System.out.println("Saving Data to file...");
+        Bank.getInstance().saveDataToFile();
+        System.out.println("DONE. Stage is closing");
+
+    }
 
     public static void main(String[] args) {
         launch();

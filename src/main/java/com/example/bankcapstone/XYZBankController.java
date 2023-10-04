@@ -65,7 +65,6 @@ public class XYZBankController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     @Override
@@ -75,4 +74,6 @@ public class XYZBankController implements Initializable {
         bank.populateBankDatabase();
 
     }
+
+
 }
