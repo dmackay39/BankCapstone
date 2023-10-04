@@ -85,4 +85,6 @@ public class LoanApplicationController implements Initializable {
     }
 
 
+    public void onAccountTypePicker(ActionEvent actionEvent) {
+    }
 }
