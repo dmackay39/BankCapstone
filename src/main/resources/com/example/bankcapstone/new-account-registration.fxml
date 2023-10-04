@@ -65,6 +65,6 @@
             </Button>
          </children>
       </HBox>
-        <Label fx:id="loginText" />
+        <Label fx:id="loginText" textFill="#f51472"/>
     </children>
 </VBox>

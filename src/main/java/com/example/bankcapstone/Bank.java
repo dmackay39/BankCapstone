@@ -32,6 +32,9 @@ public class Bank {
         readerWriter.readCustomersFromFile();
         readerWriter.readAccountsFromFile();
         readerWriter.readLoansFromFile();
+        Account.setAccountNumCounter(readerWriter.getLatestAccountNumber());
+        Loan.setSuperLoanNumber(readerWriter.getLatestLoanNumber());
+
     }
 
     public void saveDataToFile(){
@@ -102,7 +105,11 @@ public class Bank {
         System.out.println(totalLending);
         calculateTotalDeposits();
         System.out.println(totalDeposits);
-        customerLoanOwnership = totalCustomerLoans/totalLending;
+        if (totalLending ==0){
+            customerLoanOwnership = 0.0;
+        } else{
+            customerLoanOwnership = totalCustomerLoans/totalLending;
+        }
         System.out.println(customerLoanOwnership);
         if (((abs(loanBalance) + totalLending) < 0.9*totalDeposits) && (customerLoanOwnership < 0.1)){
             verification = true;

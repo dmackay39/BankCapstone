@@ -10,7 +10,8 @@ public class ReaderWriter {
     private final String loanPath = "src/main/resources/com/example/bankcapstone/loans.csv";
     private final String accountPath = "src/main/resources/com/example/bankcapstone/accounts.csv";
 
-    private final String tempFilePath = "src/main/resources/com/example/bankcapstone/temp.csv";
+    private int maxAccountNumber = 0;
+    private int maxLoanNumber = 0;
 
     public void readCustomersFromFile() {
         HashMap<String, Customer> customerDb = new HashMap<>();
@@ -59,6 +60,7 @@ public class ReaderWriter {
                 AccountType accountType = AccountType.valueOf(tokens[0]);
                 String username = tokens[1];
                 Integer accountNumber = Integer.parseInt(tokens[2]);
+                maxAccountNumber = Math.max(maxAccountNumber,accountNumber);
                 String[] dateNums = tokens[3].split("-");
                 LocalDate openingDate = LocalDate.of(Integer.parseInt(dateNums[0]), Integer.parseInt(dateNums[1]), Integer.parseInt(dateNums[2]));
                 Double balance = Double.parseDouble(tokens[4]);
@@ -107,6 +109,7 @@ public class ReaderWriter {
                 LoanTypeEnum loanType = LoanTypeEnum.valueOf(tokens[0]);
                 String username = tokens[1];
                 Integer loanNumber = Integer.parseInt(tokens[2]);
+                maxLoanNumber = Math.max(maxLoanNumber, loanNumber);
                 String[] dateNums = tokens[3].split("-");
                 LocalDate openingDate = LocalDate.of(Integer.parseInt(dateNums[0]), Integer.parseInt(dateNums[1]), Integer.parseInt(dateNums[2]));
                 Double balance = Double.parseDouble(tokens[4]);
@@ -215,6 +218,16 @@ public class ReaderWriter {
             throw new RuntimeException(e);
         }
     }
+
+    public int getLatestAccountNumber(){
+        return this.maxAccountNumber;
+    }
+
+    public int getLatestLoanNumber(){
+        return this.maxLoanNumber;
+    }
+
+
 }
 
 

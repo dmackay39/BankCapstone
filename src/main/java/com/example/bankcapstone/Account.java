@@ -82,4 +82,7 @@ public abstract class Account {
         }
     }
 
+    public static void setAccountNumCounter(int accountNumCounter) {
+        Account.accountNumCounter = accountNumCounter;
+    }
 }
