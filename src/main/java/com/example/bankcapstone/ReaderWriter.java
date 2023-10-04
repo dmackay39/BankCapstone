@@ -106,7 +106,7 @@ public class ReaderWriter {
 
                 LoanTypeEnum loanType = LoanTypeEnum.valueOf(tokens[0]);
                 String username = tokens[1];
-                Integer accountNumber = Integer.parseInt(tokens[2]);
+                Integer loanNumber = Integer.parseInt(tokens[2]);
                 String[] dateNums = tokens[3].split("-");
                 LocalDate openingDate = LocalDate.of(Integer.parseInt(dateNums[0]), Integer.parseInt(dateNums[1]), Integer.parseInt(dateNums[2]));
                 Double balance = Double.parseDouble(tokens[4]);
@@ -116,7 +116,7 @@ public class ReaderWriter {
                 LocalDate interestAddedDate = LocalDate.of(Integer.parseInt(dateNums[0]), Integer.parseInt(dateNums[1]), Integer.parseInt(dateNums[2]));
 
                 LoanFactory loanFactory = new LoanFactory();
-                Loan newLoan = loanFactory.createLoan(loanType, balance, openingDate, accountNumber, username);
+                Loan newLoan = loanFactory.createLoan(loanType, balance, openingDate, loanNumber, username);
                 newLoan.setInterestPaidDate(interestAddedDate);
                 newLoan.setInterestRate(interestRate);
 
@@ -198,6 +198,7 @@ public class ReaderWriter {
             for (Customer customer : customerHashMap.values()) {
                 for (Loan loans : customer.getLoanList()) {
                     loanDetails.clear();
+                    System.out.println(loans.getLoanType().toString());
                     loanDetails.add(loans.getLoanType().toString());
                     loanDetails.add(customer.getEmail());
                     loanDetails.add(Integer.toString(loans.getLoanNumber()));

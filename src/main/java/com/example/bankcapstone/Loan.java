@@ -5,28 +5,33 @@ import java.time.LocalDate;
 public abstract class Loan {
     private double interestRate = 0.1;
     private double balance;
+    private LocalDate startDate;
 
+    private static int superLoanNumber = 2000000;
+    private double maximumAmount;
     private String email;
+    private LoanTypeEnum loanType;
+    private int loanNumber;
+    private LocalDate interestPaidDate = null;
 
-    public LoanTypeEnum getLoanType() {
-        return loanType;
+    public Loan(double amount, LocalDate startDate, int loanNumber, String email) {
+        this.balance = amount;
+        this.startDate = startDate;
+        this.loanNumber = loanNumber;
+        this.email = email;
     }
+
+    public abstract LoanTypeEnum getLoanType();
 
     public void setLoanType(LoanTypeEnum loanType) {
         this.loanType = loanType;
     }
 
-    private LoanTypeEnum loanType;
-    private int loanNumber;
-
     public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    private LocalDate startDate;
 
-    private static int superLoanNumber = 2000000;
-    private double maximumAmount;
 
     public double getInterestRate() {
         return interestRate;
@@ -73,18 +78,20 @@ public abstract class Loan {
         this.email = email;
     }
 
- //   public abstract void chargeInterest();
+    public abstract void chargeInterest();
 
-    public abstract int getLoanNumber();
+    public int getLoanNumber(){
+        return this.loanNumber;
+    }
+
 
     public abstract LocalDate getEndDate();
 
-    private LocalDate interestPaidDate = null;
+
 
     public LocalDate getInterestPaidDate() {
         return interestPaidDate;
     }
-
 
     public void addInterest() {
         if (interestPaidDate == null) {

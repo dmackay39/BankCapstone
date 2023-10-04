@@ -34,6 +34,12 @@ public class Bank {
         readerWriter.readLoansFromFile();
     }
 
+    public void saveDataToFile(){
+        readerWriter.writeCustomersToFile();
+        readerWriter.writeAccountsToFile();
+        readerWriter.writeLoansToFile();
+    }
+
 
 //    public void populateAccountList(){
 //        for (String key: customerHashMap.keySet()){

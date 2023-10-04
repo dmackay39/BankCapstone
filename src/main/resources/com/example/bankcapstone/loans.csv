@@ -1,4 +1,4 @@
 Loan Type,Email,Loan Number,Opening Date,Balance,Interest Rate,Interest Added Date,End Date
 PERSONAL,bilal.khan@email.com,2000000,2023-10-02,-1000.0,0.1,2023-10-02,
+HOME,daniel.mackay@email.com,2000002,2015-10-02,-10000.0,0.1,2015-10-02,2030-10-02
 PERSONAL,bobby.ayvazov@email.com,2000001,2022-10-02,-1000.0,0.1,2022-10-02,
-HOME,daniel.mackay@email.com,2000002,2015-10-02,-10000,0.1,2015-10-02,2030-10-02
