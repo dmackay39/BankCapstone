@@ -40,29 +40,33 @@ public class LoanApplicationController implements Initializable {
     @FXML
     public void loanApplicationSubmitClicked(ActionEvent actionEvent) throws IOException {
 
-        String lApoundsString = loanApplicationPounds.getText().trim();
-        String lApenniesString = loanApplicationPennies.getText().trim();
-        double moneyToLoan = Integer.parseInt(lApoundsString) + Integer.parseInt(lApenniesString)/10.0;
+        try {
+            String lApoundsString = loanApplicationPounds.getText().trim();
+            String lApenniesString = loanApplicationPennies.getText().trim();
+            double moneyToLoan = Integer.parseInt(lApoundsString) + Integer.parseInt(lApenniesString) / 100.0;
 
-        if (term==0){
-            Bank.getInstance().approveCustomerLoan("bobby.ayvazov@email.com",moneyToLoan,loanType,accountChoice);
-        } else{
-            Bank.getInstance().approveCustomerLoan("bobby.ayvazov@email.com",moneyToLoan,loanType,term,accountChoice);
+            if (term == 0) {
+                Bank.getInstance().approveCustomerLoan("bobby.ayvazov@email.com", moneyToLoan, loanType, accountChoice);
+            } else {
+                Bank.getInstance().approveCustomerLoan("bobby.ayvazov@email.com", moneyToLoan, loanType, term, accountChoice);
+            }
+            // Put code here to submit the loan application with the selected loan type and amount in pounds and pennies
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Loan Application");
+            alert.setHeaderText(null);
+            alert.setContentText("Loan application submitted");
+
+            alert.showAndWait();
+
+            Stage stage = (Stage) loanApplicationSubmitButton.getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(XYZBankApplication.class.getResource("customer-account.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+            stage.setTitle("Customer Account");
+            stage.setScene(scene);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-        // Put code here to submit the loan application with the selected loan type and amount in pounds and pennies
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Loan Application");
-        alert.setHeaderText(null);
-        alert.setContentText("Loan application submitted");
-
-        alert.showAndWait();
-
-        Stage stage = (Stage) loanApplicationSubmitButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(XYZBankApplication.class.getResource("customer-account.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
-        stage.setTitle("Customer Account");
-        stage.setScene(scene);
     }
 
     @FXML
