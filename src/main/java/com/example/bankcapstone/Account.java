@@ -3,7 +3,7 @@ package com.example.bankcapstone;
 import java.time.LocalDate;
 
 public abstract class Account {
-    private static int accountNumCounter = 1000000;
+    private static int accountNumCounter;
     private LocalDate accountStartDate;
     private String username;
 
