@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="719.0" prefWidth="712.0" spacing="20.0" style="-fx-background-color: #0E1E2B;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankcapstone.PaymentOverdrawController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <children>
+        <Label text="This payment will overdraw your account" textAlignment="CENTER" textFill="#08b0f8">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+        <VBox alignment="CENTER" />
+        <Label fx:id="loginText" textFill="#f51472" />
+
+    <Button id="paymentOverdrawCancelButton" fx:id="paymentOverdrawCancelButton" onAction="#onPaymentOverdrawCancelButtonClick" style="-fx-background-color: #fffff0;" text="Cancel" textAlignment="CENTER" textFill="#1c3d52">
+        <font>
+            <Font name="Verdana" size="24.0" />
+        </font></Button>
+
+        <Button id="paymentOverdrawOverrideButton" fx:id="paymentOverdrawOverrideButton" onAction="#onPaymentOverdrawOverrideButtonClick" style="-fx-background-color: #fffff0;" text="Override" textAlignment="CENTER" textFill="#1c3d52">
+            <font>
+                <Font name="Verdana" size="24.0" />
+            </font></Button>
+    </children>
+</VBox>
