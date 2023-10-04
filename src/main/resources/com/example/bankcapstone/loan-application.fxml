@@ -77,5 +77,6 @@
                </HBox.margin></Button>
          </children>
       </HBox>
+      <Label fx:id="loanLabel" textFill="#f51472" />
     </children>
 </VBox>
