@@ -13,18 +13,17 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
     <children>
-        <Label text="Employee IT Support Line" textAlignment="CENTER" textFill="#08b0f8">
+        <Label text="Having trouble accessing your account?" textAlignment="CENTER" textFill="#08b0f8">
             <font>
                 <Font name="System Bold" size="30.0" />
             </font>
         </Label>
         <VBox alignment="CENTER" />
+        <Label text="Trouble accessing your account?" textFill="#08b0f8" />
+        <Label text=" Call Employee IT Support and quote your employee ID." textFill="#08b0f8" />
+        <Label text="Call: 01234567890" textFill="#08b0f8" />
+        <Label text="Email: IT@xyzbank.com" textFill="#08b0f8" />
         <Label fx:id="loginText" textFill="#f51472" />
-        <TextArea prefHeight="200.0" prefWidth="200.0" text="Having trouble accessing your account? Call Employee IT Support and quote your employee ID.&#10;Call:&#10;01234567890&#10;Email:&#10;IT@xyzbank.com" wrapText="true">
-            <style>
-                -fx-alignment: center;
-            </style>
-        </TextArea>
-      <Button fx:id="returnToLoginScreen" mnemonicParsing="false" onAction="#ReturnToLoginScreen" style="-fx-background-color: #c3c4c4,linear-gradient(#d6d6d6 50%, white 100%),        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%); -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 ); -fx-background-insets: 0,1,1; -fx-background-radius: 30;" text="Return to Login Screen" textFill="#1c3d52" />
+        <Button fx:id="returnToLoginScreen" mnemonicParsing="false" onAction="#ReturnToLoginScreen" style="-fx-background-color: #c3c4c4,linear-gradient(#d6d6d6 50%, white 100%),        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%); -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 ); -fx-background-insets: 0,1,1; -fx-background-radius: 30;" text="Return to Login Screen" textFill="#1c3d52" />
     </children>
 </VBox>

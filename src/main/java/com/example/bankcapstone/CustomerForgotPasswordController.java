@@ -15,7 +15,7 @@ public class CustomerForgotPasswordController {
     public void ReturnToLoginScreen(ActionEvent actionEvent) throws IOException {
 
         Stage stage = (Stage) returnToLoginScreen.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(XYZBankApplication.class.getResource("customer-login-page.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(XYZBankApplication.class.getResource("customer-login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 700, 700);
         stage.setTitle("Customer Login");
         stage.setScene(scene);

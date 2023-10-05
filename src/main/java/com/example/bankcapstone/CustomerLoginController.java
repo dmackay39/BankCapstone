@@ -27,7 +27,8 @@ public class CustomerLoginController {
     public Hyperlink createAccountField;
     @FXML
     public Label loginText;
-    public Button newRegistrationCancelButton;
+    @FXML
+    public Button customerLoginCancelButton;
 
     @FXML
     private void onHelloButtonClick() throws IOException {
@@ -62,12 +63,16 @@ public class CustomerLoginController {
     }
 
     @FXML
-    private void onForgotPasswordLinkClick() {
-        // Navigate to the forgotPasswordPage
+    private void onForgotPasswordLinkClick() throws IOException {
+        Stage stage = (Stage) forgotPasswordField.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(XYZBankApplication.class.getResource("forgot-password-customer.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 700, 700);
+        stage.setTitle("Customer Forgot Password");
+        stage.setScene(scene);
     }
 
     public void onCancelButtonClick(ActionEvent actionEvent) throws IOException {
-        Stage stage = (Stage) newRegistrationCancelButton.getScene().getWindow();
+        Stage stage = (Stage) customerLoginCancelButton.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("landing-page.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 700, 700);
         stage.setTitle("XYZ Bank - Landing Page");

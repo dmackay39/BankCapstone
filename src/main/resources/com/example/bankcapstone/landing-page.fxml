@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 
 <VBox alignment="CENTER" prefHeight="719.0" prefWidth="712.0" spacing="20.0" style="-fx-background-color: #0E1E2B;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankcapstone.XYZBankController">
     <padding>
@@ -12,6 +16,14 @@
     </padding>
 
    <children>
+      <Text fill="#0da8fc" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="X  Y  Z" textAlignment="CENTER" wrappingWidth="207.14324951171875">
+         <font>
+            <Font name="Tw Cen MT Condensed Extra Bold" size="60.0" />
+         </font>
+         <effect>
+            <Reflection />
+         </effect>
+      </Text>
 
        <GridPane alignment="CENTER" prefHeight="403.0" prefWidth="672.0">
            <columnConstraints>
@@ -49,12 +61,6 @@
                        <Font name="System" size="18.0" />
                    </font>
                </Button>
-
-               <Label text="XYZ Bank" textFill="#08b0f8" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                   <font>
-                       <Font name="System Bold" size="36.0" />
-                   </font>
-               </Label>
            </children>
        </GridPane>
       <Label fx:id="welcomeText" textFill="#f51472" />
