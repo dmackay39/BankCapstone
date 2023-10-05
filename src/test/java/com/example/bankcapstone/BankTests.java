@@ -36,4 +36,34 @@ public class BankTests {
         boolean compare = actualResult == expectedResult;
         Assertions.assertTrue(compare);
     }
+
+    @ParameterizedTest
+    @CsvSource({"50000,CAR,true","50000.01,CAR,false"
+            ,"45000,PERSONAL,true","45000.01,PERSONAL,false",
+            "2000000,HOME,true","2000000.01,HOME,false"})
+    public void testLoanExceedsAllowedType(double loanBalance, LoanTypeEnum loanType, boolean expectedResult){
+        uut.setTotalDeposits(10000000);
+        boolean actualResult = uut.verifyLoan(testCustomer,loanBalance,loanType);
+        boolean compare = actualResult == expectedResult;
+        Assertions.assertTrue(compare);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"1,CAR,false","1,PERSONAL,false",
+            "1,HOME,false"})
+    public void testLoanExceedsCustomerOwnership(double loanBalance, LoanTypeEnum loanType, boolean expectedResult){
+        uut.setTotalLending(100);
+        boolean actualResult = uut.verifyLoan(testCustomer,loanBalance,loanType);
+        boolean compare = actualResult == expectedResult;
+        Assertions.assertTrue(compare);
+    }
+    @ParameterizedTest
+    @CsvSource({"1,CAR,true","1,PERSONAL,true",
+            "1,HOME,true"})
+    public void testLoanUnderCustomerOwnership(double loanBalance, LoanTypeEnum loanType, boolean expectedResult){
+        uut.setTotalLending(101);
+        boolean actualResult = uut.verifyLoan(testCustomer,loanBalance,loanType);
+        boolean compare = actualResult == expectedResult;
+        Assertions.assertTrue(compare);
+    }
 }
