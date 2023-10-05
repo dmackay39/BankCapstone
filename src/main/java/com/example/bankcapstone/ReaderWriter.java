@@ -235,7 +235,7 @@ public class ReaderWriter {
     }
 
 
-    private boolean hasMatured(LocalDate openDate,int termLength){
+    public boolean hasMatured(LocalDate openDate,int termLength){
         if (Math.abs(openDate.until(LocalDate.now()).getYears()) >= termLength) {
             return true;
         }
