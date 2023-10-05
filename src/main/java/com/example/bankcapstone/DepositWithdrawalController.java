@@ -127,7 +127,7 @@ public class DepositWithdrawalController implements Initializable {
         Integer chosenAccountNumber = (Integer) depositWithdrawalAccountChoice.getValue();
         Account accountChoice = customer.getAccountHashMap().get(chosenAccountNumber);
         accountType.setText("Available Funds in your " + accountChoice.getAccountType().name() + " account: £");
-        availableFunds.setText(Double.toString(accountChoice.getBalance()));
+        availableFunds.setText(String.format("%.2f",accountChoice.getBalance()));
 
     }
 }

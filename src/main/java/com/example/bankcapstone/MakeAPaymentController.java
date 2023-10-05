@@ -119,9 +119,8 @@ public class MakeAPaymentController implements Initializable {
         } else {
             Account accountFrom = customer.getAccountHashMap().get((Integer) paymentTransferFrom.getValue());
 
-            accountFromFundsLabel.setText("Account Type: " + accountFrom.getAccountType() + " | Available Funds: £" + accountFrom.getBalance());
+            accountFromFundsLabel.setText("Account Type: " + accountFrom.getAccountType() + " | Available Funds: £" + String.format("%.2f",accountFrom.getBalance()));
         }
-
     }
 
 
@@ -176,9 +175,9 @@ public class MakeAPaymentController implements Initializable {
             Account accountTo = customer.getAccountHashMap().get((Integer) paymentTransferTo.getValue());
             Loan loanTo = customer.getLoanHashMap().get((Integer) paymentTransferTo.getValue());
             if (accountTo == null) {
-                accountToFundsLabel.setText("Loan Type: " + loanTo.getLoanType() + " | Balance: - £" + ((-1) * loanTo.getBalance()));
+                accountToFundsLabel.setText("Loan Type: " + loanTo.getLoanType() + " | Balance: - £" + (String.format("%.2f",(loanTo.getBalance()*(-1)))));
             } else {
-                accountToFundsLabel.setText("Account Type: " + accountTo.getAccountType() + " | Balance: £" + (accountTo.getBalance()));
+                accountToFundsLabel.setText("Account Type: " + accountTo.getAccountType() + " | Balance: £" + String.format("%.2f",accountTo.getBalance()));
             }
         }
     }
