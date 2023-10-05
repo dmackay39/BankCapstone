@@ -23,12 +23,12 @@
         <VBox alignment="CENTER" />
         <Label fx:id="loginText" textFill="#f51472" />
 
-    <Button id="paymentOverdrawCancelButton" fx:id="paymentOverdrawCancelButton" onAction="#onPaymentOverdrawCancelButtonClick" style="-fx-background-color: #fffff0;" text="Cancel" textAlignment="CENTER" textFill="#1c3d52">
+    <Button id="paymentOverdrawCancelButton" fx:id="paymentOverdrawCancelButton" onAction="#onPaymentOverdrawCancelButtonClick" prefWidth="100.0" style="-fx-background-color: #c3c4c4,linear-gradient(#d6d6d6 50%, white 100%),        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%); -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 ); -fx-background-insets: 0,1,1; -fx-background-radius: 30;" text="Cancel" textAlignment="CENTER" textFill="#1c3d52">
         <font>
             <Font name="Verdana" size="24.0" />
         </font></Button>
 
-        <Button id="paymentOverdrawOverrideButton" fx:id="paymentOverdrawOverrideButton" onAction="#onPaymentOverdrawOverrideButtonClick" style="-fx-background-color: #fffff0;" text="Override" textAlignment="CENTER" textFill="#1c3d52">
+        <Button id="paymentOverdrawOverrideButton" fx:id="paymentOverdrawOverrideButton" onAction="#onPaymentOverdrawOverrideButtonClick" prefWidth="100.0" style="-fx-background-color: #c3c4c4,linear-gradient(#d6d6d6 50%, white 100%),        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%); -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 ); -fx-background-insets: 0,1,1; -fx-background-radius: 30;" text="Override" textAlignment="CENTER" textFill="#1c3d52">
             <font>
                 <Font name="Verdana" size="24.0" />
             </font></Button>

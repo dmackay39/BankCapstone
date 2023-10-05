@@ -53,12 +53,12 @@
         <VBox alignment="CENTER" />
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button id="customerSubmitButton" fx:id="newRegistrationCancelButton" onAction="#onCancelButtonClick" style="-fx-background-color: #fffff0;" text="Back" textAlignment="CENTER" textFill="#1c3d52">
+            <Button id="customerSubmitButton" fx:id="newRegistrationCancelButton" onAction="#onCancelButtonClick" prefWidth="100.0" style="-fx-background-color: #c3c4c4,linear-gradient(#d6d6d6 50%, white 100%),        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%); -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 ); -fx-background-insets: 0,1,1; -fx-background-radius: 30;" text="Back" textAlignment="CENTER" textFill="#1c3d52">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
             </Button>
-              <Button id="customerSubmitButton" fx:id="newRegistrationSubmitButton" onAction="#onSubmitButtonClick" style="-fx-background-color: #fffff0;" text="Submit" textAlignment="CENTER" textFill="#1c3d52">
+              <Button id="customerSubmitButton" fx:id="newRegistrationSubmitButton" onAction="#onSubmitButtonClick" prefWidth="100.0" style="-fx-background-color: #c3c4c4,linear-gradient(#d6d6d6 50%, white 100%),        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%); -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 ); -fx-background-insets: 0,1,1; -fx-background-radius: 30;" text="Submit" textAlignment="CENTER" textFill="#1c3d52">
                <HBox.margin>
                   <Insets left="20.0" />
                </HBox.margin>
