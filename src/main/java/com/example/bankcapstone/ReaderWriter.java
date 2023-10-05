@@ -65,6 +65,13 @@ public class ReaderWriter {
                 LocalDate openingDate = LocalDate.of(Integer.parseInt(dateNums[0]), Integer.parseInt(dateNums[1]), Integer.parseInt(dateNums[2]));
                 Double balance = Double.parseDouble(tokens[4]);
 
+                // checking if the account has matured and if do then turn it to a Savings Account
+                if (accountType.equals(AccountType.CD) && hasMatured(openingDate, Integer.parseInt(tokens[7]))){
+                    accountType = AccountType.SAVINGS;
+                    // Need to update the interest as well
+                    tokens[5] = "0.05";
+                }
+                
                 Account newAccount = AccountFactory.createNewAccount(accountType, username, accountNumber, balance, openingDate);
 
                 switch (accountType) {
@@ -78,6 +85,7 @@ public class ReaderWriter {
                         newAccount.setInterestPaidDate(intDate);
                     }
                 }
+
                 newAccount.payInterest();
                 Bank.getInstance().getCustomerHashMap().get(username).addAccount(newAccount);
             }
@@ -145,7 +153,6 @@ public class ReaderWriter {
         }
         System.out.println("Loans loaded.");
     }
-
 
     public void writeCustomersToFile() {
         HashMap<String, Customer> customerHashMap = Bank.getInstance().getCustomerHashMap();
@@ -228,6 +235,12 @@ public class ReaderWriter {
     }
 
 
+    private boolean hasMatured(LocalDate openDate,int termLength){
+        if (Math.abs(openDate.until(LocalDate.now()).getYears()) >= termLength) {
+            return true;
+        }
+        return false;
+    }
 }
 
 
