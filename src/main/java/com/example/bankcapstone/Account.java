@@ -2,7 +2,7 @@ package com.example.bankcapstone;
 
 import java.time.LocalDate;
 
-public abstract class Account {
+public abstract class Account implements IAccount{
     private static int accountNumCounter = 1000000;
     private LocalDate accountStartDate;
     private String username;
