@@ -28,7 +28,7 @@
          <content>
             <VBox fx:id="accountsScrollVBox" alignment="TOP_CENTER" prefHeight="0.0" prefWidth="640.0" style="-fx-background-color: transparent;">
                <padding>
-                  <Insets left="10.0" right="10.0" />
+                  <Insets left="2.0" right="2.0" />
                </padding></VBox>
          </content>
       </ScrollPane>
@@ -40,7 +40,7 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
                <padding>
-                  <Insets left="10.0" right="10.0" />
+                  <Insets left="2.0" right="2.0" />
                </padding>
             </VBox>
          </content>
