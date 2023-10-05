@@ -41,10 +41,16 @@ import java.io.IOException;
             String password = enterPasswordField.getText();
             String confirmPassword = confirmPasswordField.getText();
 
-            if (!email.matches(emailPattern)){
+            if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()){
+                loginText.setText("Please complete all fields. ");
+            } else if (!email.matches(emailPattern)) {
                 loginText.setText("Invalid Email. Please try again.");
-            } else if (!password.equals(confirmPassword) || password.length() < 8) {
-                loginText.setText("Passwords do not match. Please try again.");
+            } else if (Bank.getInstance().getCustomerHashMap().containsKey(email)) {
+                loginText.setText("Customer account already exists.");
+            } else if (password.length() < 8) {
+                loginText.setText("Password should be at least 8 characters long.");
+            } else if (!password.equals(confirmPassword)) {
+                loginText.setText("Confirm Password does not match Password. Please re-enter passwords.");
             } else {
                 Customer newCustomer = new Customer(firstName, lastName, email, password);
                 Bank.getInstance().createNewCustomer(newCustomer);
