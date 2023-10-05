@@ -46,7 +46,9 @@
       </Line>
       <HBox alignment="CENTER" prefHeight="47.0" prefWidth="594.0">
          <children>
-            <Label text="Available Funds: £ " textFill="#08b0f8" />
+            <Label text="Available Funds in your " textFill="#08b0f8" />
+            <Label fx:id="accountType" textFill="#08b0f8" />
+            <Label text=" account: £ " textFill="#08b0f8" />
             <Label fx:id="availableFunds" textFill="#08b0f8" />
          </children>
       </HBox>
