@@ -26,7 +26,7 @@
                   <Insets right="20.0" />
                </HBox.margin>
             </RadioButton>
-            <RadioButton fx:id="withdrawalRadioButton" mnemonicParsing="false" text="Withdrawal" textFill="#08b0f8" toggleGroup="$DepositWithdrawal" onAction="#withdrawalSelected">
+            <RadioButton fx:id="withdrawalRadioButton" mnemonicParsing="false" onAction="#withdrawalSelected" text="Withdrawal" textFill="#08b0f8" toggleGroup="$DepositWithdrawal">
                <HBox.margin>
                   <Insets left="20.0" />
                </HBox.margin>
@@ -46,9 +46,7 @@
       </Line>
       <HBox alignment="CENTER" prefHeight="47.0" prefWidth="594.0">
          <children>
-            <Label text="Available Funds in your " textFill="#08b0f8" />
             <Label fx:id="accountType" textFill="#08b0f8" />
-            <Label text=" account: £ " textFill="#08b0f8" />
             <Label fx:id="availableFunds" textFill="#08b0f8" />
          </children>
       </HBox>
