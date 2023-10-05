@@ -35,8 +35,7 @@
       </Line>
       <HBox alignment="CENTER" prefHeight="47.0" prefWidth="594.0">
          <children>
-            <Label text="Available Funds: £ " textFill="#08b0f8" />
-            <Label fx:id="availableFunds" textFill="#08b0f8" />
+            <Label fx:id="accountFromFundsLabel" text="Select account to display available funds." textFill="#08b0f8" />
          </children>
       </HBox>
       <Line endX="100.0" startX="-100.0" stroke="#f51472">
@@ -49,8 +48,8 @@
             <Insets bottom="10.0" />
          </padding>
       </Label>
-      <ComboBox fx:id="paymentTransferTo" prefWidth="150.0" />
-      <Label fx:id="accountFromFundsLabel" textFill="#f51472" />
+      <ComboBox fx:id="paymentTransferTo" onAction="#paymentTransferToClicked" prefWidth="150.0" />
+      <Label fx:id="accountToFundsLabel" textFill="#f51472" />
         <Label text="Enter the amount: " textFill="#08b0f8">
             <padding>
                 <Insets top="20.0" />

@@ -33,6 +33,8 @@ public class MakeAPaymentController implements Initializable {
 
     @FXML
     public Label accountFromFundsLabel;
+    @FXML
+    public Label accountToFundsLabel;
     public Button paymentTransferCancelButton;
     public Label availableFunds;
     public Label insufficientFundsLabel;
@@ -40,8 +42,9 @@ public class MakeAPaymentController implements Initializable {
     Customer customer = Bank.getInstance().getActiveCustomer();
     List<Account> accounts = customer.getAccountList();
 
-    List<Loan> loans = customer.getLoanList();
+    List<Loan> loans ;
     List<Account> filteredAccounts = new ArrayList<>();
+
 
 
     public void paymentTransferClicked(ActionEvent actionEvent) throws IllegalArgumentException {
@@ -84,54 +87,77 @@ public class MakeAPaymentController implements Initializable {
                         System.out.println(result);
                     }
                 }
+                reInitialize();
             } else {
                 throw new IllegalArgumentException();
             }
         } catch (Exception e){
             insufficientFundsLabel.setText("Invalid amount entered");
         }
+
+
     }
 
     public void comboChoiceSelected(ActionEvent actionEvent) {
-
+        paymentTransferTo.getItems().clear();
         for (Account account : accounts) {
-            paymentTransferTo.getItems().remove((Integer) account.getAccountNumber());
-        }
-        for (Account account : accounts) {
+           paymentTransferTo.getItems().remove((Integer) account.getAccountNumber());
+       }
+       for (Account account : accounts) {
             paymentTransferTo.getItems().add(account.getAccountNumber());
         }
-        Integer accountNumberToRemove = (Integer) paymentTransferFrom.getValue();
-        paymentTransferTo.getItems().remove(accountNumberToRemove);
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        filteredAccounts = accounts.stream()
-                .filter((Account account) -> {
-                    if (account.getAccountType().equals(AccountType.SAVINGS) || account.getAccountType().equals(AccountType.CHECKING)){
-                        return true;
-                    }
-                    if (account.getAccountType().equals(AccountType.CD)){
-                        LocalDate openDate = account.getAccountStartDate();
-                        int closeDate = account.getTermLength();
-                        if(Math.abs(openDate.until(LocalDate.now()).getYears()) >= account.getTermLength()){
-                            return true;
-                        }
-                    }
-                    return false;
-                }).toList();
-
-        for (Account account : filteredAccounts)
-            paymentTransferFrom.getItems().add(account.getAccountNumber());
-
-        for (Account account: accounts)
-            paymentTransferTo.getItems().add(account.getAccountNumber());
-
+        loans = customer.getLoanList();
         for (Loan loan : loans)
             paymentTransferTo.getItems().add(loan.getLoanNumber());
 
         paymentTransferTo.getItems().add("Bills");
+
+        Integer accountNumberToRemove = (Integer) paymentTransferFrom.getValue();
+        paymentTransferTo.getItems().remove(accountNumberToRemove);
+
+        if (paymentTransferFrom.getValue() == null) {
+            accountFromFundsLabel.setText("");
+        } else {
+            Account accountFrom = customer.getAccountHashMap().get((Integer) paymentTransferFrom.getValue());
+            accountFromFundsLabel.setText("Available Funds: £" + accountFrom.getBalance());
+        }
+
     }
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        filteredAccounts = accounts.stream().filter((Account account) -> {
+            if (account.getAccountType().equals(AccountType.SAVINGS) || account.getAccountType().equals(AccountType.CHECKING)) {
+                return true;
+            }
+            if (account.getAccountType().equals(AccountType.CD)) {
+                LocalDate openDate = account.getAccountStartDate();
+                int closeDate = account.getTermLength();
+                if (Math.abs(openDate.until(LocalDate.now()).getYears()) >= account.getTermLength()) {
+                    return true;
+                }
+            }
+            return false;
+        }).toList();
+
+
+        reInitialize();
+    }
+
+    public void reInitialize() {
+        paymentTransferTo.getItems().clear();
+        paymentTransferFrom.getItems().clear();
+
+        for (Account account : filteredAccounts)
+            paymentTransferFrom.getItems().add(account.getAccountNumber());
+
+        accountFromFundsLabel.setText("Select an account to display funds.");
+        accountToFundsLabel.setText("");
+
+    }
+
 
     public void paymentTransferCancelClicked(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) paymentTransferCancelButton.getScene().getWindow();
@@ -139,5 +165,21 @@ public class MakeAPaymentController implements Initializable {
         Scene scene = new Scene(fxmlLoader.load(), 650, 650);
         stage.setTitle("Your Account");
         stage.setScene(scene);
+    }
+
+    public void paymentTransferToClicked(ActionEvent actionEvent) {
+        if (paymentTransferTo.getValue() == null) {
+            accountToFundsLabel.setText("");
+        } else if (paymentTransferTo.getValue().toString().equals("Bills")) {
+            accountToFundsLabel.setText("");
+        } else {
+            Account accountTo = customer.getAccountHashMap().get((Integer) paymentTransferTo.getValue());
+            Loan loanTo = customer.getLoanHashMap().get((Integer) paymentTransferTo.getValue());
+            if (accountTo == null) {
+                accountToFundsLabel.setText("Balance: - £" + ((-1) * loanTo.getBalance()));
+            } else {
+                accountToFundsLabel.setText("Balance: £" + (accountTo.getBalance()));
+            }
+        }
     }
 }
