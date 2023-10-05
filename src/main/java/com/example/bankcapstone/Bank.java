@@ -6,7 +6,7 @@ import java.util.List;
 
 import static java.lang.Math.abs;
 
-public class Bank {
+public class Bank implements IBank {
 
     private HashMap<String, Customer> customerHashMap = new HashMap<>();
     private double totalDeposits;
@@ -65,6 +65,7 @@ public class Bank {
         totalLending = total;
     }
 
+    @Override
     public boolean verifyLoan(Customer customer, double loanBalance, LoanTypeEnum loanType) {
         double customerLoanOwnership = 0;
         boolean verification;
@@ -109,6 +110,16 @@ public class Bank {
         }
         System.out.println(verification);
         return verification;
+    }
+
+    @Override
+    public void setTotalDeposits(double total) {
+        this.totalDeposits = total;
+    }
+
+    @Override
+    public void setTotalLending(double total) {
+        this.totalDeposits = total;
     }
 
     public void createNewCustomer(String firstName, String lastName, String email, String password) {
