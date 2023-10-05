@@ -70,24 +70,6 @@ public class Bank {
         boolean verification;
         double totalCustomerLoans = 0;
 
-        switch (loanType) {
-            case PERSONAL -> {
-                if (loanBalance > 45000) {
-                    verification = false;
-                }
-            }
-            case HOME -> {
-                if (loanBalance > 2000000) {
-                    verification = false;
-                }
-            }
-            case CAR -> {
-                if (loanBalance > 50000) {
-                    verification = false;
-                }
-            }
-        }
-
         for (int i = 0; i < customer.getLoanList().size(); i++) {
             totalCustomerLoans += abs(customer.getLoanList().get(i).getBalance());
         }
@@ -108,9 +90,27 @@ public class Bank {
             verification = false;
         }
         System.out.println(verification);
+
+        switch (loanType) {
+            case PERSONAL -> {
+                if (loanBalance > 45000) {
+                    verification = false;
+                }
+            }
+            case HOME -> {
+                if (loanBalance > 2000000) {
+                    verification = false;
+                }
+            }
+            case CAR -> {
+                if (loanBalance > 50000) {
+                    verification = false;
+                }
+            }
+        }
         return verification;
     }
-
+    
     public void createNewCustomer(String firstName, String lastName, String email, String password) {
         customerHashMap.put(email, new Customer(firstName, lastName, email, password));
     }
