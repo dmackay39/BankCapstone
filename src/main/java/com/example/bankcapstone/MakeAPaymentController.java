@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -41,7 +42,9 @@ public class MakeAPaymentController implements Initializable {
     Customer customer = Bank.getInstance().getActiveCustomer();
     List<Account> accounts = customer.getAccountList();
 
-    List<Loan> loans;
+    List<Loan> loans ;
+    List<Account> filteredAccounts = new ArrayList<>();
+
 
 
     public void paymentTransferClicked(ActionEvent actionEvent) throws IllegalArgumentException {
@@ -96,13 +99,19 @@ public class MakeAPaymentController implements Initializable {
     }
 
     public void comboChoiceSelected(ActionEvent actionEvent) {
-
+        paymentTransferTo.getItems().clear();
         for (Account account : accounts) {
            paymentTransferTo.getItems().remove((Integer) account.getAccountNumber());
        }
        for (Account account : accounts) {
             paymentTransferTo.getItems().add(account.getAccountNumber());
         }
+        loans = customer.getLoanList();
+        for (Loan loan : loans)
+            paymentTransferTo.getItems().add(loan.getLoanNumber());
+
+        paymentTransferTo.getItems().add("Bills");
+
         Integer accountNumberToRemove = (Integer) paymentTransferFrom.getValue();
         paymentTransferTo.getItems().remove(accountNumberToRemove);
 
@@ -118,6 +127,22 @@ public class MakeAPaymentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        filteredAccounts = accounts.stream().filter((Account account) -> {
+            if (account.getAccountType().equals(AccountType.SAVINGS) || account.getAccountType().equals(AccountType.CHECKING)) {
+                return true;
+            }
+            if (account.getAccountType().equals(AccountType.CD)) {
+                LocalDate openDate = account.getAccountStartDate();
+                int closeDate = account.getTermLength();
+                if (Math.abs(openDate.until(LocalDate.now()).getYears()) >= account.getTermLength()) {
+                    return true;
+                }
+            }
+            return false;
+        }).toList();
+
+
         reInitialize();
     }
 
@@ -125,32 +150,8 @@ public class MakeAPaymentController implements Initializable {
         paymentTransferTo.getItems().clear();
         paymentTransferFrom.getItems().clear();
 
-        loans = customer.getLoanList();
-
-        accounts = accounts.stream()
-                .filter((Account account) -> {
-                    if (account.getAccountType().equals(AccountType.SAVINGS) || account.getAccountType().equals(AccountType.CHECKING)) {
-                        return true;
-                    }
-                    if (account.getAccountType().equals(AccountType.CD)) {
-                        LocalDate openDate = account.getAccountStartDate();
-                        int closeDate = account.getTermLength();
-                        if (Math.abs(openDate.until(LocalDate.now()).getYears()) >= account.getTermLength()) {
-                            return true;
-                        }
-                    }
-                    return false;
-
-                }).toList();
-
-        for (Account account : accounts) {
+        for (Account account : filteredAccounts)
             paymentTransferFrom.getItems().add(account.getAccountNumber());
-         //   paymentTransferTo.getItems().add(account.getAccountNumber());
-        }
-        for (Loan loan : loans) {
-            paymentTransferTo.getItems().add(loan.getLoanNumber());
-        }
-        paymentTransferTo.getItems().add("Bills");
 
         accountFromFundsLabel.setText("Select an account to display funds.");
         accountToFundsLabel.setText("");

@@ -26,7 +26,7 @@
                   <Insets right="20.0" />
                </HBox.margin>
             </RadioButton>
-            <RadioButton fx:id="withdrawalRadioButton" mnemonicParsing="false" text="Withdrawal" textFill="#08b0f8" toggleGroup="$DepositWithdrawal">
+            <RadioButton fx:id="withdrawalRadioButton" mnemonicParsing="false" text="Withdrawal" textFill="#08b0f8" toggleGroup="$DepositWithdrawal" onAction="#withdrawalSelected">
                <HBox.margin>
                   <Insets left="20.0" />
                </HBox.margin>
