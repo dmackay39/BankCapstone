@@ -14,7 +14,7 @@ public class EmployeeITSupportPageController {
     public void ReturnToLoginScreen(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) returnToLoginScreen.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(XYZBankApplication.class.getResource("employee-login-page.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        Scene scene = new Scene(fxmlLoader.load(), 700, 700);
         stage.setTitle("Employee Login");
         stage.setScene(scene);
     }

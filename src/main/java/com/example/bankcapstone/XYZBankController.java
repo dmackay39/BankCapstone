@@ -34,19 +34,19 @@ public class XYZBankController implements Initializable {
             if (landingPageGroup.getSelectedToggle().equals(customerLogIn)) {
                 Stage stage = (Stage) landingPageButton.getScene().getWindow();
                 FXMLLoader fxmlLoader = new FXMLLoader(XYZBankApplication.class.getResource("customer-login.fxml"));
-                Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+                Scene scene = new Scene(fxmlLoader.load(), 700, 700);
                 stage.setTitle("Customer Login");
                 stage.setScene(scene);
             } else if (landingPageGroup.getSelectedToggle().equals(customerRegistration)) {
                 Stage stage = (Stage) landingPageButton.getScene().getWindow();
                 FXMLLoader fxmlLoader = new FXMLLoader(XYZBankApplication.class.getResource("new-account-registration.fxml"));
-                Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+                Scene scene = new Scene(fxmlLoader.load(), 700, 700);
                 stage.setTitle("Customer Registration");
                 stage.setScene(scene);
             } else if (landingPageGroup.getSelectedToggle().equals(employeeLogIn)) {
                 Stage stage = (Stage) landingPageButton.getScene().getWindow();
                 FXMLLoader fxmlLoader = new FXMLLoader(XYZBankApplication.class.getResource("employee-login-page.fxml"));
-                Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+                Scene scene = new Scene(fxmlLoader.load(), 700, 700);
                 stage.setTitle("Employee Login");
                 stage.setScene(scene);
             }

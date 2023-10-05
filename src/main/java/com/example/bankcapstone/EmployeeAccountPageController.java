@@ -14,7 +14,7 @@ public class EmployeeAccountPageController {
     public void EmployeeLogoutClicked(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) employeeLogoutButton.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("landing-page.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        Scene scene = new Scene(fxmlLoader.load(), 700, 700);
         stage.setTitle("XYZ Bank - Landing Page");
         stage.setScene(scene);
     }

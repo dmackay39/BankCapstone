@@ -62,7 +62,7 @@ public class LoanApplicationController implements Initializable {
 
                 Stage stage = (Stage) loanApplicationSubmitButton.getScene().getWindow();
                 FXMLLoader fxmlLoader = new FXMLLoader(XYZBankApplication.class.getResource("customer-account.fxml"));
-                Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+                Scene scene = new Scene(fxmlLoader.load(), 700, 700);
                 stage.setTitle("Customer Account");
                 stage.setScene(scene);
             } else{
@@ -135,7 +135,7 @@ public class LoanApplicationController implements Initializable {
     public void loanApplicationCancelClicked(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) loanApplicationCancelButton.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("customer-account.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        Scene scene = new Scene(fxmlLoader.load(), 700, 700);
         stage.setTitle("Your Account");
         stage.setScene(scene);
     }

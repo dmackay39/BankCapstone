@@ -26,7 +26,7 @@ public class ManagerCredentialsController {
 
         Stage previousStage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(XYZBankApplication.class.getResource("payment-overdraw-page.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        Scene scene = new Scene(fxmlLoader.load(), 700, 700);
         previousStage.setTitle("Payment Overdraw");
         previousStage.setScene(scene);
         previousStage.show();

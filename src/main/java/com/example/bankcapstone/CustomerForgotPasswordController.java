@@ -16,7 +16,7 @@ public class CustomerForgotPasswordController {
 
         Stage stage = (Stage) returnToLoginScreen.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(XYZBankApplication.class.getResource("customer-login-page.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        Scene scene = new Scene(fxmlLoader.load(), 700, 700);
         stage.setTitle("Customer Login");
         stage.setScene(scene);
     }

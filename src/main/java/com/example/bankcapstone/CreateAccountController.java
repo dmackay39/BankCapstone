@@ -41,7 +41,7 @@ public class CreateAccountController implements Initializable {
 
         Stage stage = (Stage) createAccountRequestButton.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(XYZBankApplication.class.getResource("customer-account.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        Scene scene = new Scene(fxmlLoader.load(), 700, 700);
         stage.setTitle("Customer Account");
         stage.setScene(scene);
     }
@@ -70,7 +70,7 @@ public class CreateAccountController implements Initializable {
     public void createAccountCancelClicked(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) createAccountCancelButton.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("customer-account.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        Scene scene = new Scene(fxmlLoader.load(), 700, 700);
         stage.setTitle("Your Account");
         stage.setScene(scene);
     }

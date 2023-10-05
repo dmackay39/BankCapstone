@@ -41,7 +41,7 @@ public class CustomerLoginController {
                 Bank.getInstance().setActiveCustomer(customer);
                 Stage stage = (Stage) customerSubmitButton.getScene().getWindow();
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("customer-account.fxml"));
-                Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+                Scene scene = new Scene(fxmlLoader.load(), 700, 700);
                 stage.setTitle("Your Account");
                 stage.setScene(scene);
             } else {
@@ -56,7 +56,7 @@ public class CustomerLoginController {
     private void onCreateAccountLinkClick() throws IOException {
         Stage stage = (Stage) createAccountField.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(XYZBankApplication.class.getResource("new-account-registration.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        Scene scene = new Scene(fxmlLoader.load(), 700, 700);
         stage.setTitle("Customer Registration");
         stage.setScene(scene);
     }
@@ -69,7 +69,7 @@ public class CustomerLoginController {
     public void onCancelButtonClick(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) newRegistrationCancelButton.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("landing-page.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        Scene scene = new Scene(fxmlLoader.load(), 700, 700);
         stage.setTitle("XYZ Bank - Landing Page");
         stage.setScene(scene);
     }

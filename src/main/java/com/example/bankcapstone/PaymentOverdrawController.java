@@ -34,7 +34,7 @@ public class PaymentOverdrawController {
 
             Stage stage2 = new Stage();
             FXMLLoader fxmlLoader2 = new FXMLLoader(XYZBankApplication.class.getResource("make-a-payment.fxml"));
-            Scene scene2 = new Scene(fxmlLoader2.load(), 650, 650);
+            Scene scene2 = new Scene(fxmlLoader2.load(), 700, 700);
             stage2.setTitle("Make a Payment");
             stage2.setScene(scene2);
             stage2.show();
@@ -50,7 +50,7 @@ public class PaymentOverdrawController {
         FXMLLoader fxmlLoader2 = new FXMLLoader(XYZBankApplication.class.getResource("manager-credentials.fxml"));
         Scene scene2 = null;
         try {
-            scene2 = new Scene(fxmlLoader2.load(), 650, 650);
+            scene2 = new Scene(fxmlLoader2.load(), 700, 700);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

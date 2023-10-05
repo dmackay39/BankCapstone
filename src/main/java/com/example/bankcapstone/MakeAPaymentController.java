@@ -162,7 +162,7 @@ public class MakeAPaymentController implements Initializable {
     public void paymentTransferCancelClicked(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) paymentTransferCancelButton.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("customer-account.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        Scene scene = new Scene(fxmlLoader.load(), 700, 700);
         stage.setTitle("Your Account");
         stage.setScene(scene);
     }

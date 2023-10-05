@@ -30,7 +30,7 @@ public class EmployeeLoginPageController {
         // Navigate to IT-support-info-page.fxml
         Stage stage = (Stage) ITSupportClickField.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("IT-support-info-page.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        Scene scene = new Scene(fxmlLoader.load(), 700, 700);
         stage.setTitle("IT Support");
         stage.setScene(scene);
     }
@@ -40,7 +40,7 @@ public class EmployeeLoginPageController {
         // Navigate to forgot-password-employee.fxml
         Stage stage = (Stage) forgotPasswordField.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("forgot-password-employee.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        Scene scene = new Scene(fxmlLoader.load(), 700, 700);
         stage.setTitle("Forgot Password");
         stage.setScene(scene);
     }
@@ -50,7 +50,7 @@ public class EmployeeLoginPageController {
         // Navigate to employee-account-page.fxml
         Stage stage = (Stage) employeeSubmitButton.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("employee-account-page.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        Scene scene = new Scene(fxmlLoader.load(), 700, 700);
         stage.setTitle("Your Account");
         stage.setScene(scene);
     }
@@ -58,7 +58,7 @@ public class EmployeeLoginPageController {
     public void employeeBackButtonClick(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) employeeBackButton.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("landing-page.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        Scene scene = new Scene(fxmlLoader.load(), 700, 700);
         stage.setTitle("XYZ Bank - Landing Page");
         stage.setScene(scene);
     }

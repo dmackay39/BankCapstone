@@ -42,7 +42,7 @@ public class CustomerAccountController implements Initializable {
     public void MakeAPaymentClicked(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) makeAPayment.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("make-a-payment.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        Scene scene = new Scene(fxmlLoader.load(), 700, 700);
         stage.setTitle("Make A Payment");
         stage.setScene(scene);
     }
@@ -51,7 +51,7 @@ public class CustomerAccountController implements Initializable {
     public void ApplyForALoanClicked(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) applyForALoan.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("loan-application.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        Scene scene = new Scene(fxmlLoader.load(), 700, 700);
         stage.setTitle("Loan Application");
         stage.setScene(scene);
     }
@@ -60,7 +60,7 @@ public class CustomerAccountController implements Initializable {
     public void CreateAccountClicked(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) createAccount.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("create-account.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        Scene scene = new Scene(fxmlLoader.load(), 700, 700);
         stage.setTitle("Create Account");
         stage.setScene(scene);
     }
@@ -69,7 +69,7 @@ public class CustomerAccountController implements Initializable {
     public void DepositOrWithdrawalClicked(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) depositWithdrawal.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("deposit-withdrawal.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        Scene scene = new Scene(fxmlLoader.load(), 700, 700);
         stage.setTitle("Your Account");
         stage.setScene(scene);
     }
@@ -132,7 +132,7 @@ public class CustomerAccountController implements Initializable {
     public void LogOutClicked(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) logout.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("landing-page.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        Scene scene = new Scene(fxmlLoader.load(), 700, 700);
         stage.setTitle("XYZ Bank - Landing Page");
         stage.setScene(scene);
     }
