@@ -17,34 +17,43 @@
     <children>
         <Label text="Employee Login" textAlignment="CENTER" textFill="#08b0f8">
             <font>
-                <Font name="System Bold" size="30.0" />
+                <Font name="System Bold" size="48.0" />
             </font>
+         <VBox.margin>
+            <Insets bottom="30.0" />
+         </VBox.margin>
         </Label>
         <Label text="Enter Company Email" textFill="#08b0f8">
             <font>
-                <Font size="20.0" />
+                <Font size="24.0" />
             </font>
         </Label>
-        <TextField fx:id="enterEmailField" prefHeight="31.0" prefWidth="359.0" />
+        <TextField fx:id="enterEmailField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="35.0" prefWidth="500.0" />
         <Label text="Enter Password" textFill="#08b0f8">
             <font>
-                <Font size="20.0" />
+                <Font size="24.0" />
             </font>
         </Label>
-        <PasswordField fx:id="enterPasswordField" />
-        <Hyperlink fx:id="ITSupportClickField" onAction="#CallEmployeeITSupportClick" text="Having trouble accessing your account? Call Employee IT Support " textFill="#2c5f78" />
+        <PasswordField fx:id="enterPasswordField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="35.0" prefWidth="500.0" />
+        <Hyperlink fx:id="ITSupportClickField" alignment="CENTER" onAction="#CallEmployeeITSupportClick" text="Having trouble accessing your account? Call Employee IT Support " textFill="#2c5f78" wrapText="true" />
         <VBox alignment="CENTER" />
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button id="employeeSubmitButton" fx:id="employeeBackButton" onAction="#employeeBackButtonClick" prefWidth="100.0" style="-fx-background-color: #c3c4c4,linear-gradient(#d6d6d6 50%, white 100%),        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%); -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 ); -fx-background-insets: 0,1,1; -fx-background-radius: 30;" text="Back" textAlignment="CENTER" textFill="#1c3d52">
+            <Button id="employeeSubmitButton" fx:id="employeeBackButton" onAction="#employeeBackButtonClick" prefWidth="110.0" style="-fx-background-color: #c3c4c4,linear-gradient(#d6d6d6 50%, white 100%),        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%); -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 ); -fx-background-insets: 0,1,1; -fx-background-radius: 30;" text="Back" textAlignment="CENTER" textFill="#1c3d52">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
+               <font>
+                  <Font size="24.0" />
+               </font>
             </Button>
-              <Button id="employeeSubmitButton" fx:id="employeeSubmitButton" onAction="#employeeSubmitButtonClick" prefWidth="100.0" style="-fx-background-color: #c3c4c4,linear-gradient(#d6d6d6 50%, white 100%),        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%); -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 ); -fx-background-insets: 0,1,1; -fx-background-radius: 30;" text="Submit" textAlignment="CENTER" textFill="#1c3d52">
+              <Button id="employeeSubmitButton" fx:id="employeeSubmitButton" onAction="#employeeSubmitButtonClick" prefWidth="110.0" style="-fx-background-color: #c3c4c4,linear-gradient(#d6d6d6 50%, white 100%),        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%); -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 ); -fx-background-insets: 0,1,1; -fx-background-radius: 30;" text="Submit" textAlignment="CENTER" textFill="#1c3d52">
                <HBox.margin>
                   <Insets left="20.0" />
                </HBox.margin>
+               <font>
+                  <Font size="24.0" />
+               </font>
             </Button>
          </children>
       </HBox>

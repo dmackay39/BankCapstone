@@ -9,54 +9,74 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="592.0" prefWidth="632.0" style="-fx-background-color: #0E1E2B;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankcapstone.CreateAccountController">
     <children>
-        <Label text="Create New Account" textFill="#08b0f8">
+        <Label prefWidth="461.0" text="Create New Account" textFill="#08b0f8">
             <font>
-                <Font name="System Bold" size="30.0" />
+                <Font name="System Bold" size="48.0" />
             </font>
          <padding>
-            <Insets bottom="20.0" />
+            <Insets bottom="30.0" />
          </padding>
         </Label>
-        <Label text="What type of account would you like to open?" textFill="#08b0f8">
+        <Label alignment="CENTER" text="What type of account would you like to open?" textAlignment="CENTER" textFill="#08b0f8" wrapText="true">
             <padding>
                 <Insets bottom="10.0" />
             </padding>
+         <font>
+            <Font size="24.0" />
+         </font>
         </Label>
-        <ComboBox fx:id="createAccountType" onAction="#createAccountTypeClicked" prefWidth="600.0" />
-      <Line endX="100.0" startX="-100.0" stroke="#f51472">
+        <ComboBox fx:id="createAccountType" onAction="#createAccountTypeClicked" prefWidth="460.0" />
+      <Line endX="230.0" startX="-230.0" stroke="#f51472">
          <VBox.margin>
             <Insets top="20.0" />
          </VBox.margin>
       </Line>
-        <Label text="Account Info:" textFill="#08b0f8">
+        <Label alignment="CENTER" prefWidth="460.0" text="Account Info:" textAlignment="CENTER" textFill="#08b0f8">
             <padding>
                 <Insets top="20.0" />
             </padding>
+         <font>
+            <Font size="24.0" />
+         </font>
         </Label>
-      <Label fx:id="accountInfo" alignment="CENTER" prefWidth="400.0" textAlignment="CENTER" textFill="#08b0f8" wrapText="true">
+      <Label fx:id="accountInfo" alignment="CENTER" prefWidth="460.0" textAlignment="CENTER" textFill="#08b0f8" wrapText="true">
          <VBox.margin>
             <Insets bottom="20.0" top="20.0" />
          </VBox.margin>
+         <font>
+            <Font name="System Italic" size="18.0" />
+         </font>
       </Label>
-      <Line endX="100.0" startX="-100.0" stroke="#f51472" />
-      <Label fx:id="statusText" text="Please allow 1-2 working days for your request to be processed" textFill="#08b0f8">
+      <Line endX="230.0" startX="-230.0" stroke="#f51472" />
+      <Label fx:id="statusText" alignment="CENTER" prefWidth="460.0" text="Please allow 1-2 working days for your request to be processed" textAlignment="CENTER" textFill="#08b0f8" wrapText="true">
          <padding>
             <Insets top="20.0" />
          </padding>
+         <font>
+            <Font size="24.0" />
+         </font>
       </Label>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button fx:id="createAccountCancelButton" mnemonicParsing="false" onAction="#createAccountCancelClicked" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #c3c4c4,linear-gradient(#d6d6d6 50%, white 100%),        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%); -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 ); -fx-background-insets: 0,1,1; -fx-background-radius: 30;" text="Back" textFill="#1c3d52">
+            <Button fx:id="createAccountCancelButton" mnemonicParsing="false" onAction="#createAccountCancelClicked" prefHeight="40.0" prefWidth="110.0" style="-fx-background-color: #c3c4c4,linear-gradient(#d6d6d6 50%, white 100%),        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%); -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 ); -fx-background-insets: 0,1,1; -fx-background-radius: 30;" text="Back" textFill="#1c3d52">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
+               <font>
+                  <Font size="24.0" />
+               </font>
             </Button>
-                <Button fx:id="createAccountRequestButton" mnemonicParsing="false" onAction="#createAccountClicked" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #c3c4c4,linear-gradient(#d6d6d6 50%, white 100%),        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%); -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 ); -fx-background-insets: 0,1,1; -fx-background-radius: 30;" text="Submit" textFill="#1c3d52">
+                <Button fx:id="createAccountRequestButton" mnemonicParsing="false" onAction="#createAccountClicked" prefHeight="40.0" prefWidth="110.0" style="-fx-background-color: #c3c4c4,linear-gradient(#d6d6d6 50%, white 100%),        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%); -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 ); -fx-background-insets: 0,1,1; -fx-background-radius: 30;" text="Submit" textFill="#1c3d52">
                <HBox.margin>
                   <Insets left="20.0" />
-               </HBox.margin></Button>
+               </HBox.margin>
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
          </children>
       </HBox>
     </children>

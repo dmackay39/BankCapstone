@@ -13,9 +13,9 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
     <children>
-        <Label text="Having trouble accessing your account?" textAlignment="CENTER" textFill="#08b0f8">
+        <Label text="Having trouble accessing your account?" textAlignment="CENTER" textFill="#08b0f8" wrapText="true">
             <font>
-                <Font name="System Bold" size="30.0" />
+                <Font name="System Bold" size="48.0" />
             </font>
         </Label>
         <VBox alignment="CENTER" />
@@ -24,6 +24,9 @@
         <Label text="Call: 01234567890" textFill="#08b0f8" />
         <Label text="Email: IT@xyzbank.com" textFill="#08b0f8" />
         <Label fx:id="loginText" textFill="#f51472" />
-        <Button fx:id="returnToLoginScreen" mnemonicParsing="false" onAction="#ReturnToLoginScreen" style="-fx-background-color: #c3c4c4,linear-gradient(#d6d6d6 50%, white 100%),        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%); -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 ); -fx-background-insets: 0,1,1; -fx-background-radius: 30;" text="Return to Login Screen" textFill="#1c3d52" />
+        <Button fx:id="returnToLoginScreen" mnemonicParsing="false" onAction="#ReturnToLoginScreen" style="-fx-background-color: #c3c4c4,linear-gradient(#d6d6d6 50%, white 100%),        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%); -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 ); -fx-background-insets: 0,1,1; -fx-background-radius: 30;" text="Return to Login Screen" textFill="#1c3d52">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
     </children>
 </VBox>
