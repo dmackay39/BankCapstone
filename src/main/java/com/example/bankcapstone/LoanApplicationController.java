@@ -69,7 +69,7 @@ public class LoanApplicationController implements Initializable {
                 throw new IllegalArgumentException();
             }
         } catch (Exception e) {
-            loanLabel.setText("Enter a positive number");
+            loanLabel.setText("Invalid amount entered");
         }
     }
 

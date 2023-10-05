@@ -64,7 +64,7 @@ public class DepositWithdrawalController implements Initializable {
                 throw new IllegalArgumentException();
             }
         } catch (Exception e) {
-            insufficientFundsLabel.setText("Enter a positive number");
+            insufficientFundsLabel.setText("Invalid amount entered");
         }
         ;
 

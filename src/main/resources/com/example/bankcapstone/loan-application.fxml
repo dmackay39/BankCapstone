@@ -66,7 +66,7 @@
         </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button fx:id="loanApplicationCancelButton" mnemonicParsing="false" onAction="#loanApplicationCancelClicked" prefHeight="40.0" style="-fx-background-color: #fffff0;" text="Cancel" textFill="#1c3d52">
+            <Button fx:id="loanApplicationCancelButton" mnemonicParsing="false" onAction="#loanApplicationCancelClicked" prefHeight="40.0" style="-fx-background-color: #fffff0;" text="Back" textFill="#1c3d52">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
