@@ -121,4 +121,10 @@ public class DepositWithdrawalController implements Initializable {
             depositWithdrawalAccountChoice.getItems().add(account.getAccountNumber());
         }
     }
+
+    public void onAccountChoiceClicked(ActionEvent actionEvent) {
+        Integer chosenAccountNumber = (Integer) depositWithdrawalAccountChoice.getValue();
+        Account accountChoice = customer.getAccountHashMap().get(chosenAccountNumber);
+        accountType.setText(accountChoice.getAccountType().name());
+    }
 }
