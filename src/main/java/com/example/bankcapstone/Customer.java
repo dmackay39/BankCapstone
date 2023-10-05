@@ -9,6 +9,7 @@ public class Customer {
 
     private HashMap<Integer, Account> accountHashMap = new HashMap<>();
     private HashMap<Integer, Loan> loanHashMap = new HashMap<>();
+    private IBank bank;
 
     public Customer(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
@@ -144,5 +145,9 @@ public class Customer {
 
     public String toString() {
         return this.getFirstName() + " " + this.getLastName() + " " + this.getEmail();
+    }
+
+    public void setBank(IBank bank) {
+        this.bank = bank;
     }
 }
