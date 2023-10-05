@@ -17,13 +17,13 @@ public class CreateAccountController implements Initializable {
     @FXML
     public Button createAccountRequestButton;
     @FXML
-    public TextField createAccountInfo;
-    @FXML
     public ComboBox createAccountType;
     @FXML
     public Button createAccountCancelButton;
     @FXML
     public Label statusText;
+    @FXML
+    public Label accountInfo;
 
     private AccountType accountType;
     Customer customer = Bank.getInstance().getActiveCustomer();
@@ -49,13 +49,13 @@ public class CreateAccountController implements Initializable {
     public void createAccountTypeClicked(ActionEvent actionEvent) {
         //need some help getting this working
         if (createAccountType.getValue().toString().equals("Savings Account")) {
-            createAccountInfo.setText("An account to save your pennies for a rainy day. Pays 5% interest");
+            accountInfo.setText("An account to save your pennies for a rainy day. Pays 5% interest");
             accountType = AccountType.SAVINGS;
         } else if (createAccountType.getValue().toString().equals("Checking Account")) {
-            createAccountInfo.setText("A simple current account for your day-to-day spending");
+            accountInfo.setText("A simple current account for your day-to-day spending");
             accountType = AccountType.CHECKING;
         } else if (createAccountType.getValue().toString().equals("CD Account - 1 year fixed term")) {
-            createAccountInfo.setText("A 1 year fixed term savings account. Pays 7% interest");
+            accountInfo.setText("A 1 year fixed term savings account. Pays 7% interest");
             accountType = AccountType.CD;
         }
     }

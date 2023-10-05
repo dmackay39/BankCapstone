@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
@@ -24,16 +25,22 @@
             </padding>
         </Label>
         <ComboBox fx:id="createAccountType" onAction="#createAccountTypeClicked" prefWidth="600.0" />
+      <Line endX="100.0" startX="-100.0" stroke="#f51472">
+         <VBox.margin>
+            <Insets top="20.0" />
+         </VBox.margin>
+      </Line>
         <Label text="Account Info:" textFill="#08b0f8">
             <padding>
                 <Insets top="20.0" />
             </padding>
         </Label>
-      <TextField fx:id="createAccountInfo" prefHeight="100.0">
+      <Label fx:id="accountInfo" alignment="CENTER" prefWidth="400.0" textAlignment="CENTER" textFill="#08b0f8" wrapText="true">
          <VBox.margin>
-            <Insets left="20.0" right="20.0" />
+            <Insets bottom="20.0" top="20.0" />
          </VBox.margin>
-      </TextField>
+      </Label>
+      <Line endX="100.0" startX="-100.0" stroke="#f51472" />
       <Label fx:id="statusText" text="Please allow 1-2 working days for your request to be processed" textFill="#08b0f8">
          <padding>
             <Insets top="20.0" />
