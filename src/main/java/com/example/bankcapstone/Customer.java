@@ -132,11 +132,10 @@ public class Customer {
             case "withdraw" -> {
                 if (account.getBalance() - amount > 0) {
                     account.setBalance(account.getBalance() - amount);
-                    return "Withdrawal Successful";
+                    return "Withdrawal Successful";}
+                else {
+                    return "Cannot withdraw more than account balance";
                 }
-            }
-            default -> {
-                return "Cannot withdraw more than account balance";
             }
         }
         return "";
