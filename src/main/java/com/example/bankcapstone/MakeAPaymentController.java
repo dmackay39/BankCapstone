@@ -88,8 +88,8 @@ public class MakeAPaymentController implements Initializable {
             } else {
                 throw new IllegalArgumentException();
             }
-        } catch (Exception e) {
-            insufficientFundsLabel.setText("Please enter a positive number");
+        } catch (Exception e){
+            insufficientFundsLabel.setText("Invalid amount entered");
         }
 
 

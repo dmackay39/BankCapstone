@@ -53,8 +53,12 @@ public class CustomerLoginController {
     }
 
     @FXML
-    private void onCreateAccountLinkClick() {
-        // Navigate to the newAccountRegistrationPage, similar to the mainAccountPage navigation logic
+    private void onCreateAccountLinkClick() throws IOException {
+        Stage stage = (Stage) createAccountField.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(XYZBankApplication.class.getResource("new-account-registration.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 650, 650);
+        stage.setTitle("Customer Registration");
+        stage.setScene(scene);
     }
 
     @FXML

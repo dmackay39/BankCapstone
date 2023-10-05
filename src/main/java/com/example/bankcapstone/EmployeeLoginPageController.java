@@ -37,9 +37,9 @@ public class EmployeeLoginPageController {
 
     @FXML
     private void onForgotPasswordLinkClick() throws IOException {
-        // Navigate to forgot-password-page.fxml
+        // Navigate to forgot-password-employee.fxml
         Stage stage = (Stage) forgotPasswordField.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("forgot-password-page.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("forgot-password-employee.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 650, 650);
         stage.setTitle("Forgot Password");
         stage.setScene(scene);
