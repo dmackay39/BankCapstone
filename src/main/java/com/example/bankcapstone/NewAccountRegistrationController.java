@@ -41,7 +41,9 @@ import java.io.IOException;
             String password = enterPasswordField.getText();
             String confirmPassword = confirmPasswordField.getText();
 
-            if (!email.matches(emailPattern)) {
+            if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()){
+                loginText.setText("Please complete all fields. ");
+            } else if (!email.matches(emailPattern)) {
                 loginText.setText("Invalid Email. Please try again.");
             } else if (Bank.getInstance().getCustomerHashMap().containsKey(email)) {
                 loginText.setText("Customer account already exists.");
