@@ -42,9 +42,8 @@ public class MakeAPaymentController implements Initializable {
     Customer customer = Bank.getInstance().getActiveCustomer();
     List<Account> accounts = customer.getAccountList();
 
-    List<Loan> loans ;
+    List<Loan> loans;
     List<Account> filteredAccounts = new ArrayList<>();
-
 
 
     public void paymentTransferClicked(ActionEvent actionEvent) throws IllegalArgumentException {
@@ -91,7 +90,7 @@ public class MakeAPaymentController implements Initializable {
             } else {
                 throw new IllegalArgumentException();
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             insufficientFundsLabel.setText("Invalid amount entered");
         }
 
@@ -101,9 +100,9 @@ public class MakeAPaymentController implements Initializable {
     public void comboChoiceSelected(ActionEvent actionEvent) {
         paymentTransferTo.getItems().clear();
         for (Account account : accounts) {
-           paymentTransferTo.getItems().remove((Integer) account.getAccountNumber());
-       }
-       for (Account account : accounts) {
+            paymentTransferTo.getItems().remove((Integer) account.getAccountNumber());
+        }
+        for (Account account : accounts) {
             paymentTransferTo.getItems().add(account.getAccountNumber());
         }
         loans = customer.getLoanList();
@@ -119,7 +118,8 @@ public class MakeAPaymentController implements Initializable {
             accountFromFundsLabel.setText("");
         } else {
             Account accountFrom = customer.getAccountHashMap().get((Integer) paymentTransferFrom.getValue());
-            accountFromFundsLabel.setText("Available Funds: £" + accountFrom.getBalance());
+
+            accountFromFundsLabel.setText("Account Type: " + accountFrom.getAccountType() + " | Available Funds: £" + accountFrom.getBalance());
         }
 
     }
@@ -176,9 +176,9 @@ public class MakeAPaymentController implements Initializable {
             Account accountTo = customer.getAccountHashMap().get((Integer) paymentTransferTo.getValue());
             Loan loanTo = customer.getLoanHashMap().get((Integer) paymentTransferTo.getValue());
             if (accountTo == null) {
-                accountToFundsLabel.setText("Balance: - £" + ((-1) * loanTo.getBalance()));
+                accountToFundsLabel.setText("Loan Type: " + loanTo.getLoanType() + " | Balance: - £" + ((-1) * loanTo.getBalance()));
             } else {
-                accountToFundsLabel.setText("Balance: £" + (accountTo.getBalance()));
+                accountToFundsLabel.setText("Account Type: " + accountTo.getAccountType() + " | Balance: £" + (accountTo.getBalance()));
             }
         }
     }
