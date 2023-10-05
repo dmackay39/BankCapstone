@@ -96,11 +96,14 @@ public class CustomerAccountController implements Initializable {
             amountInAccount.setFont(Font.font("Verdana", FontWeight.BOLD,20));
             grid.add(amountInAccount,20,0);
             grid.setStyle("-fx-padding: 10;" +
-                    "-fx-border-style: solid inside;" +
-                    "-fx-border-width: 2;" +
+                    "-fx-border-style: solid;" +
+                    "-fx-border-width: 1;" +
                     "-fx-border-insets: 5;" +
                     "-fx-border-radius: 5;" +
-                    "-fx-border-color: #0E1E2B;");
+                    "-fx-background-insets: 5;" +
+                    "-fx-background-radius: 5;" +
+                    "-fx-border-color: #08b0f8;" +
+                    "-fx-background-color: white");
             accountsScrollVBox.getChildren().add(grid);
         }
 
@@ -120,11 +123,14 @@ public class CustomerAccountController implements Initializable {
             amountOfLoanUnpaid.setFont(Font.font("Verdana", FontWeight.BOLD,20));
             gridLoans.add(amountOfLoanUnpaid,20,0);
             gridLoans.setStyle("-fx-padding: 10;" +
-                    "-fx-border-style: solid inside;" +
-                    "-fx-border-width: 2;" +
+                    "-fx-border-style: solid;" +
+                    "-fx-border-width: 1;" +
                     "-fx-border-insets: 5;" +
                     "-fx-border-radius: 5;" +
-                    "-fx-border-color: #0E1E2B;");
+                    "-fx-background-insets: 5;" +
+                    "-fx-background-radius: 5;" +
+                    "-fx-border-color: #08b0f8;" +
+                    "-fx-background-color: white");
             LoansScrollVBox.getChildren().add(gridLoans);
         }
     }

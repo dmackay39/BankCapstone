@@ -24,24 +24,30 @@
             </font>
         </Label>
       <Label alignment="CENTER" text="My Accounts" textFill="#08b0f8" />
-      <ScrollPane prefHeight="192.0" prefWidth="672.0">
+      <ScrollPane prefHeight="192.0" prefWidth="683.0" style="-fx-border-color: #08b0f8; -fx-border-radius: 5; -fx-background-radius: 5; -fx-background-color: transparent;" vbarPolicy="ALWAYS">
          <content>
-            <VBox fx:id="accountsScrollVBox" prefWidth="600.0" />
+            <VBox fx:id="accountsScrollVBox" alignment="TOP_CENTER" prefHeight="0.0" prefWidth="640.0" style="-fx-background-color: transparent;">
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding></VBox>
          </content>
       </ScrollPane>
       <Label text="My Loans" textFill="#08b0f8" />
-      <ScrollPane prefHeight="192.0" prefWidth="672.0">
+      <ScrollPane prefHeight="192.0" prefWidth="683.0" style="-fx-background-color: transparent; -fx-border-radius: 5; -fx-border-color: #08b0f8; -fx-background-radius: 5;" vbarPolicy="ALWAYS">
          <content>
-            <VBox fx:id="LoansScrollVBox" prefWidth="600.0">
+            <VBox fx:id="LoansScrollVBox" alignment="TOP_CENTER" prefHeight="0.0" prefWidth="640.0" style="-fx-background-color: transparent;">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
             </VBox>
          </content>
       </ScrollPane>
       <VBox alignment="CENTER" prefWidth="100.0">
          <children>
-            <Button fx:id="makeAPayment" mnemonicParsing="false" onAction="#MakeAPaymentClicked" prefWidth="600.0" style="-fx-background-color: #fffff0;" text="Make a Payment or Transfer Between Accounts" textFill="#1c3d52">
+            <Button fx:id="makeAPayment" mnemonicParsing="false" onAction="#MakeAPaymentClicked" prefWidth="600.0" style="-fx-background-color: #c3c4c4,linear-gradient(#d6d6d6 50%, white 100%),        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%); -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 ); -fx-background-insets: 0,1,1; -fx-background-radius: 30;" text="Make a Payment or Transfer Between Accounts" textFill="#1c3d52">
                <VBox.margin>
                   <Insets right="10.0" top="10.0" />
                </VBox.margin>
@@ -49,22 +55,22 @@
                   <Insets />
                </opaqueInsets>
             </Button>
-            <Button fx:id="applyForALoan" mnemonicParsing="false" onAction="#ApplyForALoanClicked" prefWidth="600.0" style="-fx-background-color: #fffff0;" text="Apply for a Loan" textFill="#1c3d52">
+            <Button fx:id="applyForALoan" mnemonicParsing="false" onAction="#ApplyForALoanClicked" prefWidth="600.0" style="-fx-background-color: #c3c4c4,linear-gradient(#d6d6d6 50%, white 100%),        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%); -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 ); -fx-background-insets: 0,1,1; -fx-background-radius: 30;" text="Apply for a Loan" textFill="#1c3d52">
                <VBox.margin>
                   <Insets right="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="createAccount" mnemonicParsing="false" onAction="#CreateAccountClicked" prefWidth="600.0" style="-fx-background-color: #fffff0;" text="Create Account" textFill="#1c3d52">
+            <Button fx:id="createAccount" mnemonicParsing="false" onAction="#CreateAccountClicked" prefWidth="600.0" style="-fx-background-color: #c3c4c4,linear-gradient(#d6d6d6 50%, white 100%),        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%); -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 ); -fx-background-insets: 0,1,1; -fx-background-radius: 30;" text="Create Account" textFill="#1c3d52">
                <VBox.margin>
                   <Insets right="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="depositWithdrawal" mnemonicParsing="false" onAction="#DepositOrWithdrawalClicked" prefWidth="600.0" style="-fx-background-color: #fffff0;" text="Make a Deposit or Withdrawal from Your Accounts" textFill="#1c3d52">
+            <Button fx:id="depositWithdrawal" mnemonicParsing="false" onAction="#DepositOrWithdrawalClicked" prefWidth="600.0" style="-fx-background-color: #c3c4c4,linear-gradient(#d6d6d6 50%, white 100%),        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%); -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 ); -fx-background-insets: 0,1,1; -fx-background-radius: 30;" text="Make a Deposit or Withdrawal from Your Accounts" textFill="#1c3d52">
                <VBox.margin>
                   <Insets right="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="logout" mnemonicParsing="false" onAction="#LogOutClicked" prefWidth="600.0" style="-fx-background-color: #fffff0;" text="Log out" textFill="#1c3d52">
+            <Button fx:id="logout" mnemonicParsing="false" onAction="#LogOutClicked" prefWidth="600.0" style="-fx-background-color: #c3c4c4,linear-gradient(#d6d6d6 50%, white 100%),        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%); -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 ); -fx-background-insets: 0,1,1; -fx-background-radius: 30;" text="Log out" textFill="#1c3d52">
                <VBox.margin>
                   <Insets right="10.0" top="10.0" />
                </VBox.margin>
