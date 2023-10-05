@@ -38,7 +38,7 @@
             <Insets bottom="10.0" />
          </padding>
       </Label>
-      <ComboBox fx:id="depositWithdrawalAccountChoice" prefWidth="150.0" />
+      <ComboBox fx:id="depositWithdrawalAccountChoice" onAction="#onAccountChoiceClicked" prefWidth="150.0" />
       <Line endX="100.0" startX="-100.0" stroke="#f51472">
          <VBox.margin>
             <Insets top="20.0" />
