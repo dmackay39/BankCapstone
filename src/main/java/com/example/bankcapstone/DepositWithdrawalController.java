@@ -89,6 +89,7 @@ public class DepositWithdrawalController implements Initializable {
         for (Account account : accounts) {
             depositWithdrawalAccountChoice.getItems().add(account.getAccountNumber());
         }
+        accountType.setText("Select an account to display the account type and funds.");
     }
 
     public void depositWithdrawalCancelClicked(ActionEvent actionEvent) throws IOException {
@@ -125,6 +126,8 @@ public class DepositWithdrawalController implements Initializable {
     public void onAccountChoiceClicked(ActionEvent actionEvent) {
         Integer chosenAccountNumber = (Integer) depositWithdrawalAccountChoice.getValue();
         Account accountChoice = customer.getAccountHashMap().get(chosenAccountNumber);
-        accountType.setText(accountChoice.getAccountType().name());
+        accountType.setText("Available Funds in your " + accountChoice.getAccountType().name() + " account: £");
+        availableFunds.setText(Double.toString(accountChoice.getBalance()));
+
     }
 }
