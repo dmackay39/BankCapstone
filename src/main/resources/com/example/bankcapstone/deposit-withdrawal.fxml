@@ -38,7 +38,7 @@
             <Insets bottom="10.0" />
          </padding>
       </Label>
-      <ComboBox fx:id="depositWithdrawalAccountChoice" prefWidth="150.0" />
+      <ComboBox fx:id="depositWithdrawalAccountChoice" onAction="#onAccountChoiceClicked" prefWidth="150.0" />
       <Line endX="100.0" startX="-100.0" stroke="#f51472">
          <VBox.margin>
             <Insets top="20.0" />
@@ -46,9 +46,7 @@
       </Line>
       <HBox alignment="CENTER" prefHeight="47.0" prefWidth="594.0">
          <children>
-            <Label text="Available Funds in your " textFill="#08b0f8" />
             <Label fx:id="accountType" textFill="#08b0f8" />
-            <Label text=" account: £ " textFill="#08b0f8" />
             <Label fx:id="availableFunds" textFill="#08b0f8" />
          </children>
       </HBox>
