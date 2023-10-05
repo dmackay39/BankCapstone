@@ -18,7 +18,7 @@
       </Label>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <RadioButton fx:id="depositRadioButton" mnemonicParsing="false" text="Deposit" textFill="#08b0f8" selected="true">
+            <RadioButton fx:id="depositRadioButton" mnemonicParsing="false" selected="true" text="Deposit" textFill="#08b0f8">
                <toggleGroup>
                   <ToggleGroup fx:id="DepositWithdrawal" />
                </toggleGroup>
