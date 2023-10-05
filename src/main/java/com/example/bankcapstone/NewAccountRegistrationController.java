@@ -5,11 +5,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -55,6 +52,13 @@ import java.io.IOException;
                 Customer newCustomer = new Customer(firstName, lastName, email, password);
                 Bank.getInstance().createNewCustomer(newCustomer);
                 Bank.getInstance().setActiveCustomer(newCustomer);
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("New Account Created");
+                alert.setHeaderText(null);
+                alert.setContentText("Welcome to XYZ - thanks for choosing to bank with us.\n\nYour new account has been successfully created!");
+
+                alert.showAndWait();
                 Stage stage = (Stage) newRegistrationSubmitButton.getScene().getWindow();
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("customer-account.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 650, 650);
