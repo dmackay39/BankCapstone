@@ -67,11 +67,11 @@ public class Customer {
 
     //payOrTransfer method for transfers between accounts
     public String payOrTransfer(Account accountFrom, Account accountTo, double amount) {
-        if ((accountFrom.getBalance() - amount) > 0) {
+        if ((accountFrom.getBalance() - amount) >= 0) {
             accountFrom.setBalance(accountFrom.getBalance() - amount);
             accountTo.setBalance(accountTo.getBalance() + amount);
             return "Transfer Successful";
-        } else if ((getAccessibleBalance() - amount) > 0) {
+        } else if ((getAccessibleBalance() - amount) >= 0) {
             return "Transfer Failed. You may transfer funds to Account #" + accountFrom.getAccountNumber() + " from your other checking/savings accounts.";
         } else {
             return "You do not have sufficient funds to make this transfer.";
@@ -103,10 +103,10 @@ public class Customer {
 
     //payOrTransfer method for payments from checking account to pay bills
     public String payOrTransfer(Account accountFrom, double amount) {
-        if ((accountFrom.getBalance() - amount) > 0) {
+        if ((accountFrom.getBalance() - amount) >= 0) {
             accountFrom.setBalance(accountFrom.getBalance() - amount);
             return "Payment Successful";
-        } else if ((getAccessibleBalance() - amount) > 0) {
+        } else if ((getAccessibleBalance() - amount) >= 0) {
             return "Payment Failed. You may transfer funds to Account #" + accountFrom.getAccountNumber() + " from your other checking/savings accounts";
         } else {
             return "This payment will overdraw your account and requires bank manager approval";
