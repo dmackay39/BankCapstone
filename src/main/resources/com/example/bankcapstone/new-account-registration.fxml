@@ -53,7 +53,7 @@
         <VBox alignment="CENTER" />
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button id="customerSubmitButton" fx:id="newRegistrationCancelButton" onAction="#onCancelButtonClick" style="-fx-background-color: #fffff0;" text="Cancel" textAlignment="CENTER" textFill="#1c3d52">
+            <Button id="customerSubmitButton" fx:id="newRegistrationCancelButton" onAction="#onCancelButtonClick" style="-fx-background-color: #fffff0;" text="Back" textAlignment="CENTER" textFill="#1c3d52">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
