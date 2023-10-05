@@ -1,5 +1,5 @@
 Account Type,Email,Account Number,Opening Date,Balance,Interest Rate,Interest Paid Date,Term
 CHECKING,bilal.khan@email.com,1000001,2023-10-04,0.0,0.0,2023-10-04,0
-CD,john.smith@email.com,1000004,2023-10-04,0.0,0.07,2023-10-04,1
+CD,john.smith@email.com,1000004,2023-10-04,1000.0,0.07,2023-10-04,1
 SAVINGS,john.smith@email.com,1000003,2023-10-04,500.0,0.05,2023-10-04,0
-CHECKING,john.smith@email.com,1000002,2023-10-04,10590.0,0.0,2023-10-04,0
+CHECKING,john.smith@email.com,1000002,2023-10-04,8590.0,0.0,2023-10-04,0

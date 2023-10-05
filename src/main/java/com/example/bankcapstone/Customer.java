@@ -82,9 +82,9 @@ public class Customer {
     public String payOrTransfer(Account accountFrom, Loan loanTo, double amount) {
         String result = "";
         if ((accountFrom.getBalance() - amount) >= 0) {
-            if ((loanTo.getBalance() - amount > 0)) {
+            if ((loanTo.getBalance() + amount > 0)) {
                 result = "You can't pay more than you owe.";
-            } else if (loanTo.getBalance() - amount == 0) {
+            } else if (loanTo.getBalance() + amount == 0) {
                 accountFrom.setBalance(accountFrom.getBalance() - amount);
                 loanHashMap.remove(loanTo.getLoanNumber());
                 result = "Payment successful. Loan #" + loanTo.getLoanNumber() + " has been fully paid off and removed from your account.";
