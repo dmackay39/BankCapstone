@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -40,6 +41,7 @@ public class MakeAPaymentController implements Initializable {
     List<Account> accounts = customer.getAccountList();
 
     List<Loan> loans = customer.getLoanList();
+    List<Account> filteredAccounts = new ArrayList<>();
 
 
     public void paymentTransferClicked(ActionEvent actionEvent) throws IllegalArgumentException {
@@ -104,7 +106,7 @@ public class MakeAPaymentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        accounts = accounts.stream()
+        filteredAccounts = accounts.stream()
                 .filter((Account account) -> {
                     if (account.getAccountType().equals(AccountType.SAVINGS) || account.getAccountType().equals(AccountType.CHECKING)){
                         return true;
@@ -117,16 +119,17 @@ public class MakeAPaymentController implements Initializable {
                         }
                     }
                     return false;
-
                 }).toList();
 
-        for (Account account : accounts) {
+        for (Account account : filteredAccounts)
             paymentTransferFrom.getItems().add(account.getAccountNumber());
+
+        for (Account account: accounts)
             paymentTransferTo.getItems().add(account.getAccountNumber());
-        }
-        for (Loan loan : loans) {
+
+        for (Loan loan : loans)
             paymentTransferTo.getItems().add(loan.getLoanNumber());
-        }
+
         paymentTransferTo.getItems().add("Bills");
     }
 

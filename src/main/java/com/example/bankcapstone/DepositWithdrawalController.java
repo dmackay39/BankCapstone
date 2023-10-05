@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -39,16 +40,19 @@ public class DepositWithdrawalController implements Initializable {
     public void depositWithdrawalClicked(ActionEvent actionEvent) throws IllegalArgumentException {
         try {
             double moneyToDW = 0;
+
             moneyToDW += Integer.parseInt(depositWithdrawalPounds.getText().trim());
             moneyToDW += (Integer.parseInt(depositWithdrawalPennies.getText().trim())) / 100.0;
 
             if (moneyToDW > 0) {
                 Integer accountNumberToDW = (Integer) depositWithdrawalAccountChoice.getValue();
                 Account accountToDW = customer.getAccountHashMap().get(accountNumberToDW);
+
                 if (DepositWithdrawal.getSelectedToggle().equals(depositRadioButton)) {
                     String result = customer.depositOrWithdraw(accountToDW, moneyToDW, "deposit");
                     insufficientFundsLabel.setText(result);
                     System.out.println(result);
+
                 } else if (DepositWithdrawal.getSelectedToggle().equals(withdrawalRadioButton)) {
                     String result = customer.depositOrWithdraw(accountToDW, moneyToDW, "withdraw");
                     System.out.println(result);
@@ -88,5 +92,28 @@ public class DepositWithdrawalController implements Initializable {
         Scene scene = new Scene(fxmlLoader.load(), 650, 650);
         stage.setTitle("Your Account");
         stage.setScene(scene);
+    }
+
+    public void withdrawalSelected(ActionEvent actionEvent){
+        depositWithdrawalAccountChoice.getItems().clear();
+        accounts = accounts.stream()
+                .filter((Account account) -> {
+                    if (account.getAccountType().equals(AccountType.SAVINGS) || account.getAccountType().equals(AccountType.CHECKING)){
+                        return true;
+                    }
+                    if (account.getAccountType().equals(AccountType.CD)){
+                        LocalDate openDate = account.getAccountStartDate();
+                        int closeDate = account.getTermLength();
+                        if(Math.abs(openDate.until(LocalDate.now()).getYears()) >= account.getTermLength()){
+                            return true;
+                        }
+                    }
+                    return false;
+
+                }).toList();
+
+        for (Account account : accounts) {
+            depositWithdrawalAccountChoice.getItems().add(account.getAccountNumber());
+        }
     }
 }
