@@ -53,11 +53,11 @@ public class BankStub implements IBank {
 
     @Override
     public void setTotalDeposits(double total) {
-
+        this.totalDeposits = total;
     }
 
     @Override
     public void setTotalLending(double total) {
-
+        this.totalLending = total;
     }
 }
