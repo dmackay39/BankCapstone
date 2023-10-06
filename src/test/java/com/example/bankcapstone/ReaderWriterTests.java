@@ -93,7 +93,7 @@ public class ReaderWriterTests {
     }
 
     @ParameterizedTest
-    @CsvSource({"2023, 10, 4, 1, false", "2022, 10, 4, 1, true", "2022, 10, 4, 2, false","2022, 10, 6, 1, false", "2022, 10, 5, 1, true"})
+    @CsvSource({"2023, 10, 4, 1, false", "2022, 10, 4, 1, true", "2022, 10, 4, 2, false","2022, 10, 6, 1, true", "2022, 10, 5, 1, true"})
     public void hasMaturedTests(int year, int month, int day, int termLength, boolean expectedResult){
 
         boolean actualResult = uut.hasMatured(LocalDate.of(year, month,day), termLength);

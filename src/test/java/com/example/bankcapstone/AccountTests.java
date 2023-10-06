@@ -44,8 +44,8 @@ public class AccountTests {
     @Test
     public void testThree(){
         uut.setBalance(100.00);
-        uut.setStartDate(LocalDate.of(2022, 10, 05));
-        uut.setInterestPaidDate(LocalDate.of(2022, 10, 05));
+        uut.setStartDate(LocalDate.now());
+        uut.setInterestPaidDate(LocalDate.now());
         uut.payInterest();
         assertEquals(100.00, uut.getBalance());
     }
