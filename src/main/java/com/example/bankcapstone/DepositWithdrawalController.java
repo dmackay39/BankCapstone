@@ -63,13 +63,17 @@ public class DepositWithdrawalController implements Initializable {
                     System.out.println(result);
                     insufficientFundsLabel.setText(result);
                 }
-                Stage stage = (Stage) depositWithdrawalSubmitButton.getScene().getWindow();
-                FXMLLoader fxmlLoader = new FXMLLoader(XYZBankApplication.class.getResource("customer-account.fxml"));
-                Scene scene = new Scene(fxmlLoader.load(), 700, 700);
-                stage.setTitle("Customer Account");
-                stage.setScene(scene);
-            }
-            else {
+                accounts = customer.getAccountList();
+                depositWithdrawalAccountChoice.getItems().clear();
+                availableFunds.setText("");
+                reInitialize();
+
+//                Stage stage = (Stage) depositWithdrawalSubmitButton.getScene().getWindow();
+//                FXMLLoader fxmlLoader = new FXMLLoader(XYZBankApplication.class.getResource("customer-account.fxml"));
+//                Scene scene = new Scene(fxmlLoader.load(), 700, 700);
+//                stage.setTitle("Customer Account");
+//                stage.setScene(scene);
+            } else {
                 throw new IllegalArgumentException();
             }
         } catch (Exception e) {
@@ -86,6 +90,10 @@ public class DepositWithdrawalController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        reInitialize();
+    }
+
+    private void reInitialize() {
         for (Account account : accounts) {
             depositWithdrawalAccountChoice.getItems().add(account.getAccountNumber());
         }
@@ -100,17 +108,17 @@ public class DepositWithdrawalController implements Initializable {
         stage.setScene(scene);
     }
 
-    public void withdrawalSelected(ActionEvent actionEvent){
+    public void withdrawalSelected(ActionEvent actionEvent) {
         depositWithdrawalAccountChoice.getItems().clear();
         accounts = accounts.stream()
                 .filter((Account account) -> {
-                    if (account.getAccountType().equals(AccountType.SAVINGS) || account.getAccountType().equals(AccountType.CHECKING)){
+                    if (account.getAccountType().equals(AccountType.SAVINGS) || account.getAccountType().equals(AccountType.CHECKING)) {
                         return true;
                     }
-                    if (account.getAccountType().equals(AccountType.CD)){
+                    if (account.getAccountType().equals(AccountType.CD)) {
                         LocalDate openDate = account.getAccountStartDate();
                         int closeDate = account.getTermLength();
-                        if(Math.abs(openDate.until(LocalDate.now()).getYears()) >= account.getTermLength()){
+                        if (Math.abs(openDate.until(LocalDate.now()).getYears()) >= account.getTermLength()) {
                             return true;
                         }
                     }
@@ -126,8 +134,10 @@ public class DepositWithdrawalController implements Initializable {
     public void onAccountChoiceClicked(ActionEvent actionEvent) {
         Integer chosenAccountNumber = (Integer) depositWithdrawalAccountChoice.getValue();
         Account accountChoice = customer.getAccountHashMap().get(chosenAccountNumber);
-        accountType.setText("Available Funds in your " + accountChoice.getAccountType().name() + " account: £");
-        availableFunds.setText(String.format("%.2f",accountChoice.getBalance()));
+        if (!(accountChoice == null)) {
+            accountType.setText("Available Funds in your " + accountChoice.getAccountType().name() + " account: £");
+            availableFunds.setText(String.format("%.2f", accountChoice.getBalance()));
+        }
 
     }
 }
