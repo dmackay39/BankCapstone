@@ -24,12 +24,12 @@ public class ManagerCredentialsController {
         Stage stage = (Stage) managerOverrideCancelButton.getScene().getWindow();
         stage.close();
 
-        Stage previousStage = new Stage();
+        /*Stage previousStage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(XYZBankApplication.class.getResource("payment-overdraw-page.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 700, 700);
         previousStage.setTitle("Payment Overdraw");
         previousStage.setScene(scene);
-        previousStage.show();
+        previousStage.show();*/
     }
 
     public void onManagerOverrideButtonClick(ActionEvent actionEvent) {
