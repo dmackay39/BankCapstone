@@ -83,19 +83,13 @@ public class DepositOrWithdrawTests {
         System.out.println("Post Deposit Checking Balance: " + postDepositCheckingBalance);
         System.out.println("Post Deposit Savings Balance: " + postDepositSavingsBalance);
 
-        // Transfer $100 from checking to savings
+        // Transfer 100
         double transferAmount = 100.0;
         String result = customer.payOrTransfer(checkingAccount, savingsAccount2, transferAmount);
 
-        // Print result and updated balances
         System.out.println("Transfer Result: " + result);
         System.out.println("Updated Checking Balance: " + checkingAccount.getBalance());
         System.out.println("Updated Savings Balance: " + savingsAccount2.getBalance());
-
-        // Check if the transfer was successful
-//        assertEquals("Transfer Successful", result);
-//        assertEquals((initialCheckingBalance - transferAmount), checkingAccount.getBalance());
-//        assertEquals((initialSavingsBalance + transferAmount), savingsAccount2.getBalance());
 
         assertEquals((postDepositCheckingBalance - transferAmount), checkingAccount.getBalance());
         assertEquals((postDepositSavingsBalance + transferAmount), savingsAccount2.getBalance());
@@ -105,7 +99,5 @@ public class DepositOrWithdrawTests {
 
     }
 
-    // Error coming up Expected :-100.0 and Actual   :200.0, because it is taking 100 off of the initialchecking and initialSavings
-    // ask Bilal or Daniel what is the name of the balance after a deposit or withdrawal has been made - checkingAccount.getBalance()?
 
 }
