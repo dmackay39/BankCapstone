@@ -124,22 +124,22 @@ public class Customer {
     }
 
     public String depositOrWithdraw(Account account, double amount, String option) {
+        String result = "";
         switch (option) {
             case "deposit" -> {
                 account.setBalance(account.getBalance() + amount);
-                return "Deposit Successful";
+                result = "Deposit Successful";
             }
             case "withdraw" -> {
                 if (account.getBalance() - amount > 0) {
                     account.setBalance(account.getBalance() - amount);
-                    return "Withdrawal Successful";
+                    result = "Withdrawal Successful";
+                } else {
+                    result = "Cannot withdraw more than account balance";
                 }
             }
-            default -> {
-                return "Cannot withdraw more than account balance";
-            }
         }
-        return "";
+        return result;
     }
 
     public String toString() {
